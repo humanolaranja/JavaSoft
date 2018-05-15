@@ -1,3 +1,5 @@
+package Model;
+
 import java.time.LocalDate;
 
 public class Visitante extends Pessoa{
@@ -10,21 +12,21 @@ public class Visitante extends Pessoa{
 	private LocalDate dataDaUltimaVisita;
 	private LocalDate dataAssociado;
 	private boolean associado;
-	
-	// Construtores
-	public Visitante (String nome, String rg, LocalDate nascimento, LocalDate dataDaUltimaVisita, boolean associado) {
+
+	// Construtor
+	public Visitante (String nome, String rg, LocalDate nascimento, LocalDate dataDaUltimaVisita, boolean associado, LocalDate dataAssociado) throws Exception{
             super(nome, rg, nascimento);
+            if(associado && dataAssociado == null)
+                throw new Exception("Tentativa de criar novo visitante associado com 'dataAssociado == null'");
+            if(associado){
+                this.associado = associado;
+                this.dataAssociado = dataAssociado;
+            }else{
+                this.associado = associado;
+                this.dataAssociado = null;
+            }
             this.dataDaUltimaVisita = dataDaUltimaVisita;
-            this.associado = associado;		
-	}
-	
-	// Construtor caso no momento da inst�ncia do objeto quisermos passar o dia da associacao
-	public Visitante (String nome, String rg, LocalDate nascimento, LocalDate dataDaUltimaVisita, boolean associado, LocalDate dataAssociado) {
-            super(nome, rg, nascimento);
-            this.dataDaUltimaVisita = dataDaUltimaVisita;
-            this.dataAssociado = dataAssociado;
-            this.associado = associado;
-}
+        }
 
 	// Getters e setters
 	public LocalDate getDataDaUltimaVisita() {
@@ -47,8 +49,16 @@ public class Visitante extends Pessoa{
             return this.associado;
 	}
 
-	public void setAssociado(boolean associado) {
-            this.associado = associado;
+	public void setAssociado(boolean associado, LocalDate dataAssociado) throws Exception {
+            if(associado && dataAssociado == null)
+                throw new Exception("Tentativa mudara o status de um visitante para associado com 'dataAssociado == null'");
+            if(associado){
+                this.associado = associado;
+                this.dataAssociado = dataAssociado;
+            }else{
+                this.associado = associado;
+                this.dataAssociado = null;
+            }
 	}
 	
 	// Imprimir os dados

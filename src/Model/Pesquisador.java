@@ -1,3 +1,5 @@
+package Model;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -12,11 +14,23 @@ public class Pesquisador extends Funcionario{
     private int tipo;
     private ArrayList<Animal> animaisPesquisa;
 
-    // Construtor
-    public Pesquisador(String nome, String rg, LocalDate nascimento, int turno, String numCarteiraTrabalho, double salario, LocalDate dataContratacao, int tipo, ArrayList<Animal> animaisPesquisa) {
+    // Construtores
+    public Pesquisador(String nome, String rg, LocalDate nascimento, int turno, String numCarteiraTrabalho, double salario, 
+            LocalDate dataContratacao, int tipo, ArrayList<Animal> animaisPesquisa) throws Exception {
         super(nome, rg, nascimento, turno, numCarteiraTrabalho, salario, dataContratacao);
-        this.animaisPesquisa = new ArrayList<>();
+
+        if(tipo != GRADUACAO && tipo != POS_GRADUACAO && tipo != PROFESSOR)
+            throw new Exception("Tentativa de criar novo pesquisador com tipo inexistente!");
         this.animaisPesquisa = animaisPesquisa;
+    }
+    
+    public Pesquisador(String nome, String rg, LocalDate nascimento, int turno, String numCarteiraTrabalho, double salario, 
+            LocalDate dataContratacao, int tipo) throws Exception {
+        super(nome, rg, nascimento, turno, numCarteiraTrabalho, salario, dataContratacao);
+
+        if(tipo != GRADUACAO && tipo != POS_GRADUACAO && tipo != PROFESSOR)
+            throw new Exception("Tentativa de criar novo pesquisador com tipo inexistente!");
+        this.animaisPesquisa = new ArrayList<>();
     }
 
     public int getTipo() {
