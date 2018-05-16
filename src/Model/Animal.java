@@ -5,7 +5,6 @@ import java.time.LocalDate;
 public class Animal {
     
     	private final int id;
-	private final String genero;
 	private final String especie;
 	private final String sexo;
 	private final String nomePopular;
@@ -14,9 +13,8 @@ public class Animal {
 	private final LocalDate nascimento;
 	private String curiosidade;
         
-	public Animal(int id, String genero, String especie, String sexo, String nomePopular, String origem, String[] alimentacaoDiaria, LocalDate nascimento) throws NullPointerException{
-            if(genero == null)
-                throw new NullPointerException("Tentativa de criar um novo animal com 'genero == null'");
+	public Animal(int id, String especie, String sexo, String nomePopular, String origem, String[] alimentacaoDiaria, LocalDate nascimento) throws NullPointerException{
+            
             if(especie == null)
                 throw new NullPointerException("Tentativa de criar um novo animal com 'especie == null'");
             if(sexo == null)
@@ -31,7 +29,6 @@ public class Animal {
                 throw new NullPointerException("Tentativa de criar um novo animal com 'nascimento == null'");
             
             this.id = id;
-            this.genero = genero;
             this.especie = especie;
             this.sexo = sexo;
             this.nomePopular = nomePopular;
@@ -41,9 +38,8 @@ public class Animal {
             this.curiosidade = null;
 	}
         
-        public Animal(int id, String genero, String especie, String sexo, String nomePopular, String origem, String[] alimentacaoDiaria, LocalDate nascimento, String curiosidade) {
-            if(genero == null)
-                throw new NullPointerException("Tentativa de criar um novo animal com 'genero == null'");
+        public Animal(int id, String especie, String sexo, String nomePopular, String origem, String[] alimentacaoDiaria, LocalDate nascimento, String curiosidade) {
+            
             if(especie == null)
                 throw new NullPointerException("Tentativa de criar um novo animal com 'especie == null'");
             if(sexo == null)
@@ -58,7 +54,6 @@ public class Animal {
                 throw new NullPointerException("Tentativa de criar um novo animal com 'nascimento == null'");
             
             this.id = id;
-            this.genero = genero;
             this.especie = especie;
             this.sexo = sexo;
             this.nomePopular = nomePopular;
@@ -66,10 +61,6 @@ public class Animal {
             this.alimentacaoDiaria = alimentacaoDiaria;
             this.nascimento = nascimento;
             this.curiosidade = curiosidade;
-	}
-
-	public String getGenero() {
-            return genero;
 	}
 	
 	public String getEspecie() {
@@ -115,7 +106,6 @@ public class Animal {
             String saida;
             saida = "- Animal " + id + " -\n";
             saida += "Nome popular: " + nomePopular + "\n";
-            saida += "Gênero: " + genero + "\n";
             saida += "Espécie: " + especie + "\n";
             saida += "Origem: " + origem + "\n";
             saida += "Curiosidade: " + curiosidade + "\n";
