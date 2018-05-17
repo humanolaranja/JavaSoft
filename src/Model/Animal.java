@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 public class Animal {
     
     	private final int id;
+        private Jaula jaula;
 	private final String genero;
 	private final String especie;
 	private final String sexo;
@@ -15,7 +16,7 @@ public class Animal {
 	private final LocalDate nascimento;
 	private String curiosidade;
         
-	public Animal(int id, String genero, String especie, String sexo, String nomePopular, String origem, String[] alimentacaoDiaria, LocalDate nascimento) throws NullPointerException{
+	public Animal(String genero, String especie, String sexo, String nomePopular, String origem, String[] alimentacaoDiaria, LocalDate nascimento) throws NullPointerException{
             if(genero == null)
                 throw new NullPointerException("Tentativa de criar um novo animal com 'genero == null'");
             if(especie == null)
@@ -31,7 +32,7 @@ public class Animal {
             if(nascimento == null)
                 throw new NullPointerException("Tentativa de criar um novo animal com 'nascimento == null'");
             
-            this.id = id;
+            this.id = GerenciadorId.getAnimalId();
             this.genero = genero;
             this.especie = especie;
             this.sexo = sexo;
@@ -73,6 +74,14 @@ public class Animal {
             return id;
         }
 
+        public Jaula getJaula() {
+            return jaula;
+        }
+
+        public void setJaula(Jaula jaula) {
+            this.jaula = jaula;
+        }
+        
         public LocalDate getNascimento() {
             return nascimento;
         }
