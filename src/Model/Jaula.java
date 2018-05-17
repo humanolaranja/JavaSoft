@@ -3,16 +3,16 @@ package Model;
 import java.util.ArrayList;
 
 public class Jaula {
-	private final int numMaxAnimais;
+	private int numMaxAnimais;
         private final int id;
 	private final ArrayList<Animal> animais;
         
-        public Jaula(int numMaxAnimais, int id) throws Exception{
+        public Jaula(int numMaxAnimais) throws Exception{
             if(numMaxAnimais < 0)
                 throw new Exception("Tentativa de criar nova jaula com 'numMaxAnimais < 0'");
             this.numMaxAnimais = numMaxAnimais;
             this.animais = new ArrayList<>();
-            this.id = id;
+            this.id = GerenciadorId.getJaulaId();
         }
 	
 	public int getNumMaxAnimais(){
@@ -30,6 +30,10 @@ public class Jaula {
 	public ArrayList<Animal> getAnimais(){
             return this.animais;
 	}
+
+        public void setNumMaxAnimais(int numMaxAnimais) {
+            this.numMaxAnimais = numMaxAnimais;
+        }
 	
 	public void addAnimal(Animal novo) throws Exception {
             if(this.animais.size() < this.numMaxAnimais) 

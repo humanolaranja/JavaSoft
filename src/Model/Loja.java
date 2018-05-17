@@ -12,7 +12,7 @@ public class Loja {
     private double valorAluguel;
     private LocalTime horarioAbertura;
     private LocalTime horarioFechamento;
-
+    private final int id;
 
     // Construtor
     public Loja(String nome, LocalTime horarioAbertura, LocalTime horarioFechamento, double valorAluguel) throws Exception{
@@ -32,11 +32,16 @@ public class Loja {
         this.valorAluguel = valorAluguel;
         tags = new ArrayList<>();
         funcionarios = new ArrayList<>();
+        this.id = GerenciadorId.getLojaId();
     }
 
     // Getters e setters
     public String getNome() {
         return nome;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public void setNome(String nome) {
