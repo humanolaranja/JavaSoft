@@ -5,15 +5,16 @@ import java.time.LocalDate;
 public class Animal {
     
     	private final int id;
+        private Jaula jaula;
 	private final String especie;
 	private final String sexo;
 	private final String nomePopular;
 	private final String origem;
-	private final String[] alimentacaoDiaria;
+	private String[] alimentacaoDiaria;
 	private final LocalDate nascimento;
 	private String curiosidade;
         
-	public Animal(int id, String especie, String sexo, String nomePopular, String origem, String[] alimentacaoDiaria, LocalDate nascimento) throws NullPointerException{
+	public Animal(String especie, String sexo, String nomePopular, String origem, String[] alimentacaoDiaria, LocalDate nascimento) throws NullPointerException{
             
             if(especie == null)
                 throw new NullPointerException("Tentativa de criar um novo animal com 'especie == null'");
@@ -28,7 +29,7 @@ public class Animal {
             if(nascimento == null)
                 throw new NullPointerException("Tentativa de criar um novo animal com 'nascimento == null'");
             
-            this.id = id;
+            this.id = GerenciadorId.getAnimalId();
             this.especie = especie;
             this.sexo = sexo;
             this.nomePopular = nomePopular;
@@ -38,7 +39,7 @@ public class Animal {
             this.curiosidade = null;
 	}
         
-        public Animal(int id, String especie, String sexo, String nomePopular, String origem, String[] alimentacaoDiaria, LocalDate nascimento, String curiosidade) {
+        public Animal(String especie, String sexo, String nomePopular, String origem, String[] alimentacaoDiaria, LocalDate nascimento, String curiosidade) {
             
             if(especie == null)
                 throw new NullPointerException("Tentativa de criar um novo animal com 'especie == null'");
@@ -53,7 +54,7 @@ public class Animal {
             if(nascimento == null)
                 throw new NullPointerException("Tentativa de criar um novo animal com 'nascimento == null'");
             
-            this.id = id;
+            this.id = GerenciadorId.getAnimalId();
             this.especie = especie;
             this.sexo = sexo;
             this.nomePopular = nomePopular;
@@ -63,6 +64,10 @@ public class Animal {
             this.curiosidade = curiosidade;
 	}
 	
+        public int getId(){
+            return id;
+        }
+        
 	public String getEspecie() {
             return especie;
 	}
@@ -100,7 +105,19 @@ public class Animal {
 	public void setAlimentacaoDiaria(String[] alimentacao) {
             System.arraycopy(alimentacao, 0, alimentacaoDiaria, 0, 7);
 	}
-	
+
+        public LocalDate getNascimento() {
+            return nascimento;
+        }
+
+        public Jaula getJaula() {
+            return jaula;
+        }
+
+        public void setJaula(Jaula jaula) {
+            this.jaula = jaula;
+        }
+        
         @Override
 	public String toString(){
             String saida;

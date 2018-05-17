@@ -144,7 +144,7 @@ public class JFListaLojas extends javax.swing.JFrame {
         String [] colunas = new String [] {"Nome", "Horário abertura", "Horário fechamento"}; 
         ArrayList dados = new ArrayList();
         lojas.forEach((l) -> {
-            dados.add(new Object[]{l.getNome(), l.getHorarioAbertura().getHour()+":"+l.getHorarioAbertura().getMinute(), l.getHorarioFechamento().getHour()+":"+l.getHorarioFechamento().getMinute()});
+            dados.add(new Object[]{l.getNome(), String.format("%02d", l.getHorarioAbertura().getHour())+":"+String.format("%02d", l.getHorarioAbertura().getMinute()), String.format("%02d", l.getHorarioFechamento().getHour())+":"+ String.format("%02d", l.getHorarioFechamento().getMinute())});
         });
         ModeloTabela modelo = new ModeloTabela(dados, colunas);
         

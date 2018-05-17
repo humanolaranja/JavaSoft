@@ -7,21 +7,25 @@ public class Pessoa {
     // Atributos
     private final String nome;
     private final String rg;
+    private final String cpf;
     private final LocalDate dataNascimento;
 
     // Metodos:
 
     // Construtor
-    public Pessoa(String nome, String rg, LocalDate nascimento) throws NullPointerException{
+    public Pessoa(String nome, String rg, String cpf, LocalDate nascimento) throws NullPointerException{
         if(nome == null)
             throw new NullPointerException("Tentativa de criar uma nova pessoa com 'nome == null'");
         if(rg == null)
             throw new NullPointerException("Tentativa de criar uma nova pessoa com 'rg == null'");
+        if(cpf == null)
+            throw new NullPointerException("Tentativa de criar uma nova pessoa com 'cpf == null'");
         if(nascimento == null)
             throw new NullPointerException("Tentativa de criar uma nova pessoa com 'nascimento == null'");
         
         this.nome = nome;
         this.rg = rg;
+        this.cpf = cpf;
         this.dataNascimento = nascimento;
     }
 
@@ -31,6 +35,10 @@ public class Pessoa {
 
     public String getRg() {
         return this.rg;
+    }
+
+    public String getCpf() {
+        return cpf;
     }
 
     public LocalDate getDataNascimento() {
