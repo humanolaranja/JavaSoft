@@ -18,8 +18,8 @@ public class Funcionario extends Pessoa{
 	// Metodos:
 	
 	// Construtor
-	public Funcionario (String nome, String rg, String cpf, LocalDate nascimento, int turno, String numCarteiraTrabalho, double salario, LocalDate dataContratacao) throws Exception{
-            super(nome, rg, cpf, nascimento);
+	public Funcionario (String nome, String rg, LocalDate nascimento, int turno, String numCarteiraTrabalho, double salario, LocalDate dataContratacao) throws Exception{
+            super(nome, rg, nascimento);
             
             if(turno != TURNO_MANHA && turno != TURNO_TARDE && turno != TURNO_NOITE)
                 throw new Exception("Tentativa de adicionar um funcionário com turno inválido!");

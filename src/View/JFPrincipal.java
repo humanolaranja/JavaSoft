@@ -24,8 +24,9 @@ public class JFPrincipal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnMapa = new javax.swing.JButton();
         btnFuncionarios = new javax.swing.JButton();
-        btnLojas = new javax.swing.JButton();
+        btnAnimais = new javax.swing.JButton();
         btnJaulas = new javax.swing.JButton();
+        btnLojas = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Administração do Zoológico - JavaSoft");
@@ -57,13 +58,13 @@ public class JFPrincipal extends javax.swing.JFrame {
             }
         });
 
-        btnLojas.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        btnLojas.setForeground(new java.awt.Color(255, 255, 255));
-        btnLojas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/GREEN.png"))); // NOI18N
-        btnLojas.setText("LOJAS");
-        btnLojas.addActionListener(new java.awt.event.ActionListener() {
+        btnAnimais.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        btnAnimais.setForeground(new java.awt.Color(255, 255, 255));
+        btnAnimais.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/PURPLE.png"))); // NOI18N
+        btnAnimais.setText("LOJAS");
+        btnAnimais.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLojasActionPerformed(evt);
+                btnAnimaisActionPerformed(evt);
             }
         });
 
@@ -77,6 +78,16 @@ public class JFPrincipal extends javax.swing.JFrame {
             }
         });
 
+        btnLojas.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        btnLojas.setForeground(new java.awt.Color(255, 255, 255));
+        btnLojas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/GREEN.png"))); // NOI18N
+        btnLojas.setText("LOJAS");
+        btnLojas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLojasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jpBackgroundLayout = new javax.swing.GroupLayout(jpBackground);
         jpBackground.setLayout(jpBackgroundLayout);
         jpBackgroundLayout.setHorizontalGroup(
@@ -85,9 +96,10 @@ public class JFPrincipal extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpBackgroundLayout.createSequentialGroup()
                 .addContainerGap(120, Short.MAX_VALUE)
                 .addGroup(jpBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnLojas, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnMapa, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnFuncionarios, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLojas, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAnimais, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnJaulas, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(112, 112, 112))
         );
@@ -100,11 +112,13 @@ public class JFPrincipal extends javax.swing.JFrame {
                 .addComponent(btnMapa, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
                 .addComponent(btnFuncionarios, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addComponent(btnLojas, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
+                .addGap(37, 37, 37)
+                .addComponent(btnAnimais, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
                 .addComponent(btnJaulas, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addGap(62, 62, 62))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -118,7 +132,7 @@ public class JFPrincipal extends javax.swing.JFrame {
             .addComponent(jpBackground, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(530, 639));
+        setSize(new java.awt.Dimension(530, 704));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -133,6 +147,10 @@ public class JFPrincipal extends javax.swing.JFrame {
     private void btnJaulasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJaulasActionPerformed
         new JFListaJaulas().setVisible(true, MockDatabase.jaulas);
     }//GEN-LAST:event_btnJaulasActionPerformed
+
+    private void btnAnimaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnimaisActionPerformed
+        
+    }//GEN-LAST:event_btnAnimaisActionPerformed
 
     private void btnLojasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLojasActionPerformed
         new JFListaLojas().setVisible(true, MockDatabase.lojas);
@@ -174,6 +192,7 @@ public class JFPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAnimais;
     private javax.swing.JButton btnFuncionarios;
     private javax.swing.JButton btnJaulas;
     private javax.swing.JButton btnLojas;

@@ -6,9 +6,8 @@ import java.time.LocalTime;
 public class Loja {
 	
     // Atributos
-    private final int id;
-    private ArrayList<Funcionario> funcionarios;
-    private ArrayList<String> tags;
+    private final ArrayList<Funcionario> funcionarios;
+    private final ArrayList<String> tags;
     private String nome;
     private double valorAluguel;
     private LocalTime horarioAbertura;
@@ -27,7 +26,6 @@ public class Loja {
         if(valorAluguel < 0)
             throw new Exception("Tentativa de criar nova loja com 'valorAluguel < 0'");
         
-        this.id = GerenciadorId.getLojaId();
         this.nome = nome;
         this.horarioAbertura = horarioAbertura;
         this.horarioFechamento = horarioFechamento;
@@ -37,10 +35,6 @@ public class Loja {
     }
 
     // Getters e setters
-    public int getId(){
-        return id;
-    }
-    
     public String getNome() {
         return nome;
     }

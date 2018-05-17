@@ -14,8 +14,8 @@ public class Visitante extends Pessoa{
 	private boolean associado;
 
 	// Construtor
-	public Visitante (String nome, String rg, String cpf, LocalDate nascimento, LocalDate dataDaUltimaVisita, boolean associado, LocalDate dataAssociado) throws Exception{
-            super(nome, rg, cpf, nascimento);
+	public Visitante (String nome, String rg, LocalDate nascimento, LocalDate dataDaUltimaVisita, boolean associado, LocalDate dataAssociado) throws Exception{
+            super(nome, rg, nascimento);
             if(associado && dataAssociado == null)
                 throw new Exception("Tentativa de criar novo visitante associado com 'dataAssociado == null'");
             if(associado){

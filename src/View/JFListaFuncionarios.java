@@ -2,7 +2,6 @@ package View;
 
 import Model.Funcionario;
 import Model.ModeloTabela;
-import java.awt.Window;
 import java.util.ArrayList;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;

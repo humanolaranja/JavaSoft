@@ -1,21 +1,23 @@
 package Model;
 
 import java.time.LocalDate;
+import java.util.logging.Logger;
 
 public class Animal {
     
     	private final int id;
-        private Jaula jaula;
+	private final String genero;
 	private final String especie;
 	private final String sexo;
 	private final String nomePopular;
 	private final String origem;
-	private String[] alimentacaoDiaria;
+	private final String[] alimentacaoDiaria;
 	private final LocalDate nascimento;
 	private String curiosidade;
         
-	public Animal(String especie, String sexo, String nomePopular, String origem, String[] alimentacaoDiaria, LocalDate nascimento) throws NullPointerException{
-            
+	public Animal(int id, String genero, String especie, String sexo, String nomePopular, String origem, String[] alimentacaoDiaria, LocalDate nascimento) throws NullPointerException{
+            if(genero == null)
+                throw new NullPointerException("Tentativa de criar um novo animal com 'genero == null'");
             if(especie == null)
                 throw new NullPointerException("Tentativa de criar um novo animal com 'especie == null'");
             if(sexo == null)
@@ -29,7 +31,8 @@ public class Animal {
             if(nascimento == null)
                 throw new NullPointerException("Tentativa de criar um novo animal com 'nascimento == null'");
             
-            this.id = GerenciadorId.getAnimalId();
+            this.id = id;
+            this.genero = genero;
             this.especie = especie;
             this.sexo = sexo;
             this.nomePopular = nomePopular;
@@ -39,8 +42,9 @@ public class Animal {
             this.curiosidade = null;
 	}
         
-        public Animal(String especie, String sexo, String nomePopular, String origem, String[] alimentacaoDiaria, LocalDate nascimento, String curiosidade) {
-            
+        public Animal(int id, String genero, String especie, String sexo, String nomePopular, String origem, String[] alimentacaoDiaria, LocalDate nascimento, String curiosidade) {
+            if(genero == null)
+                throw new NullPointerException("Tentativa de criar um novo animal com 'genero == null'");
             if(especie == null)
                 throw new NullPointerException("Tentativa de criar um novo animal com 'especie == null'");
             if(sexo == null)
@@ -54,7 +58,8 @@ public class Animal {
             if(nascimento == null)
                 throw new NullPointerException("Tentativa de criar um novo animal com 'nascimento == null'");
             
-            this.id = GerenciadorId.getAnimalId();
+            this.id = id;
+            this.genero = genero;
             this.especie = especie;
             this.sexo = sexo;
             this.nomePopular = nomePopular;
@@ -62,12 +67,20 @@ public class Animal {
             this.alimentacaoDiaria = alimentacaoDiaria;
             this.nascimento = nascimento;
             this.curiosidade = curiosidade;
-	}
-	
-        public int getId(){
+        }
+
+        public int getId() {
             return id;
         }
-        
+
+        public LocalDate getNascimento() {
+            return nascimento;
+        }
+
+	public String getGenero() {
+            return genero;
+	}
+	
 	public String getEspecie() {
             return especie;
 	}
@@ -105,24 +118,13 @@ public class Animal {
 	public void setAlimentacaoDiaria(String[] alimentacao) {
             System.arraycopy(alimentacao, 0, alimentacaoDiaria, 0, 7);
 	}
-
-        public LocalDate getNascimento() {
-            return nascimento;
-        }
-
-        public Jaula getJaula() {
-            return jaula;
-        }
-
-        public void setJaula(Jaula jaula) {
-            this.jaula = jaula;
-        }
-        
+	
         @Override
 	public String toString(){
             String saida;
             saida = "- Animal " + id + " -\n";
             saida += "Nome popular: " + nomePopular + "\n";
+            saida += "Gênero: " + genero + "\n";
             saida += "Espécie: " + especie + "\n";
             saida += "Origem: " + origem + "\n";
             saida += "Curiosidade: " + curiosidade + "\n";
