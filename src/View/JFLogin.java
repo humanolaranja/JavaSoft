@@ -13,6 +13,8 @@ public class JFLogin extends javax.swing.JFrame {
      */
     public JFLogin() {
         initComponents();
+        txtUsername.setText("admin");
+        txtPassword.setText("admin");
     }
 
     /**

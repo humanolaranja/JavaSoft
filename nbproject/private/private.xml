@@ -3,22 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Dell/Documents/GitHub/JavaSoft/src/Controller/MockDatabase.java</file>
-            <file>file:/C:/Users/Dell/Documents/GitHub/JavaSoft/src/View/JFListaFuncionarios.java</file>
-            <file>file:/C:/Users/Dell/Documents/GitHub/JavaSoft/src/Model/Jaula.java</file>
-            <file>file:/C:/Users/Dell/Documents/GitHub/JavaSoft/src/Model/Pessoa.java</file>
-            <file>file:/C:/Users/Dell/Documents/GitHub/JavaSoft/src/assets/GREEN.png</file>
-            <file>file:/C:/Users/Dell/Documents/GitHub/JavaSoft/src/Model/Animal.java</file>
-            <file>file:/C:/Users/Dell/Documents/GitHub/JavaSoft/src/View/JFLogin.java</file>
-            <file>file:/C:/Users/Dell/Documents/GitHub/JavaSoft/src/Model/Funcionario.java</file>
-            <file>file:/C:/Users/Dell/Documents/GitHub/JavaSoft/src/assets/YELLOW.png</file>
-            <file>file:/C:/Users/Dell/Documents/GitHub/JavaSoft/src/Model/ModeloTabela.java</file>
-            <file>file:/C:/Users/Dell/Documents/GitHub/JavaSoft/src/Model/Pesquisador.java</file>
-            <file>file:/C:/Users/Dell/Documents/GitHub/JavaSoft/src/assets/BLUE.png</file>
-            <file>file:/C:/Users/Dell/Documents/GitHub/JavaSoft/src/View/JFPrincipal.java</file>
-            <file>file:/C:/Users/Dell/Documents/GitHub/JavaSoft/src/assets/zoo-logo.png</file>
-            <file>file:/C:/Users/Dell/Documents/GitHub/JavaSoft/src/Model/GerenciadorAnimal.java</file>
-            <file>file:/C:/Users/Dell/Documents/GitHub/JavaSoft/src/assets/RED.png</file>
+            <file>file:/C:/Users/santi/Documents/GitHub/JavaSoft/src/Model/Pesquisador.java</file>
+            <file>file:/C:/Users/santi/Documents/GitHub/JavaSoft/src/Model/GerenciadorAnimal.java</file>
+            <file>file:/C:/Users/santi/Documents/GitHub/JavaSoft/src/View/JFLogin.java</file>
+            <file>file:/C:/Users/santi/Documents/GitHub/JavaSoft/src/Model/Funcionario.java</file>
+            <file>file:/C:/Users/santi/Documents/GitHub/JavaSoft/src/Model/GerenciadorFuncionario.java</file>
+            <file>file:/C:/Users/santi/Documents/GitHub/JavaSoft/src/Model/Pessoa.java</file>
+            <file>file:/C:/Users/santi/Documents/GitHub/JavaSoft/src/Model/Visitante.java</file>
+            <file>file:/C:/Users/santi/Documents/GitHub/JavaSoft/src/View/JFPrincipal.java</file>
+            <file>file:/C:/Users/santi/Documents/GitHub/JavaSoft/src/View/JFListaLojas.java</file>
+            <file>file:/C:/Users/santi/Documents/GitHub/JavaSoft/src/Controller/MockDatabase.java</file>
         </group>
     </open-files>
 </project-private>
