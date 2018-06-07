@@ -4,17 +4,19 @@ import Controller.GerenciadorId;
 import java.util.ArrayList;
 
 public class Jaula {
-	private int numMaxAnimais;
-        private final int id;
-	private final ArrayList<Animal> animais;
+    private double custoMensal;
+    private int numMaxAnimais;
+    private final int id;
+    private final ArrayList<Animal> animais;
         
-        public Jaula(int numMaxAnimais) throws Exception{
-            if(numMaxAnimais < 0)
-                throw new Exception("Tentativa de criar nova jaula com 'numMaxAnimais < 0'");
-            this.numMaxAnimais = numMaxAnimais;
-            this.animais = new ArrayList<>();
-            this.id = GerenciadorId.getJaulaId();
-        }
+    public Jaula(int numMaxAnimais, double custo) throws Exception{
+    if(numMaxAnimais < 0)
+        throw new Exception("Tentativa de criar nova jaula com 'numMaxAnimais < 0'");
+        this.numMaxAnimais = numMaxAnimais;
+        this.animais = new ArrayList<>();
+        this.id = GerenciadorId.getJaulaId();
+        this.custoMensal = custo;
+    }
 	
 	public int getNumMaxAnimais(){
             return this.numMaxAnimais;
@@ -49,14 +51,21 @@ public class Jaula {
             else
 		throw new Exception("O animal desejado não está nessa jaula.");
 	}
-	
-        @Override
-	public String toString() {
-		String saida;
-		saida = "- Jaula " + this.id + " -\n";
-		saida += "Capacidade: " + this.animais.size() + "/" + numMaxAnimais + "\n";
-		saida += "Animais: " + this.animais.toString() + "\n";
-		
-		return saida;
-	}
+        
+        public double getCustoMensal(){
+            return custoMensal;
+        }
+        
+        public void setCustoMensal(double custo){
+            custoMensal = custo;
+        }
+        
+        public double custoTotal(){
+            double custo=0;
+            for(Animal a : animais)
+                custo+= a.getCustoMensal();
+            
+            custo+= this.getCustoMensal();
+            return custo;
+        }
 }

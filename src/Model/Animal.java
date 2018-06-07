@@ -3,10 +3,7 @@ package Model;
 import Controller.GerenciadorId;
 import java.time.LocalDate;
 
-public class Animal {
-    
-    private static double custoMensal = 0;
-    
+public class Animal {    
     private final int id;
     private Jaula jaula;
     private final String genero;
@@ -17,6 +14,7 @@ public class Animal {
     private final String[] alimentacaoDiaria;
     private final LocalDate nascimento;
     private String curiosidade;
+    private double custoMensal;
         
     public Animal(String genero, String especie, String sexo, String nomePopular, String origem, String[] alimentacaoDiaria, LocalDate nascimento, double custo) throws NullPointerException{
         if(genero == null)
@@ -43,10 +41,10 @@ public class Animal {
         this.alimentacaoDiaria = alimentacaoDiaria;
         this.nascimento = nascimento;
         this.curiosidade = null;
-        custoMensal = custoMensal + custo;
+        this.custoMensal = custo;
     }
 
-    public Animal(int id, String genero, String especie, String sexo, String nomePopular, String origem, String[] alimentacaoDiaria, LocalDate nascimento, String curiosidade) {
+    public Animal(int id, String genero, String especie, String sexo, String nomePopular, String origem, String[] alimentacaoDiaria, LocalDate nascimento, String curiosidade, double custo) {
         if(genero == null)
             throw new NullPointerException("Tentativa de criar um novo animal com 'genero == null'");
         if(especie == null)
@@ -71,6 +69,7 @@ public class Animal {
         this.alimentacaoDiaria = alimentacaoDiaria;
         this.nascimento = nascimento;
         this.curiosidade = curiosidade;
+        this.custoMensal = custo;
     }
 
     public int getId() {
@@ -129,5 +128,13 @@ public class Animal {
 
     public void setAlimentacaoDiaria(String[] alimentacao) {
         System.arraycopy(alimentacao, 0, alimentacaoDiaria, 0, 7);
+    }
+    
+    public double getCustoMensal(){
+        return custoMensal;
+    }
+    
+    public void setCustoMensal(double custo){
+        custoMensal = custo;
     }
 }
