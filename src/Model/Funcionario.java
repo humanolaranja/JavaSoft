@@ -20,8 +20,8 @@ public class Funcionario extends Pessoa{
     private String setor;
 
     // Construtor
-    public Funcionario (String nome, String rg, String cpf, LocalDate nascimento, int turno, String numCarteiraTrabalho, double salario, LocalDate dataContratacao, String setor){
-        super(nome, rg, nascimento);
+    public Funcionario (String primeiroNome, String sobrenome, String rg, String cpf, LocalDate nascimento, int turno, String numCarteiraTrabalho, double salario, LocalDate dataContratacao, String setor){
+        super(primeiroNome, sobrenome, rg, nascimento);
 
         this.cpf = cpf;
         this.turno = turno;

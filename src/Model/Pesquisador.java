@@ -15,18 +15,18 @@ public class Pesquisador extends Funcionario{
     private ArrayList<Animal> animaisPesquisa;
 
     // Construtores
-    public Pesquisador(String nome, String rg, String cpf, LocalDate nascimento, int turno, String numCarteiraTrabalho, double salario, 
+    public Pesquisador(String primeiroNome, String sobrenome, String rg, String cpf, LocalDate nascimento, int turno, String numCarteiraTrabalho, double salario, 
             LocalDate dataContratacao, int tipo, ArrayList<Animal> animaisPesquisa) throws Exception {
-        super(nome, rg, cpf, nascimento, turno, numCarteiraTrabalho, salario, dataContratacao, "Pesquisador");
+        super(primeiroNome, sobrenome, rg, cpf, nascimento, turno, numCarteiraTrabalho, salario, dataContratacao, "Pesquisador");
 
         if(tipo != GRADUACAO && tipo != POS_GRADUACAO && tipo != PROFESSOR)
             throw new Exception("Tentativa de criar novo pesquisador com tipo inexistente!");
         this.animaisPesquisa = animaisPesquisa;
     }
     
-    public Pesquisador(String nome, String rg, String cpf, LocalDate nascimento, int turno, String numCarteiraTrabalho, double salario, 
+    public Pesquisador(String primeiroNome, String sobrenome, String rg, String cpf, LocalDate nascimento, int turno, String numCarteiraTrabalho, double salario, 
             LocalDate dataContratacao, int tipo) throws Exception {
-        super(nome, rg, cpf, nascimento, turno, numCarteiraTrabalho, salario, dataContratacao, "Pesquisador");
+        super(primeiroNome, sobrenome, rg, cpf, nascimento, turno, numCarteiraTrabalho, salario, dataContratacao, "Pesquisador");
 
         if(tipo != GRADUACAO && tipo != POS_GRADUACAO && tipo != PROFESSOR)
             throw new Exception("Tentativa de criar novo pesquisador com tipo inexistente!");

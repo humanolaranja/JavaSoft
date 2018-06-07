@@ -3,9 +3,6 @@ package Model;
 import java.time.LocalDate;
 
 public class Visita {
-    
-    private static double ganhoMensal = 0;
-    
     private Visitante visitante;
     private LocalDate dia;
     private boolean feriado;

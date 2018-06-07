@@ -9,8 +9,8 @@ public class Visitante extends Pessoa{
     private ArrayList<Visita> historicoVisitas;
 
     // Construtor
-    public Visitante (String nome, String rg, LocalDate nascimento){
-        super(nome, rg, nascimento);
+    public Visitante (String primeiroNome, String sobrenome, String rg, LocalDate nascimento){
+        super(primeiroNome, sobrenome, rg, nascimento);
         historicoVisitas = new ArrayList<Visita>();
     }
 
