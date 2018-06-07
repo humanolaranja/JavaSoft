@@ -48,17 +48,6 @@ public class GerenciadorAnimal {
         return true;
     }
     
-    // editar curiosidade do animal
-    public boolean editarCuriosidade(int id, String curiosidade){
-        int pos = this.buscarId(id);
-        //Animal não existe
-        if(pos == -1)
-            return false;
-        
-        listaAnimais.get(pos).setCuriosidade(curiosidade);
-        return true;
-    }
-    
     // faz a busca por ID (retorna o indice do ArrayList em que ele está)
     public int buscarId(int id){
         for(int i=0; i<listaAnimais.size(); i++){
