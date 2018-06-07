@@ -22,7 +22,6 @@ public class GerenciadorVisitante {
     
     // faz a busca de um visitante no sistema pelo RG (retorna a posicao no ArrayList)
     public int buscaRg(String rg){
-        
         Visitante v;
         for(int i = 0; i < this.visitantes.size(); i++){
             v = this.visitantes.get(i);

@@ -9,9 +9,7 @@ public class Funcionario extends Pessoa{
     public static final int TURNO_TARDE = 2;
     public static final int TURNO_NOITE = 3;
 
-    // Atributos
-    private static double custoMensal = 0;
-    
+    // Atributos    
     private String cpf;
     private final LocalDate dataContratacao;
     private final String numCarteiraTrabalho;
@@ -29,13 +27,11 @@ public class Funcionario extends Pessoa{
         this.salario = salario;
         this.dataContratacao = dataContratacao;
         this.setor = setor;
-
-        custoMensal = custoMensal + salario;
     }
 
     // Getters e setters
     public int getTurno() {
-            return this.turno;
+        return this.turno;
     }
 
     public void setTurno(int turno) throws Exception {
@@ -72,14 +68,6 @@ public class Funcionario extends Pessoa{
                 return "Noite";
         }
     }        
-
-    public static double getCustoMensal() {
-        return custoMensal;
-    }
-
-    public static void setCustoMensal(double custoMensal) {
-        Funcionario.custoMensal = custoMensal;
-    }
 
     public String getSetor() {
         return setor;
