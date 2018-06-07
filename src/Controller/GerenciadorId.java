@@ -1,4 +1,4 @@
-package Model;
+package Controller;
 
 public class GerenciadorId {
     

@@ -1,5 +1,7 @@
-package Model;
+package Controller;
 
+import Model.Animal;
+import Model.Jaula;
 import java.util.ArrayList;
 
 public class GerenciadorAnimal {

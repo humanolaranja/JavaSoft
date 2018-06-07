@@ -1,5 +1,6 @@
-package Model;
+package Controller;
 
+import Model.Loja;
 import java.util.ArrayList;
 import java.time.LocalTime;
 
@@ -7,6 +8,11 @@ public class GerenciadorLoja {
     
     //Lista de jaulas
     private final ArrayList<Loja> listaLojas = new ArrayList<>();
+
+    // getter
+    public ArrayList<Loja> getListaLojas() {
+        return listaLojas;
+    }
     
     //Adiciona jaula
     public boolean adicionar(Loja l){

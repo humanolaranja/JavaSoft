@@ -1,5 +1,6 @@
 package Model;
 
+import Controller.GerenciadorId;
 import java.util.ArrayList;
 
 public class Jaula {

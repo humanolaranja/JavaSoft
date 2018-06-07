@@ -17,7 +17,7 @@ public class Pesquisador extends Funcionario{
     // Construtores
     public Pesquisador(String nome, String rg, String cpf, LocalDate nascimento, int turno, String numCarteiraTrabalho, double salario, 
             LocalDate dataContratacao, int tipo, ArrayList<Animal> animaisPesquisa) throws Exception {
-        super(nome, rg, cpf, nascimento, turno, numCarteiraTrabalho, salario, dataContratacao);
+        super(nome, rg, cpf, nascimento, turno, numCarteiraTrabalho, salario, dataContratacao, "Pesquisador");
 
         if(tipo != GRADUACAO && tipo != POS_GRADUACAO && tipo != PROFESSOR)
             throw new Exception("Tentativa de criar novo pesquisador com tipo inexistente!");
@@ -26,7 +26,7 @@ public class Pesquisador extends Funcionario{
     
     public Pesquisador(String nome, String rg, String cpf, LocalDate nascimento, int turno, String numCarteiraTrabalho, double salario, 
             LocalDate dataContratacao, int tipo) throws Exception {
-        super(nome, rg, cpf, nascimento, turno, numCarteiraTrabalho, salario, dataContratacao);
+        super(nome, rg, cpf, nascimento, turno, numCarteiraTrabalho, salario, dataContratacao, "Pesquisador");
 
         if(tipo != GRADUACAO && tipo != POS_GRADUACAO && tipo != PROFESSOR)
             throw new Exception("Tentativa de criar novo pesquisador com tipo inexistente!");
@@ -57,40 +57,5 @@ public class Pesquisador extends Funcionario{
     // Remove um animal da posicao i
     public void removerAnimal(int i) {
         getAnimaisPesquisa().remove(i);
-    }
-
-    // Imprime os dados
-    @Override
-    public void imprimirDados() {
-        System.out.println("-Nome: " + this.getNome());
-        System.out.println("-RG: " + this.getRg());
-        System.out.println("-Data de nascimento: " + this.getDataNascimento().toString());
-        System.out.println("-Data de contratação: " + this.getDataContratacao().toString());
-        System.out.println("-Sal�rio: " + this.getSalario());
-        System.out.println("-Carteira de trabalho: " + this.getNumCarteiraTrabalho());
-        System.out.print("-Turno: ");
-        switch (this.getTurno()) {
-            case TURNO_MANHA:
-                System.out.println("manhã\n");
-                break;
-            case TURNO_TARDE:
-                System.out.println("tarde");
-                break;
-            default:
-                System.out.println("noite");
-                break;
-        }
-        System.out.print("-Tipo: ");
-        switch (this.getTipo()) {
-            case GRADUACAO:
-                System.out.println("graduação");
-                break;
-            case POS_GRADUACAO:
-                System.out.println("pós-graduação");
-                break;
-            default:
-                System.out.println("professor");
-                break;
-        }
     }
 }

@@ -1,5 +1,6 @@
-package Model;
+package Controller;
 
+import Model.Jaula;
 import java.util.ArrayList;
 
 public class GerenciadorJaula {

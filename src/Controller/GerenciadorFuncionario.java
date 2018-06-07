@@ -1,11 +1,18 @@
-package Model;
+package Controller;
 
+import Model.Funcionario;
 import java.util.ArrayList;
 
 public class GerenciadorFuncionario {
-    
-    //Lista de funcionarios
-    private final ArrayList<Funcionario> listaFuncionarios = new ArrayList<>();
+    private final ArrayList<Funcionario> listaFuncionarios;
+
+    public GerenciadorFuncionario() {
+        this.listaFuncionarios = new ArrayList<Funcionario>();
+    }
+
+    public ArrayList<Funcionario> getListaFuncionarios() {
+        return listaFuncionarios;
+    }
     
     //Adiciona um funcionario
     public boolean adicionar(Funcionario f){

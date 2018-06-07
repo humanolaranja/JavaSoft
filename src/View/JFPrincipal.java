@@ -1,9 +1,15 @@
 package View;
 
-import Controller.MockDatabase;
+import Controller.*;
 
 public class JFPrincipal extends javax.swing.JFrame {
 
+    public GerenciadorAnimal animais;
+    public static GerenciadorFuncionario funcionarios = new GerenciadorFuncionario();
+    public GerenciadorLoja lojas;
+    public GerenciadorVisita visitas;
+    public GerenciadorJaula jaulas;
+    
     /**
      * Creates new form JFPrincipal
      */
@@ -141,7 +147,8 @@ public class JFPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMapaActionPerformed
 
     private void btnFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFuncionariosActionPerformed
-        new JFListaFuncionarios().setVisible(true, MockDatabase.funcionarios);
+        //new JFListaFuncionarios().setVisible(true, MockDatabase.funcionarios);
+        new JFFuncionarios().setVisible(true, funcionarios.getListaFuncionarios());
     }//GEN-LAST:event_btnFuncionariosActionPerformed
 
     private void btnJaulasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJaulasActionPerformed
@@ -149,7 +156,7 @@ public class JFPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnJaulasActionPerformed
 
     private void btnAnimaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnimaisActionPerformed
-        
+        new JFAnimais().setVisible(true);
     }//GEN-LAST:event_btnAnimaisActionPerformed
 
     private void btnLojasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLojasActionPerformed
