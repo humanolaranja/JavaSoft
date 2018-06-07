@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class GerenciadorAnimal {
     
     // Lista de animais do gerenciador
-    private final ArrayList<Animal> listaAnimais = new ArrayList<>();
+    private static ArrayList<Animal> listaAnimais = new ArrayList<>();
     
     // adicionar um animal
     public boolean adicionar(Animal a){

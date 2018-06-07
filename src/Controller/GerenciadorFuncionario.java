@@ -4,7 +4,7 @@ import Model.Funcionario;
 import java.util.ArrayList;
 
 public class GerenciadorFuncionario {
-    private final ArrayList<Funcionario> listaFuncionarios;
+    private ArrayList<Funcionario> listaFuncionarios;
 
     public GerenciadorFuncionario() {
         this.listaFuncionarios = new ArrayList<Funcionario>();
