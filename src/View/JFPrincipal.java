@@ -148,7 +148,7 @@ public class JFPrincipal extends javax.swing.JFrame {
 
     private void btnFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFuncionariosActionPerformed
         //new JFListaFuncionarios().setVisible(true, MockDatabase.funcionarios);
-        new JFFuncionarios().setVisible(true, funcionarios.getListaFuncionarios());
+        new JFFuncionarios().setVisible(true, funcionarios);
     }//GEN-LAST:event_btnFuncionariosActionPerformed
 
     private void btnJaulasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJaulasActionPerformed

@@ -5,6 +5,7 @@
  */
 package View;
 
+import Controller.GerenciadorFuncionario;
 import Model.Funcionario;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
@@ -15,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class JFFuncionarios extends javax.swing.JFrame {
 
-    public static ArrayList<Funcionario> funcionarios;
+    public static GerenciadorFuncionario funcionarios;
     
     /**
      * Creates new form JFFuncionarios
@@ -24,7 +25,7 @@ public class JFFuncionarios extends javax.swing.JFrame {
         initComponents();
     }
     
-    public void setVisible(boolean bool, ArrayList<Funcionario> f){
+    public void setVisible(boolean bool, GerenciadorFuncionario f){
         this.setVisible(bool);
         this.funcionarios = f;
         this.preencherTabela();
@@ -33,8 +34,8 @@ public class JFFuncionarios extends javax.swing.JFrame {
     public void preencherTabela(){
         DefaultTableModel val = (DefaultTableModel) jTable1.getModel();
         
-        for(Funcionario f : this.funcionarios){
-            val.addRow(new String[]{f.getNome(), f.getCpf(), f.getTurnoString(), String.valueOf(f.getSalario())});
+        for(Funcionario f : this.funcionarios.getListaFuncionarios()){
+            val.addRow(new String[]{f.getPrimeiroNome(), f.getCpf(), f.getTurnoString(), String.valueOf(f.getSalario())});
         }
     }
     
@@ -88,6 +89,11 @@ public class JFFuncionarios extends javax.swing.JFrame {
         jButton3.setText("Editar");
 
         jButton4.setText("Remover");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Atualizar");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -159,6 +165,17 @@ public class JFFuncionarios extends javax.swing.JFrame {
         tableModel.setRowCount(0);
         this.preencherTabela();
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        String cpfSelecionado = jTable1.getValueAt(jTable1.getSelectedRow(), 1).toString();
+        boolean a = this.funcionarios.remover(cpfSelecionado);
+        System.out.println(a);
+        
+        DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
+        tableModel.setRowCount(0);
+        this.preencherTabela();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments

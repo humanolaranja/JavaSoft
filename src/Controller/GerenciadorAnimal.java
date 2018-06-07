@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class GerenciadorAnimal {
     
     // Lista de animais do gerenciador
-    private static ArrayList<Animal> listaAnimais = new ArrayList<>();
+    private ArrayList<Animal> listaAnimais = new ArrayList<>();
     
     // adicionar um animal
     public boolean adicionar(Animal a){
@@ -23,15 +23,16 @@ public class GerenciadorAnimal {
     }
     
     // remover um animal
-    public boolean remover(Animal a){
+    public boolean remover(int id){
         //Checando se o animal existe
-        if(buscarId(a.getId()) != -1){
+        int index = buscarId(id);
+        if(index == -1)
+            return false;
+        else{
+            //O animal existe no Array
+            Animal a = this.listaAnimais.get(index);
             listaAnimais.remove(a);
             return true;
-        }
-        else{
-            //Não existe esse animal
-            return false;
         }
     }
     

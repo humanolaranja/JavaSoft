@@ -26,9 +26,11 @@ public class GerenciadorFuncionario {
     }
     
     //Remove um funcionario
-    public boolean remover(Funcionario f){
+    public boolean remover(String cpf){
         //Checando se o funcionario existe
-        if(buscarRg(f.getRg()) != -1){
+        int index = buscarCpf(cpf);
+        if(index != -1){
+            Funcionario f = this.listaFuncionarios.get(index);
             listaFuncionarios.remove(f);
             return true;
         }
