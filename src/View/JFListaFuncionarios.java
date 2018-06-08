@@ -137,7 +137,7 @@ public class JFListaFuncionarios extends javax.swing.JFrame {
         String [] colunas = new String [] {"Nome", "Turno", "Idade"}; 
         ArrayList dados = new ArrayList();
         funcionarios.forEach((f) -> {
-            dados.add(new Object[]{f.getNome(), f.getTurno(), f.getIdade()});
+            dados.add(new Object[]{f.getPrimeiroNome(), f.getTurno(), f.getIdade()});
         });
         ModeloTabela modelo = new ModeloTabela(dados, colunas);
         
