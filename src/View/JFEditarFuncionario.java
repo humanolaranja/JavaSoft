@@ -1,17 +1,12 @@
 package View;
 
 import Model.Funcionario;
+import java.time.LocalDate;
 
-/**
- *
- * @author Dell
- */
 public class JFEditarFuncionario extends javax.swing.JFrame {
 
     public Funcionario f;
-    /**
-     * Creates new form JFEditarFuncionario
-     */
+    
     public JFEditarFuncionario() {
         initComponents();
     }
@@ -26,8 +21,12 @@ public class JFEditarFuncionario extends javax.swing.JFrame {
         this.jtAnoContratacao.setText(String.valueOf(f.getDataContratacao().getYear()));
         this.jtAnoNascimento.setText(String.valueOf(f.getDataNascimento().getYear()));
         this.jtCarteiraDeTrabalho.setText(f.getNumCarteiraTrabalho());
-        
-        
+        this.jtMesContratacao.setText(String.valueOf(f.getDataContratacao().getMonthValue()));
+        this.jtMesNascimento.setText(String.valueOf(f.getDataNascimento().getMonthValue()));
+        this.jtDiaContratacao.setText(String.valueOf(f.getDataContratacao().getDayOfMonth()));
+        this.jtDiaNascimento.setText(String.valueOf(f.getDataNascimento().getDayOfMonth()));
+        this.jComboBox1.setSelectedIndex(f.getTurno() - 1);
+        this.jtRG.setText(f.getRg());
     }
 
     /**
@@ -217,15 +216,11 @@ public class JFEditarFuncionario extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel4)
-                        .addGap(25, 25, 25))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jtRG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtRG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -279,7 +274,16 @@ public class JFEditarFuncionario extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+        // Botao SALVAR        
+        f.setPrimeiroNome(jtNome.getText().trim());
+        f.setSobrenome(jTextField1.getText().trim());
+        f.setRg(jtRG.getText().trim());
+        f.setNumCarteiraTrabalho(jtCarteiraDeTrabalho.getText().trim());
+        f.setSalario(Double.parseDouble(jtSalario.getText().trim()));
+        f.setTurno(jComboBox1.getSelectedIndex() + 1);
+        f.setDataContratacao(LocalDate.of(Integer.parseInt(jtAnoContratacao.getText().trim()), Integer.parseInt(jtMesContratacao.getText().trim()), Integer.parseInt(jtDiaContratacao.getText().trim())));
+        f.setDataNascimento(LocalDate.of(Integer.parseInt(jtAnoNascimento.getText().trim()), Integer.parseInt(jtMesNascimento.getText().trim()), Integer.parseInt(jtDiaNascimento.getText().trim())));
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

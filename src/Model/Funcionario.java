@@ -11,8 +11,8 @@ public class Funcionario extends Pessoa{
 
     // Atributos    
     private String cpf;
-    private final LocalDate dataContratacao;
-    private final String numCarteiraTrabalho;
+    private LocalDate dataContratacao;
+    private String numCarteiraTrabalho;
     private int turno;
     private double salario;
     private String setor;
@@ -34,9 +34,7 @@ public class Funcionario extends Pessoa{
         return this.turno;
     }
 
-    public void setTurno(int turno) throws Exception {
-        if(turno != TURNO_MANHA && turno != TURNO_TARDE && turno != TURNO_NOITE)
-            throw new Exception("Turno inválido!");
+    public void setTurno(int turno){
         this.turno = turno;
     }
 
@@ -48,9 +46,7 @@ public class Funcionario extends Pessoa{
         return salario;
     }
 
-    public void setSalario(double salario) throws Exception{
-        if(salario < 0)
-            throw new Exception("Salário inválido!");
+    public void setSalario(double salario){
         this.salario = salario;
     }
 
@@ -83,5 +79,13 @@ public class Funcionario extends Pessoa{
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    public void setDataContratacao(LocalDate dataContratacao) {
+        this.dataContratacao = dataContratacao;
+    }
+
+    public void setNumCarteiraTrabalho(String numCarteiraTrabalho) {
+        this.numCarteiraTrabalho = numCarteiraTrabalho;
     }
 }

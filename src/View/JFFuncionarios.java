@@ -35,7 +35,7 @@ public class JFFuncionarios extends javax.swing.JFrame {
         DefaultTableModel val = (DefaultTableModel) jTable1.getModel();
         
         for(Funcionario f : this.funcionarios.getListaFuncionarios()){
-            val.addRow(new String[]{f.getPrimeiroNome(), f.getCpf(), f.getTurnoString(), String.valueOf(f.getSalario())});
+            val.addRow(new String[]{f.getPrimeiroNome() + " " + f.getSobrenome(), f.getCpf(), f.getTurnoString(), String.valueOf(f.getSalario())});
         }
     }
     
@@ -87,6 +87,11 @@ public class JFFuncionarios extends javax.swing.JFrame {
         });
 
         jButton3.setText("Editar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Remover");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -176,6 +181,13 @@ public class JFFuncionarios extends javax.swing.JFrame {
         tableModel.setRowCount(0);
         this.preencherTabela();
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // BOTAO EDITAR
+        String cpfSelecionado = jTable1.getValueAt(jTable1.getSelectedRow(), 1).toString();
+        Funcionario f = this.funcionarios.getListaFuncionarios().get(this.funcionarios.buscarCpf(cpfSelecionado));
+        new JFEditarFuncionario().setVisible(true, f);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
