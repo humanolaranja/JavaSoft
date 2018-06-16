@@ -4,11 +4,11 @@ import Controller.*;
 
 public class JFPrincipal extends javax.swing.JFrame {
 
-    public GerenciadorAnimal animais;
-    public static GerenciadorFuncionario funcionarios = new GerenciadorFuncionario();
-    public GerenciadorLoja lojas;
-    public GerenciadorVisita visitas;
-    public GerenciadorJaula jaulas;
+    public static final GerenciadorAnimal ANIMAIS = GerenciadorAnimal.initialize();
+    public static final GerenciadorFuncionario FUNCIONARIOS = GerenciadorFuncionario.initialize();
+    public static final GerenciadorLoja LOJAS = GerenciadorLoja.initialize();
+    public static final GerenciadorVisita VISITAS = GerenciadorVisita.initialize();
+    public static final GerenciadorJaula JAULAS = GerenciadorJaula.initialize();
     
     /**
      * Creates new form JFPrincipal
@@ -143,7 +143,7 @@ public class JFPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMapaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMapaActionPerformed
-        //TODO - Criar JForm do mapa
+        new JFMapaZoologico().setVisible(true);
     }//GEN-LAST:event_btnMapaActionPerformed
 
     private void btnFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFuncionariosActionPerformed

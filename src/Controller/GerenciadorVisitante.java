@@ -1,7 +1,6 @@
 package Controller;
 
 import Model.Visitante;
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class GerenciadorVisitante {
@@ -9,7 +8,7 @@ public class GerenciadorVisitante {
     private ArrayList<Visitante> visitantes;
     
     public GerenciadorVisitante(){
-        this.visitantes = new ArrayList<Visitante>();
+        this.visitantes = new ArrayList<>();
     }
 
     // getter e setter
