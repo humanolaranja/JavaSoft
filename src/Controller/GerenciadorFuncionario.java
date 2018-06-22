@@ -4,6 +4,7 @@ import Model.Funcionario;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class GerenciadorFuncionario {
     private ArrayList<Funcionario> listaFuncionarios;
@@ -101,5 +102,15 @@ public class GerenciadorFuncionario {
         
         //Não achou o funcionario
         return -1;
+    }    
+   
+    public ArrayList<Funcionario> pesquisar(String string){
+        ArrayList<Funcionario> p = new ArrayList<Funcionario>();
+        
+        for(int i=0; i<listaFuncionarios.size(); i++){  // Para cada funcionario no array
+            if(this.listaFuncionarios.get(i).contem(string))
+                p.add(listaFuncionarios.get(i));
+        }
+        return p;
     }
 }

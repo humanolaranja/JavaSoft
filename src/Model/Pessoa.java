@@ -66,4 +66,8 @@ public abstract class Pessoa {
             return 0;
         return LocalDate.now().minusYears(dataNascimento.getYear()).minusDays(dataNascimento.getDayOfYear()).getYear();
     }
+    
+    public String getDataNascimentoString(){
+        return this.dataNascimento.getDayOfMonth() + "/" + this.dataNascimento.getMonthValue() + "/" + this.dataNascimento.getYear();
+    }
 }
