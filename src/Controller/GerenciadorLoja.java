@@ -9,6 +9,11 @@ public class GerenciadorLoja {
     //Lista de jaulas
     private final ArrayList<Loja> listaLojas = new ArrayList<>();
 
+    public static GerenciadorLoja initialize(){
+        GerenciadorLoja g = new GerenciadorLoja();
+        return g;
+    }
+    
     // getter
     public ArrayList<Loja> getListaLojas() {
         return listaLojas;

@@ -8,6 +8,11 @@ public class GerenciadorJaula {
     //Lista de jaulas
     private final ArrayList<Jaula> listaJaulas = new ArrayList<>();
     
+    public static GerenciadorJaula initialize(){
+        GerenciadorJaula g = new GerenciadorJaula();
+        return g;
+    }
+    
     //Adiciona jaula
     public boolean adicionar(Jaula j){
         if(buscarId(j.getId()) == -1){

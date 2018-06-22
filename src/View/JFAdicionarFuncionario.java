@@ -276,7 +276,7 @@ public class JFAdicionarFuncionario extends javax.swing.JFrame {
         int anoCont = Integer.parseInt(jtAnoContratacao.getText().trim());
         
         Funcionario f = new Funcionario(nome, sobrenome, rg, cpf, LocalDate.of(anoNasc, mesNasc, diaNasc), index+1, carteiraTrabalho, salario, LocalDate.of(anoCont, mesCont, diaCont), "Setor");
-        JFPrincipal.funcionarios.adicionar(f);
+        JFPrincipal.FUNCIONARIOS.adicionar(f);
         
         
         

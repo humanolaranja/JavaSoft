@@ -12,6 +12,11 @@ public class GerenciadorVisita {
     public GerenciadorVisita(){
         this.visitas = new ArrayList<Visita>();
     }
+    
+    public static GerenciadorVisita initialize(){
+        GerenciadorVisita g = new GerenciadorVisita();
+        return g;
+    }
 
     // getter e setter
     public ArrayList<Visita> getVisitas() {
