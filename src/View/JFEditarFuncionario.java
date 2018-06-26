@@ -68,7 +68,7 @@ public class JFEditarFuncionario extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jButton2.setText("Cancelar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -260,7 +260,7 @@ public class JFEditarFuncionario extends javax.swing.JFrame {
                 .addGap(50, 50, 50))
         );
 
-        pack();
+        setSize(new java.awt.Dimension(618, 558));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

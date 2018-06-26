@@ -33,7 +33,7 @@ public class JFJaulas extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jButton2.setText("Fechar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -96,7 +96,7 @@ public class JFJaulas extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        pack();
+        setSize(new java.awt.Dimension(591, 249));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

@@ -60,7 +60,7 @@ public class JFAdicionarFuncionario extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jtSobrenome = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Primeiro nome");
 
@@ -251,7 +251,7 @@ public class JFAdicionarFuncionario extends javax.swing.JFrame {
                 .addGap(35, 35, 35))
         );
 
-        pack();
+        setSize(new java.awt.Dimension(618, 533));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

@@ -189,7 +189,7 @@ public class JFFuncionarios extends javax.swing.JFrame {
                 .addGap(31, 31, 31))
         );
 
-        pack();
+        setSize(new java.awt.Dimension(618, 508));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
