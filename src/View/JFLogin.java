@@ -1,6 +1,5 @@
 package View;
-
-import Controller.MockDatabase;
+//import Controller.MockDatabase;
 import javax.swing.JOptionPane;
 
 public class JFLogin extends javax.swing.JFrame {
@@ -127,7 +126,7 @@ public class JFLogin extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         if(txtUsername.getText().equals(USER) && txtPassword.getText().equals(PASS)){
-            MockDatabase.initializeDatabase();
+            //MockDatabase.initializeDatabase();
             new JFPrincipal().setVisible(true);
             this.dispose();
         }else{
