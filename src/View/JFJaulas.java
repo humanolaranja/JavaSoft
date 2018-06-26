@@ -5,7 +5,6 @@
  */
 package View;
 
-import Controller.GerenciadorAnimal;
 import Controller.GerenciadorJaula;
 import Model.Jaula;
 import javax.swing.table.DefaultTableModel;
@@ -35,7 +34,7 @@ public class JFJaulas extends javax.swing.JFrame {
         val.setRowCount(0);
         
         for(Jaula j : jaula.getListaJaulas()){
-            val.addRow(new String[]{j.getTipo().toString(), j.getTamanho()+"", String.format("R$%.2f",j.getCustoMensal()).replace(".",",")});
+            val.addRow(new String[]{j.getId()+"", j.getTipo().toString(), j.getTamanho()+"", String.format("R$%.2f",j.getCustoMensal()).replace(".",",")});
         }
     }
 
@@ -48,19 +47,21 @@ public class JFJaulas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton2 = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        btnFechar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tableJaula = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         infoJaulas = new javax.swing.JButton();
 
+        jTextField1.setText("jTextField1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jButton2.setText("Fechar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnFechar.setText("Fechar");
+        btnFechar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnFecharActionPerformed(evt);
             }
         });
 
@@ -69,17 +70,10 @@ public class JFJaulas extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Tipo", "Tamanho", "Custo Mensal"
+                "ID", "Tipo", "Tamanho", "Custo Mensal"
             }
         ));
         jScrollPane2.setViewportView(tableJaula);
-
-        jButton1.setText("Editar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("JAULAS");
@@ -105,12 +99,10 @@ public class JFJaulas extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(infoJaulas, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
+                        .addComponent(infoJaulas, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
                         .addGap(34, 34, 34))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -123,10 +115,8 @@ public class JFJaulas extends javax.swing.JFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(infoJaulas)
-                        .addGap(40, 40, 40)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                        .addComponent(jButton2)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
+                        .addComponent(btnFechar)))
                 .addContainerGap())
         );
 
@@ -134,17 +124,14 @@ public class JFJaulas extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+    private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
         this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new JFAdicionarFuncionario().setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnFecharActionPerformed
 
     private void infoJaulasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_infoJaulasActionPerformed
-        // TODO add your handling code here:
+        String id = tableJaula.getValueAt(tableJaula.getSelectedRow(), 0).toString();
+        Jaula j = this.jaula.getListaJaulas().get(this.jaula.buscarId(Integer.valueOf(id)));
+        new JFJaulaInfo().setVisible(true, j);
     }//GEN-LAST:event_infoJaulasActionPerformed
 
     /**
@@ -183,11 +170,11 @@ public class JFJaulas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnFechar;
     private javax.swing.JButton infoJaulas;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tableJaula;
     // End of variables declaration//GEN-END:variables
 }
