@@ -152,7 +152,7 @@ public class JFPrincipal extends javax.swing.JFrame {
                 .addComponent(btnFinanceiro, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnVisitas, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -163,10 +163,10 @@ public class JFPrincipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpBackground, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jpBackground, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(530, 742));
+        setSize(new java.awt.Dimension(530, 759));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -180,7 +180,7 @@ public class JFPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnFuncionariosActionPerformed
 
     private void btnJaulasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJaulasActionPerformed
-        //new JFListaJaulas().setVisible(true, MockDatabase.jaulas);
+        new JFJaulas().setVisible(true, JAULAS);
     }//GEN-LAST:event_btnJaulasActionPerformed
 
     private void btnAnimaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnimaisActionPerformed
