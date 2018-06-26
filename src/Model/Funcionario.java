@@ -93,9 +93,10 @@ public class Funcionario extends Pessoa{
         return this.dataContratacao.getDayOfMonth() + "/" + this.dataContratacao.getMonthValue() + "/" + this.dataContratacao.getYear(); 
     }
     
+    // Verifica se o objeto contem alguma string nos seus atributos
     public boolean contem(String string){
         if(this.getPrimeiroNome().toLowerCase().contains(string.toLowerCase()) || this.getSobrenome().toLowerCase().contains(string.toLowerCase()) || 
-           this.getDataNascimentoString().toLowerCase().contains(string.toLowerCase()) || this.getCpf().toLowerCase().contains(string.toLowerCase()) ||
+           this.getDataNascimentoString().contains(string.toLowerCase()) || this.getCpf().toLowerCase().contains(string.toLowerCase()) ||
            this.getRg().toLowerCase().contains(string.toLowerCase()) || this.getNumCarteiraTrabalho().toLowerCase().contains(string.toLowerCase()) || 
            String.valueOf(this.getSalario()).contains(string) || this.getSetor().toLowerCase().contains(string.toLowerCase()) || this.getTurnoString().toLowerCase().contains(string.toLowerCase()) ||
            this.getDataContratacaoString().contains(string))

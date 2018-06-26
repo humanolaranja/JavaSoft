@@ -1,14 +1,11 @@
 package Controller;
 
-import Model.Animal;
-import Model.Especie;
-import Model.Jaula;
-import Model.Tipo;
+import Model.*;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
 
-public class GerenciadorAnimal {
+public class GerenciadorAnimal implements Busca{
     
     // Lista de animais do gerenciador
     private ArrayList<Animal> listaAnimais = new ArrayList<>();
@@ -136,5 +133,17 @@ public class GerenciadorAnimal {
         
         //Não achou a especie
         return -1;
+    }
+    
+    // Pesquisa uma string nos elementos
+    @Override
+    public ArrayList<Animal> pesquisar(String string){
+        ArrayList<Animal> a = new ArrayList<>();
+        
+        for(int i=0; i<listaAnimais.size(); i++){  // Para cada animal no array
+            if(this.listaAnimais.get(i).contem(string))
+                a.add(listaAnimais.get(i));
+        }
+        return a;
     }
 }

@@ -3,22 +3,22 @@ package Model;
 import Controller.GerenciadorId;
 import java.time.LocalDate;
 
-public class Animal {    
+public class Animal implements Contem{    
     
     // Atributos
     private final int id;
     private Especie especie;
     private Jaula jaula;
     private final String sexo;
-    private final String[] alimentacaoDiaria;
-    private final LocalDate dataEntrada;
-    private final LocalDate nascimento;
+    private final String[] alimentacao;
+    private LocalDate dataEntrada;
+    private LocalDate nascimento;
     private double custoMensal;
         
     public Animal(String especie, String origem, String nomePopular, String curiosidade, String sexo, String[] alimentacaoDiaria, LocalDate nascimento, LocalDate dataEntrada, double custo, Tipo tipo){
         this.id = GerenciadorId.getAnimalId();
         this.sexo = sexo;
-        this.alimentacaoDiaria = alimentacaoDiaria;
+        this.alimentacao = alimentacaoDiaria;
         this.nascimento = nascimento;
         this.dataEntrada = dataEntrada;
         this.custoMensal = custo;
@@ -34,7 +34,7 @@ public class Animal {
         this.dataEntrada = dataEntrada;
         this.custoMensal = custo;
         this.especie = new Especie(especie, origem, nomePopular, curiosidade, tipo);
-        this.alimentacaoDiaria = null;
+        this.alimentacao = null;
     }
     
     public Animal(Especie especie, String sexo, LocalDate nascimento, LocalDate dataEntrada, double custo){
@@ -44,7 +44,7 @@ public class Animal {
         this.nascimento = nascimento;
         this.dataEntrada = dataEntrada;
         this.custoMensal = custo;
-        this.alimentacaoDiaria = null;
+        this.alimentacao = null;
     }
 
     // getters e setters
@@ -82,12 +82,12 @@ public class Animal {
         return LocalDate.now().minusYears(nascimento.getYear()).minusDays(nascimento.getDayOfYear()).getYear();
     }
 
-    public String[] getAlimentacaoDiaria() {
-        return alimentacaoDiaria;
+    public String[] getAlimentacao() {
+        return alimentacao;
     }
 
-    public void setAlimentacaoDiaria(String[] alimentacao) {
-        System.arraycopy(alimentacao, 0, alimentacaoDiaria, 0, 7);
+    public void setAlimentacao(String[] alimentacao) {
+        System.arraycopy(alimentacao, 0, alimentacao, 0, 7);
     }
     
     public double getCustoMensal(){
@@ -96,5 +96,44 @@ public class Animal {
     
     public void setCustoMensal(double custo){
         custoMensal = custo;
+    }
+
+    public Especie getEspecie() {
+        return especie;
+    }
+
+    public void setEspecie(Especie especie) {
+        this.especie = especie;
+    }
+
+    public LocalDate getDataEntrada() {
+        return dataEntrada;
+    }
+
+    public void setDataEntrada(LocalDate dataEntrada) {
+        this.dataEntrada = dataEntrada;
+    }
+
+    public void setNascimento(LocalDate nascimento) {
+        this.nascimento = nascimento;
+    }
+    
+    public String getDataEntradaString() {
+        return this.dataEntrada.getDayOfMonth() + "/" + this.dataEntrada.getMonthValue() + "/" + this.dataEntrada.getYear();
+    }
+    
+    public String getNascimentoString() {
+        return this.nascimento.getDayOfMonth() + "/" + this.nascimento.getMonthValue() + "/" + this.nascimento.getYear();
+    }
+    
+    // Verifica se o objeto contem alguma string nos seus atributos
+    @Override
+    public boolean contem(String string){
+        if(String.valueOf(this.getId()).contains(string) || this.getSexo().toLowerCase().contains(string.toLowerCase()) || this.getDataEntradaString().contains(string) ||
+           this.getNascimentoString().contains(string) || String.valueOf(this.custoMensal).contains(string) || this.especie.getEspecie().toLowerCase().contains(string.toLowerCase()) ||
+           this.especie.getNomePopular().toLowerCase().contains(string.toLowerCase()) || this.especie.getOrigem().toLowerCase().contains(string.toLowerCase()))
+            return true;
+        else
+            return false;
     }
 }

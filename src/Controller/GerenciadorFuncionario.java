@@ -1,12 +1,12 @@
 package Controller;
 
+import Model.Busca;
 import Model.Funcionario;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
-import java.util.Locale;
 
-public class GerenciadorFuncionario {
+public class GerenciadorFuncionario implements Busca{
     private ArrayList<Funcionario> listaFuncionarios;
 
     public static GerenciadorFuncionario initialize(){
@@ -104,8 +104,10 @@ public class GerenciadorFuncionario {
         return -1;
     }    
    
+    // Pesquisa uma string nos elementos
+    @Override
     public ArrayList<Funcionario> pesquisar(String string){
-        ArrayList<Funcionario> p = new ArrayList<Funcionario>();
+        ArrayList<Funcionario> p = new ArrayList<>();
         
         for(int i=0; i<listaFuncionarios.size(); i++){  // Para cada funcionario no array
             if(this.listaFuncionarios.get(i).contem(string))
