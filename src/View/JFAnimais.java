@@ -35,7 +35,7 @@ public class JFAnimais extends javax.swing.JFrame {
         val.setRowCount(0);
         
         for(Animal a : this.animais.getListaAnimais()){
-            val.addRow(new String[]{String.valueOf(a.getId()), a.getEspecieObj().getEspecie(), String.valueOf(a.getJaula().getId()), a.getSexo(), String.valueOf(a.getCustoMensal())});
+            val.addRow(new String[]{String.valueOf(a.getId()), a.getEspecieObj().getEspecie(), a.getSexo(), String.valueOf(a.getCustoMensal())});
         }
     }
     
@@ -61,17 +61,36 @@ public class JFAnimais extends javax.swing.JFrame {
         jbPesquisar = new javax.swing.JButton();
         jbInfo = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "Espécie", "Jaula", "Sexo", "Custo mensal"
+                "ID", "Espécie", "Sexo", "Custo mensal"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane3.setViewportView(jTable2);
+        if (jTable2.getColumnModel().getColumnCount() > 0) {
+            jTable2.getColumnModel().getColumn(0).setMinWidth(40);
+            jTable2.getColumnModel().getColumn(0).setPreferredWidth(40);
+            jTable2.getColumnModel().getColumn(0).setMaxWidth(40);
+            jTable2.getColumnModel().getColumn(2).setMinWidth(90);
+            jTable2.getColumnModel().getColumn(2).setPreferredWidth(90);
+            jTable2.getColumnModel().getColumn(2).setMaxWidth(90);
+            jTable2.getColumnModel().getColumn(3).setMinWidth(95);
+            jTable2.getColumnModel().getColumn(3).setPreferredWidth(95);
+            jTable2.getColumnModel().getColumn(3).setMaxWidth(95);
+        }
 
         jbAdicionar.setText("Adicionar");
         jbAdicionar.addActionListener(new java.awt.event.ActionListener() {

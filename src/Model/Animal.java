@@ -11,26 +11,39 @@ public class Animal {
     private Jaula jaula;
     private final String sexo;
     private final String[] alimentacaoDiaria;
+    private final LocalDate dataEntrada;
     private final LocalDate nascimento;
     private double custoMensal;
         
-    public Animal(String especie, String origem, String nomePopular, String curiosidade, String sexo, String[] alimentacaoDiaria, LocalDate nascimento, double custo, Tipo tipo){
+    public Animal(String especie, String origem, String nomePopular, String curiosidade, String sexo, String[] alimentacaoDiaria, LocalDate nascimento, LocalDate dataEntrada, double custo, Tipo tipo){
         this.id = GerenciadorId.getAnimalId();
         this.sexo = sexo;
         this.alimentacaoDiaria = alimentacaoDiaria;
         this.nascimento = nascimento;
+        this.dataEntrada = dataEntrada;
         this.custoMensal = custo;
         this.especie = new Especie(especie, origem, nomePopular, curiosidade, tipo);
     }
 
     // Construtor sem alimentacao diaria
-    public Animal(String especie, String origem, String nomePopular, String curiosidade, String sexo, LocalDate nascimento, double custo, Tipo tipo) {
+    public Animal(String especie, String origem, String nomePopular, String curiosidade, String sexo, LocalDate nascimento, LocalDate dataEntrada, double custo, Tipo tipo) {
 
         this.id = GerenciadorId.getAnimalId();
         this.sexo = sexo;
         this.nascimento = nascimento;
+        this.dataEntrada = dataEntrada;
         this.custoMensal = custo;
         this.especie = new Especie(especie, origem, nomePopular, curiosidade, tipo);
+        this.alimentacaoDiaria = null;
+    }
+    
+    public Animal(Especie especie, String sexo, LocalDate nascimento, LocalDate dataEntrada, double custo){
+        this.id = GerenciadorId.getAnimalId();
+        this.especie = especie;
+        this.sexo = sexo;
+        this.nascimento = nascimento;
+        this.dataEntrada = dataEntrada;
+        this.custoMensal = custo;
         this.alimentacaoDiaria = null;
     }
 

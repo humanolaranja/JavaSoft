@@ -62,7 +62,7 @@ public class JFFuncionarios extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -213,7 +213,6 @@ public class JFFuncionarios extends javax.swing.JFrame {
         // TODO add your handling code here:
         String cpfSelecionado = jTable1.getValueAt(jTable1.getSelectedRow(), 1).toString();
         boolean a = this.funcionarios.remover(cpfSelecionado);
-        System.out.println(a);
         
         DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
         tableModel.setRowCount(0);
