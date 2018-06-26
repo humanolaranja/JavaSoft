@@ -1,42 +1,33 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package View;
 
-import Controller.GerenciadorFuncionario;
-import Model.Funcionario;
+import Controller.GerenciadorLoja;
+import Model.Loja;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Dell
- */
-public class JFFuncionarios extends javax.swing.JFrame {
+public class JFLojas extends javax.swing.JFrame {
 
-    public static GerenciadorFuncionario funcionarios;
+    public static GerenciadorLoja lojas;
     
     /**
      * Creates new form JFFuncionarios
      */
-    public JFFuncionarios() {
+    public JFLojas() {
         initComponents();
     }
     
-    public void setVisible(boolean bool, GerenciadorFuncionario f){
+    public void setVisible(boolean bool, GerenciadorLoja j){
         this.setVisible(bool);
-        this.funcionarios = f;
+        this.lojas = j;
         this.preencherTabela();
     }
     
     public void preencherTabela(){
-        DefaultTableModel val = (DefaultTableModel) jTable1.getModel();
+        DefaultTableModel val = (DefaultTableModel) jTable.getModel();
         val.setRowCount(0);
         
-        for(Funcionario f : this.funcionarios.getListaFuncionarios()){
-            val.addRow(new String[]{f.getPrimeiroNome() + " " + f.getSobrenome(), f.getCpf(), f.getTurnoString(), String.valueOf(f.getSalario())});
+        for(Loja j : this.lojas.getListaLojas()){
+            val.addRow(new String[]{j.getNome(), String.valueOf(j.getId()), String.valueOf(j.getHorarioAbertura()), String.valueOf(j.getHorarioFechamento()), String.valueOf(j.getValorAluguel())});
         }
     }
     
@@ -50,21 +41,19 @@ public class JFFuncionarios extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        btnAdicionar = new javax.swing.JButton();
+        jTable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         btnFechar = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
-        btnRemover = new javax.swing.JButton();
         btnAtualizar = new javax.swing.JButton();
         jTFPesquisa = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
         btnClearSearch = new javax.swing.JButton();
-        btnInformacoes = new javax.swing.JButton();
+        btnInfo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -72,17 +61,10 @@ public class JFFuncionarios extends javax.swing.JFrame {
                 "Nome", "CPF", "Turno", "Salário"
             }
         ));
-        jScrollPane2.setViewportView(jTable1);
-
-        btnAdicionar.setText("Adicionar");
-        btnAdicionar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAdicionarActionPerformed(evt);
-            }
-        });
+        jScrollPane2.setViewportView(jTable);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("FUNCIONÁRIOS");
+        jLabel1.setText("LOJAS");
 
         btnFechar.setText("Fechar");
         btnFechar.addActionListener(new java.awt.event.ActionListener() {
@@ -95,13 +77,6 @@ public class JFFuncionarios extends javax.swing.JFrame {
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarActionPerformed(evt);
-            }
-        });
-
-        btnRemover.setText("Remover");
-        btnRemover.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRemoverActionPerformed(evt);
             }
         });
 
@@ -126,10 +101,10 @@ public class JFFuncionarios extends javax.swing.JFrame {
             }
         });
 
-        btnInformacoes.setText("Informações");
-        btnInformacoes.addActionListener(new java.awt.event.ActionListener() {
+        btnInfo.setText("Informações");
+        btnInfo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInformacoesActionPerformed(evt);
+                btnInfoActionPerformed(evt);
             }
         });
 
@@ -151,14 +126,12 @@ public class JFFuncionarios extends javax.swing.JFrame {
                         .addComponent(btnSearch)
                         .addGap(18, 18, 18)
                         .addComponent(btnClearSearch)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnAdicionar, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
                     .addComponent(btnEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnRemover, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnAtualizar, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
-                    .addComponent(btnFechar, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
-                    .addComponent(btnInformacoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnAtualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnFechar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(34, 34, 34))
         );
         layout.setVerticalGroup(
@@ -169,17 +142,13 @@ public class JFFuncionarios extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnAdicionar)
-                        .addGap(18, 18, 18)
                         .addComponent(btnEditar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnRemover)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnInformacoes)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnInfo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnAtualizar)
-                        .addGap(0, 143, Short.MAX_VALUE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 361, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTFPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -193,56 +162,41 @@ public class JFFuncionarios extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
-        new JFAdicionarFuncionario().setVisible(true);
-    }//GEN-LAST:event_btnAdicionarActionPerformed
-
     private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
-        // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_btnFecharActionPerformed
 
     private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
-
-        DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
+        DefaultTableModel tableModel = (DefaultTableModel) jTable.getModel();
         tableModel.setRowCount(0);
         this.preencherTabela();
     }//GEN-LAST:event_btnAtualizarActionPerformed
 
-    private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
-        // TODO add your handling code here:
-        String cpfSelecionado = jTable1.getValueAt(jTable1.getSelectedRow(), 1).toString();
-        boolean a = this.funcionarios.remover(cpfSelecionado);
-        
-        DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
-        tableModel.setRowCount(0);
-        this.preencherTabela();
-    }//GEN-LAST:event_btnRemoverActionPerformed
-
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        // BOTAO EDITAR
-        String cpfSelecionado = jTable1.getValueAt(jTable1.getSelectedRow(), 1).toString();
-        Funcionario f = this.funcionarios.getListaFuncionarios().get(this.funcionarios.buscarCpf(cpfSelecionado));
-        new JFEditarFuncionario().setVisible(true, f);
+        /*
+        String idSelecionado = jTable.getValueAt(jTable.getSelectedRow(), 1);
+        Loja j = this.lojas.getListaLojas().get(this.lojas.buscarId(idSelecionado)));
+        new JFEditarLojas().setVisible(true, f);
+        */
     }//GEN-LAST:event_btnEditarActionPerformed
 
-    private void btnInformacoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInformacoesActionPerformed
-        // TODO add your handling code here:
-        String cpfSelecionado = jTable1.getValueAt(jTable1.getSelectedRow(), 1).toString();
+    private void btnInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfoActionPerformed
+        /*
+        String cpfSelecionado = jTable.getValueAt(jTable.getSelectedRow(), 1).toString();
         Funcionario f = this.funcionarios.getListaFuncionarios().get(this.funcionarios.buscarCpf(cpfSelecionado));
         new JFFuncionariosInfo().setVisible(true, f);
-    }//GEN-LAST:event_btnInformacoesActionPerformed
+        */
+    }//GEN-LAST:event_btnInfoActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        // TODO add your handling code here:
         String pesquisa = jTFPesquisa.getText();
-        ArrayList<Funcionario> resultado = this.funcionarios.pesquisar(pesquisa);
+        ArrayList<Loja> resultado = this.lojas.pesquisar(pesquisa);
                 
-        DefaultTableModel val = (DefaultTableModel) jTable1.getModel();
+        DefaultTableModel val = (DefaultTableModel) jTable.getModel();
         val.setRowCount(0);
         
-        for(Funcionario f : resultado){
-            val.addRow(new String[]{f.getPrimeiroNome() + " " + f.getSobrenome(), f.getCpf(), f.getTurnoString(), String.valueOf(f.getSalario())});
+        for(Loja j : resultado){
+            val.addRow(new String[]{j.getNome(), String.valueOf(j.getId()), String.valueOf(j.getHorarioAbertura()), String.valueOf(j.getHorarioFechamento()), String.valueOf(j.getValorAluguel())});
         }
     }//GEN-LAST:event_btnSearchActionPerformed
 
@@ -268,36 +222,35 @@ public class JFFuncionarios extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JFFuncionarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFLojas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JFFuncionarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFLojas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JFFuncionarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFLojas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JFFuncionarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFLojas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFFuncionarios().setVisible(true);
+                new JFLojas().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAdicionar;
     private javax.swing.JButton btnAtualizar;
     private javax.swing.JButton btnClearSearch;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnFechar;
-    private javax.swing.JButton btnInformacoes;
-    private javax.swing.JButton btnRemover;
+    private javax.swing.JButton btnInfo;
     private javax.swing.JButton btnSearch;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTFPesquisa;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable;
     // End of variables declaration//GEN-END:variables
 }
