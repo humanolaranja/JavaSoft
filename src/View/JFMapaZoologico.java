@@ -1,11 +1,14 @@
 package View;
 
+import Controller.GerenciadorJaula;
 import Controller.MockDatabase;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class JFMapaZoologico extends javax.swing.JFrame {
 
+    GerenciadorJaula jaulas;
+    
     public JFMapaZoologico() {
         initComponents();
         registerMouseListener();
@@ -72,6 +75,11 @@ public class JFMapaZoologico extends javax.swing.JFrame {
         });
     }
     
+    public void setVisible(boolean bool, GerenciadorJaula j){
+        this.jaulas = j;
+        this.setVisible(true);
+    }
+    
     private void registerMouseListener(){
         jLabel1.addMouseListener(new MouseListener() {
             @Override
@@ -86,19 +94,19 @@ public class JFMapaZoologico extends javax.swing.JFrame {
                 }else if(x>=238 && x<=269 && y>=20 && y<=45){
                     new JFListaLojas().setVisible(true, MockDatabase.lojas);
                 }else if(x>=167 && x<=380 && y>=66 && y<=164){
-                    new JFListaJaulas().setVisible(true, MockDatabase.jaulas);
+                    new JFJaulaInfo().setVisible(true, MockDatabase.jaulas);
                 }else if(x>=255 && x<=336 && y>=327 && y<=352){
-                    new JFListaJaulas().setVisible(true, MockDatabase.jaulas);
+                    new JFJaulaInfo().setVisible(true, MockDatabase.jaulas);
                 }else if(x>=444 && x<=522 && y>=94 && y<=144){
-                    new JFListaJaulas().setVisible(true, MockDatabase.jaulas);
+                    new JFJaulaInfo().setVisible(true, MockDatabase.jaulas);
                 }else if(x>=438 && x<=472 && y>=310 && y<=347){
-                    new JFListaJaulas().setVisible(true, MockDatabase.jaulas);
+                    new JFJaulaInfo().setVisible(true, MockDatabase.jaulas);
                 }else if(x>=491 && x<=573 && y>=402 && y<=523){
-                    new JFListaJaulas().setVisible(true, MockDatabase.jaulas);
+                    new JFJaulaInfo().setVisible(true, MockDatabase.jaulas);
                 }else if(x>=582 && x<=652 && y>=231 && y<=319){
-                    new JFListaJaulas().setVisible(true, MockDatabase.jaulas);
+                    new JFJaulaInfo().setVisible(true, MockDatabase.jaulas);
                 }else if(x>=607 && x<=682 && y>=111 && y<=200){
-                    new JFListaJaulas().setVisible(true, MockDatabase.jaulas);
+                    new JFJaulaInfo().setVisible(true, MockDatabase.jaulas);
                 }else if(x>=598 && x<=635 && y>=40 && y<=67){
                     new JFListaLojas().setVisible(true, MockDatabase.lojas);
                 }

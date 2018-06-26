@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.Jaula;
+import Model.Tipo;
 import java.util.ArrayList;
 
 public class GerenciadorJaula {
@@ -10,7 +11,21 @@ public class GerenciadorJaula {
     
     public static GerenciadorJaula initialize(){
         GerenciadorJaula g = new GerenciadorJaula();
+        
+        Jaula j1 = new Jaula(2000, 5000, Tipo.TERRESTRE);
+        Jaula j2 = new Jaula(100, 8200, Tipo.ANFIBIO);
+        Jaula j3 = new Jaula(200, 10400, Tipo.ANFIBIO);
+        Jaula j4 = new Jaula(180, 2100, Tipo.TERRESTRE);
+        Jaula j5 = new Jaula(100, 5000, Tipo.TERRESTRE);
+        Jaula j6 = new Jaula(80, 3500, Tipo.TERRESTRE);
+        Jaula j7 = new Jaula(1200, 7500, Tipo.TERRESTRE);
+                
         return g;
+    }
+    
+    // getter
+    public ArrayList<Jaula> getListaJaulas() {
+        return listaJaulas;
     }
     
     //Adiciona jaula
@@ -31,18 +46,6 @@ public class GerenciadorJaula {
         }
         else
             return false;
-    }
-    
-    //Metodo para editar quantidade maxima de animais em uma jaula
-    public boolean editarNumMaxAnimais(int id, int numMaxAnimais) throws Exception{
-        int pos = buscarId(id);
-        //Jaula não existe
-        if(pos == -1)
-            return false;
-        
-        Jaula j = listaJaulas.get(pos);
-        j.setNumMaxAnimais(numMaxAnimais);
-        return true;
     }
     
     //Retorna posição encontrada

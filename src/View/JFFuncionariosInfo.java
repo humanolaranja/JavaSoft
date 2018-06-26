@@ -42,6 +42,7 @@ public class JFFuncionariosInfo extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -62,6 +63,7 @@ public class JFFuncionariosInfo extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -107,6 +109,11 @@ public class JFFuncionariosInfo extends javax.swing.JFrame {
         jLabel17.setText("jLabel10");
 
         jLabel18.setText("jLabel10");
+
+        jLabel19.setText("INFORMAÇÕES FUNCIONÁRIO");
+
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ObjectProperty.create(), jLabel19, org.jdesktop.beansbinding.BeanProperty.create("horizontalAlignment"));
+        bindingGroup.addBinding(binding);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -155,13 +162,20 @@ public class JFFuncionariosInfo extends javax.swing.JFrame {
                                 .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(163, 163, 163)
-                        .addComponent(jButton1)))
+                        .addComponent(jButton1)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(37, 37, 37))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(124, 124, 124)
+                .addComponent(jLabel19)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addGap(4, 4, 4)
+                .addComponent(jLabel19)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel10))
@@ -201,6 +215,8 @@ public class JFFuncionariosInfo extends javax.swing.JFrame {
                 .addComponent(jButton1)
                 .addContainerGap(24, Short.MAX_VALUE))
         );
+
+        bindingGroup.bind();
 
         pack();
         setLocationRelativeTo(null);
@@ -258,6 +274,7 @@ public class JFFuncionariosInfo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -266,5 +283,6 @@ public class JFFuncionariosInfo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

@@ -14,24 +14,33 @@ public class Animal {
     private final LocalDate nascimento;
     private double custoMensal;
         
-    public Animal(String especie, String origem, String nomePopular, String curiosidade, String sexo, String[] alimentacaoDiaria, LocalDate nascimento, double custo){
+    public Animal(String especie, String origem, String nomePopular, String curiosidade, String sexo, String[] alimentacaoDiaria, LocalDate nascimento, double custo, Tipo tipo){
         this.id = GerenciadorId.getAnimalId();
         this.sexo = sexo;
         this.alimentacaoDiaria = alimentacaoDiaria;
         this.nascimento = nascimento;
         this.custoMensal = custo;
-        this.especie = new Especie(especie, origem, nomePopular, curiosidade);
+        this.especie = new Especie(especie, origem, nomePopular, curiosidade, tipo);
     }
 
     // Construtor sem alimentacao diaria
-    public Animal(String especie, String origem, String nomePopular, String curiosidade, String sexo, LocalDate nascimento, double custo) {
+    public Animal(String especie, String origem, String nomePopular, String curiosidade, String sexo, LocalDate nascimento, double custo, Tipo tipo) {
 
         this.id = GerenciadorId.getAnimalId();
         this.sexo = sexo;
         this.nascimento = nascimento;
         this.custoMensal = custo;
-        this.especie = new Especie(especie, origem, nomePopular, curiosidade);
+        this.especie = new Especie(especie, origem, nomePopular, curiosidade, tipo);
         this.alimentacaoDiaria = null;
+    }
+
+    // getters e setters
+    public Especie getEspecieObj() {
+        return especie;
+    }
+
+    public void setEspecieObj(Especie especie) {
+        this.especie = especie;
     }
 
     public int getId() {

@@ -7,13 +7,15 @@ public class Especie {
     private String origem;
     private String nomePopular;
     private String curiosidade;
+    private Tipo tipo;
 
     // Construtor
-    public Especie(String especie, String origem, String nomePopular, String curiosidade) {
+    public Especie(String especie, String origem, String nomePopular, String curiosidade, Tipo tipo) {
         this.especie = especie;
         this.origem = origem;
         this.nomePopular = nomePopular;
         this.curiosidade = curiosidade;
+        this.tipo = tipo;
     }
 
     // getters e setters
@@ -48,7 +50,12 @@ public class Especie {
     public void setCuriosidade(String curiosidade) {
         this.curiosidade = curiosidade;
     }
-    
-    
-    
+
+    public Tipo getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(Tipo tipo) {
+        this.tipo = tipo;
+    }
 }
