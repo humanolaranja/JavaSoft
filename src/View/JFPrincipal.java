@@ -180,7 +180,7 @@ public class JFPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnFuncionariosActionPerformed
 
     private void btnJaulasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJaulasActionPerformed
-        //new JFListaJaulas().setVisible(true, MockDatabase.jaulas);
+        new JFJaulas().setVisible(true, JAULAS);
     }//GEN-LAST:event_btnJaulasActionPerformed
 
     private void btnAnimaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnimaisActionPerformed
