@@ -108,7 +108,7 @@ public class JFMapaZoologico extends javax.swing.JFrame {
                 }else if(x>=607 && x<=682 && y>=111 && y<=200){
                     new JFJaulaInfo().setVisible(true, jaulas.getListaJaulas().get(jaulas.buscarId(7)));
                 }else if(x>=598 && x<=635 && y>=40 && y<=67){
-                    new JFJaulaInfo().setVisible(true, jaulas.getListaJaulas().get(jaulas.buscarId(8)));
+                    new JFListaLojas().setVisible(true, MockDatabase.lojas);
                 }
             }
 
