@@ -64,6 +64,9 @@ public class JFFinanceiro extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 DiaInicialFocusGained(evt);
             }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                DiaInicialFocusLost(evt);
+            }
         });
         DiaInicial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,6 +83,9 @@ public class JFFinanceiro extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 MesInicialFocusGained(evt);
             }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                MesInicialFocusLost(evt);
+            }
         });
 
         AnoInicial.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
@@ -90,6 +96,9 @@ public class JFFinanceiro extends javax.swing.JFrame {
         AnoInicial.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 AnoInicialFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                AnoInicialFocusLost(evt);
             }
         });
         AnoInicial.addActionListener(new java.awt.event.ActionListener() {
@@ -112,6 +121,9 @@ public class JFFinanceiro extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 DiaFinalFocusGained(evt);
             }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                DiaFinalFocusLost(evt);
+            }
         });
         DiaFinal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,6 +140,9 @@ public class JFFinanceiro extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 MesFinalFocusGained(evt);
             }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                MesFinalFocusLost(evt);
+            }
         });
 
         AnoFinal.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
@@ -138,6 +153,9 @@ public class JFFinanceiro extends javax.swing.JFrame {
         AnoFinal.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 AnoFinalFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                AnoFinalFocusLost(evt);
             }
         });
         AnoFinal.addActionListener(new java.awt.event.ActionListener() {
@@ -258,23 +276,35 @@ public class JFFinanceiro extends javax.swing.JFrame {
     }//GEN-LAST:event_DiaInicialActionPerformed
 
     private void DiaInicialFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_DiaInicialFocusGained
-        DiaInicial.setText("");
-        DiaInicial.setForeground(Color.WHITE);
+        if(DiaInicial.getText().equals("Dia"))
+        {
+            DiaInicial.setText("");
+            DiaInicial.setForeground(Color.BLACK);
+        }
     }//GEN-LAST:event_DiaInicialFocusGained
 
     private void MesInicialFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_MesInicialFocusGained
-        MesInicial.setText("");
-        MesInicial.setForeground(Color.WHITE);
+        if(MesInicial.getText().equals("Mês"))
+        {
+            MesInicial.setText("");
+            MesInicial.setForeground(Color.BLACK);
+        }
     }//GEN-LAST:event_MesInicialFocusGained
 
     private void AnoInicialFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_AnoInicialFocusGained
-        AnoInicial.setText("");
-        AnoInicial.setForeground(Color.WHITE);
+        if(AnoInicial.getText().equals("Ano"))
+        {
+            AnoInicial.setText("");
+            AnoInicial.setForeground(Color.BLACK);
+        }
     }//GEN-LAST:event_AnoInicialFocusGained
 
     private void DiaFinalFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_DiaFinalFocusGained
-        DiaFinal.setText("");
-        DiaFinal.setForeground(Color.WHITE);
+        if(DiaFinal.getText().equals("Dia"))
+        {
+            DiaFinal.setText("");
+            DiaFinal.setForeground(Color.BLACK);
+        }
     }//GEN-LAST:event_DiaFinalFocusGained
 
     private void DiaFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DiaFinalActionPerformed
@@ -282,13 +312,19 @@ public class JFFinanceiro extends javax.swing.JFrame {
     }//GEN-LAST:event_DiaFinalActionPerformed
 
     private void MesFinalFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_MesFinalFocusGained
-        MesFinal.setText("");
-        MesFinal.setForeground(Color.WHITE);
+        if(MesFinal.getText().equals("Mês"))
+        {
+            MesFinal.setText("");
+            MesFinal.setForeground(Color.BLACK);
+        }
     }//GEN-LAST:event_MesFinalFocusGained
 
     private void AnoFinalFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_AnoFinalFocusGained
-        AnoFinal.setText("");
-        AnoFinal.setForeground(Color.WHITE);
+        if(AnoFinal.getText().equals("Ano"))
+        {
+            AnoFinal.setText("");
+            AnoFinal.setForeground(Color.BLACK);
+        }
     }//GEN-LAST:event_AnoFinalFocusGained
 
     private void AnoFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnoFinalActionPerformed
@@ -298,6 +334,54 @@ public class JFFinanceiro extends javax.swing.JFrame {
     private void AtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtualizarActionPerformed
         PreencherTabela();
     }//GEN-LAST:event_AtualizarActionPerformed
+
+    private void DiaInicialFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_DiaInicialFocusLost
+        if(DiaInicial.getText().isEmpty())
+        {
+            DiaInicial.setText("Dia");
+            DiaInicial.setForeground(Color.GRAY);
+        }
+    }//GEN-LAST:event_DiaInicialFocusLost
+
+    private void MesInicialFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_MesInicialFocusLost
+        if(MesInicial.getText().isEmpty())
+        {
+            MesInicial.setText("Mês");
+            MesInicial.setForeground(Color.GRAY);
+        }
+    }//GEN-LAST:event_MesInicialFocusLost
+
+    private void AnoInicialFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_AnoInicialFocusLost
+        if(AnoInicial.getText().isEmpty())
+        {
+            AnoInicial.setText("Ano");
+            AnoInicial.setForeground(Color.GRAY);
+        }
+    }//GEN-LAST:event_AnoInicialFocusLost
+
+    private void DiaFinalFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_DiaFinalFocusLost
+        if(DiaFinal.getText().isEmpty())
+        {
+            DiaFinal.setText("Dia");
+            DiaFinal.setForeground(Color.GRAY);
+        }
+    }//GEN-LAST:event_DiaFinalFocusLost
+
+    private void MesFinalFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_MesFinalFocusLost
+        if(MesFinal.getText().isEmpty())
+        {
+            MesFinal.setText("Mês");
+            MesFinal.setForeground(Color.GRAY);
+        }
+    }//GEN-LAST:event_MesFinalFocusLost
+
+    private void AnoFinalFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_AnoFinalFocusLost
+        if(AnoFinal.getText().isEmpty())
+        {
+            AnoFinal.setText("Ano");
+            AnoFinal.setForeground(Color.GRAY);
+        }
+    }//GEN-LAST:event_AnoFinalFocusLost
 
     public void PreencherTabela()
     {
