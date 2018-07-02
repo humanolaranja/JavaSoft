@@ -6,6 +6,7 @@
 package View;
 
 import Controller.GerenciadorVisita;
+import Model.Associado;
 import Model.Visita;
 import Model.Visitante;
 import java.awt.CardLayout;
@@ -61,7 +62,7 @@ public class JFVisitas extends javax.swing.JFrame {
         jButton11 = new javax.swing.JButton();
         jpAssociados = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        jtAssociados = new javax.swing.JTable();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
@@ -232,7 +233,7 @@ public class JFVisitas extends javax.swing.JFrame {
 
         jpParente.add(jpVisitantes, "card3");
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        jtAssociados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -240,10 +241,10 @@ public class JFVisitas extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "Nome", "CPF", "Data início"
+                "Nome", "RG", "Data início"
             }
         ));
-        jScrollPane3.setViewportView(jTable3);
+        jScrollPane3.setViewportView(jtAssociados);
 
         jButton5.setText("Adicionar");
 
@@ -323,6 +324,13 @@ public class JFVisitas extends javax.swing.JFrame {
         jpParente.add(jpAssociados);
         jpParente.repaint();
         jpParente.revalidate();
+        
+        DefaultTableModel val = (DefaultTableModel) jtAssociados.getModel();
+        val.setRowCount(0);
+        
+        for(Associado a : this.v.getAssociados()){
+            val.addRow(new String[]{a.getPrimeiroNome()+" "+a.getSobrenome(), a.getRg(), a.getInicioAssociadoString()});
+        }
     }//GEN-LAST:event_jbAssociadosActionPerformed
 
     /**
@@ -374,7 +382,6 @@ public class JFVisitas extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable3;
     private javax.swing.JButton jbAssociados;
     private javax.swing.JButton jbHistorico;
     private javax.swing.JButton jbVisitantes;
@@ -384,6 +391,7 @@ public class JFVisitas extends javax.swing.JFrame {
     private javax.swing.JPanel jpPainelBotoes;
     private javax.swing.JPanel jpParente;
     private javax.swing.JPanel jpVisitantes;
+    private javax.swing.JTable jtAssociados;
     private javax.swing.JTable jtHistorico;
     private javax.swing.JTable jtVisitantes;
     // End of variables declaration//GEN-END:variables

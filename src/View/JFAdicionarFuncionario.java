@@ -282,9 +282,8 @@ public class JFAdicionarFuncionario extends javax.swing.JFrame {
         
         Funcionario f = new Funcionario(nome, sobrenome, rg, cpf, LocalDate.of(anoNasc, mesNasc, diaNasc), index+1, carteiraTrabalho, salario, LocalDate.of(anoCont, mesCont, diaCont), "Setor");
         JFPrincipal.FUNCIONARIOS.adicionar(f);
-        
-        
-        
+        JFPrincipal.FUNCIONARIOS.getListaFuncionarios().sort(null);
+                
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 

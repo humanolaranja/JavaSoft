@@ -19,4 +19,8 @@ public class Associado extends Visitante {
     public void setInicioAssociacao(LocalDate inicioAssociacao) {
         this.inicioAssociacao = inicioAssociacao;
     }  
+    
+    public String getInicioAssociadoString(){
+        return String.format("%02d", this.inicioAssociacao.getDayOfMonth()) + "/" + String.format("%02d", this.inicioAssociacao.getMonthValue()) + "/" + this.inicioAssociacao.getYear();
+    }
 }

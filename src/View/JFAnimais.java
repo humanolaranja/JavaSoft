@@ -62,6 +62,7 @@ public class JFAnimais extends javax.swing.JFrame {
         jbInfo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Animais");
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
