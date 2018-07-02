@@ -3,7 +3,7 @@ package Model;
 import Controller.GerenciadorId;
 import java.time.LocalDate;
 
-public class Animal implements Contem{    
+public class Animal implements Contem, Comparable<Animal>{    
     
     // Atributos
     private final int id;
@@ -135,5 +135,16 @@ public class Animal implements Contem{
             return true;
         else
             return false;
+    }
+
+    // Ordenar os animais por ordem crescente de ID
+    @Override
+    public int compareTo(Animal a) {
+        if(this.getId() < a.getId())
+            return -1;
+        else if(this.getId() > a.getId())
+            return 1;
+        else
+            return 0;
     }
 }

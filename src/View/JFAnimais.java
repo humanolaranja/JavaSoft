@@ -35,7 +35,7 @@ public class JFAnimais extends javax.swing.JFrame {
         val.setRowCount(0);
         
         for(Animal a : this.animais.getListaAnimais()){
-            val.addRow(new String[]{String.valueOf(a.getId()), a.getEspecieObj().getEspecie(), a.getSexo(), String.valueOf(a.getCustoMensal())});
+            val.addRow(new String[]{String.valueOf(a.getId()), a.getEspecieObj().getEspecie(), a.getSexo(), String.format("%.2f", a.getCustoMensal())});
         }
     }
     

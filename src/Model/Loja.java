@@ -4,11 +4,10 @@ import Controller.GerenciadorId;
 import java.util.ArrayList;
 import java.time.LocalTime;
 
-public class Loja {
+public class Loja implements Comparable<Loja>{
 	
     // Atributos
     private final ArrayList<Funcionario> funcionarios;
-    private final ArrayList<String> tags;
     private String nome;
     private double valorAluguel;
     private LocalTime horarioAbertura;
@@ -16,22 +15,11 @@ public class Loja {
     private final int id;
 
     // Construtor
-    public Loja(String nome, LocalTime horarioAbertura, LocalTime horarioFechamento, double valorAluguel) throws Exception{
-        
-        if(nome == null)
-            throw new Exception("Tentativa de criar nova loja com 'nome == null'");
-        if(horarioAbertura == null)
-            throw new Exception("Tentativa de criar nova loja com 'horarioAbertura == null'");
-        if(horarioFechamento == null)
-            throw new Exception("Tentativa de criar nova loja com 'horarioAbertura == null'");
-        if(valorAluguel < 0)
-            throw new Exception("Tentativa de criar nova loja com 'valorAluguel < 0'");
-        
+    public Loja(String nome, LocalTime horarioAbertura, LocalTime horarioFechamento, double valorAluguel){     
         this.nome = nome;
         this.horarioAbertura = horarioAbertura;
         this.horarioFechamento = horarioFechamento;
         this.valorAluguel = valorAluguel;
-        tags = new ArrayList<>();
         funcionarios = new ArrayList<>();
         this.id = GerenciadorId.getLojaId();
     }
@@ -47,10 +35,6 @@ public class Loja {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public ArrayList<String> getTags() {
-        return tags;
     }
 
     public double getValorAluguel() {
@@ -91,13 +75,14 @@ public class Loja {
         getFuncionarios().remove(i);
     }
 
-    // Adiciona uma tag
-    public void adicionarTag(String tag) {
-        getTags().add(tag);
-    }
-
-    // Remove uma tag
-    public void removerTag(String tag) {
-        getTags().remove(tag);
+    // Ordena as lojas por ordem crescente de ID
+    @Override
+    public int compareTo(Loja l) {
+        if(this.getId() < l.getId())
+            return -1;
+        else if(this.getId() > l.getId())
+            return 1;
+        else
+            return 0;
     }
 }

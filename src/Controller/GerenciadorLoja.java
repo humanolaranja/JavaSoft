@@ -14,9 +14,14 @@ public class GerenciadorLoja implements Busca{
 
     public static GerenciadorLoja initialize(){
         GerenciadorLoja g = new GerenciadorLoja();
-        try{
-            g.adicionar(new Loja("Loja 10", LocalTime.now(), LocalTime.now(), 200));
-        }catch(Exception e){}
+        
+        Loja l1 = new Loja("Lanches Zoo", LocalTime.of(11, 00), LocalTime.of(21, 00), 3000);
+        Loja l2 = new Loja("Sorveteria Animal", LocalTime.of(9, 30), LocalTime.of(18, 00), 2000);
+        Loja l3 = new Loja("Baratex Restaurante", LocalTime.of(12, 00), LocalTime.of(20, 30), 4500);
+        Loja l4 = new Loja("Doceria Feliz", LocalTime.of(12, 30), LocalTime.of(21, 00), 800);
+        
+        g.adicionar(l1); g.adicionar(l2); g.adicionar(l3); g.adicionar(l4);
+        g.listaLojas.sort(null);
         
         return g;
     }
