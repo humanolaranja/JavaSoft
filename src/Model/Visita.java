@@ -2,19 +2,15 @@ package Model;
 
 import java.time.LocalDate;
 
-public class Visita {
+public class Visita implements Comparable<Visita>{
     private Visitante visitante;
     private LocalDate dia;
-    private boolean feriado;
-    private boolean meiaEntrada;
-    private boolean especial;
+    private Entrada tipo;
     
-    public Visita(Visitante v, LocalDate d, boolean f, boolean m, boolean e){
+    public Visita(Visitante v, LocalDate d, Entrada entrada){
         this.visitante = v;
         this.dia = d;
-        this.feriado = f;
-        this.meiaEntrada = m;
-        this.especial = e;
+        this.tipo = entrada;
     }
 
     // getters e setters
@@ -34,27 +30,27 @@ public class Visita {
         this.dia = dia;
     }
 
-    public boolean isFeriado() {
-        return feriado;
+    public Entrada getTipo() {
+        return tipo;
     }
 
-    public void setFeriado(boolean feriado) {
-        this.feriado = feriado;
+    public void setTipo(Entrada tipo) {
+        this.tipo = tipo;
+    }
+    
+    // Retorna uma String contendo a data da Visita no formato dia/mes/ano 
+    public String getDataString(){
+        return String.format("%02d", this.dia.getDayOfMonth()) + "/" + String.format("%02d", this.dia.getMonthValue()) + "/" + this.dia.getYear();
     }
 
-    public boolean isMeiaEntrada() {
-        return meiaEntrada;
-    }
-
-    public void setMeiaEntrada(boolean meiaEntrada) {
-        this.meiaEntrada = meiaEntrada;
-    }
-
-    public boolean isEspecial() {
-        return especial;
-    }
-
-    public void setEspecial(boolean especial) {
-        this.especial = especial;
+    // Interface Comparable, onde as visitas serao ordenadas de ordem decrescente
+    @Override
+    public int compareTo(Visita v) {
+        if(this.dia.isEqual(v.getDia()))
+            return 0;
+        else if(this.dia.isBefore(v.getDia()))
+            return 1;
+        else
+            return -1;
     }
 }

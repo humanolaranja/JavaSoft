@@ -24,7 +24,8 @@ public class GerenciadorFuncionario implements Busca{
         g.adicionar(f4);
         g.adicionar(f5);
         g.adicionar(f6);
-        
+        g.listaFuncionarios.sort(null);
+                
         return g;
     }
     

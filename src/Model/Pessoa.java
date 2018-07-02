@@ -2,7 +2,7 @@ package Model;
 
 import java.time.LocalDate;
 
-public abstract class Pessoa {
+public abstract class Pessoa implements Comparable<Pessoa>{
 	
     // Atributos
     private String primeiroNome;
@@ -68,6 +68,11 @@ public abstract class Pessoa {
     }
     
     public String getDataNascimentoString(){
-        return this.dataNascimento.getDayOfMonth() + "/" + this.dataNascimento.getMonthValue() + "/" + this.dataNascimento.getYear();
+        return String.format("%02d", this.dataNascimento.getDayOfMonth()) + "/" + String.format("%02d", this.dataNascimento.getMonthValue()) + "/" + this.dataNascimento.getYear();
+    }
+    
+    @Override
+    public int compareTo(Pessoa p){
+        return (this.getPrimeiroNome()+" "+this.getSobrenome()).compareToIgnoreCase(p.getPrimeiroNome()+" "+p.getSobrenome());
     }
 }

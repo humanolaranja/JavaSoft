@@ -11,7 +11,7 @@ public class Visitante extends Pessoa{
     // Construtor
     public Visitante (String primeiroNome, String sobrenome, String rg, LocalDate nascimento){
         super(primeiroNome, sobrenome, rg, nascimento);
-        historicoVisitas = new ArrayList<Visita>();
+        historicoVisitas = new ArrayList<>();
     }
 
     // getter e setter
@@ -23,7 +23,7 @@ public class Visitante extends Pessoa{
         this.historicoVisitas = historicoVisitas;
     }
         
-    //
+    // Adiciona uma visita ao historico de visitas
     public void adicionarVisita(Visita v){
         this.historicoVisitas.add(v);
     }

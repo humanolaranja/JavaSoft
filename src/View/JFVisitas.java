@@ -5,7 +5,11 @@
  */
 package View;
 
+import Controller.GerenciadorVisita;
+import Model.Visita;
+import Model.Visitante;
 import java.awt.CardLayout;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -13,11 +17,18 @@ import java.awt.CardLayout;
  */
 public class JFVisitas extends javax.swing.JFrame {
 
+    GerenciadorVisita v;
+    
     /**
      * Creates new form JFVisitas
      */
     public JFVisitas() {
         initComponents();
+    }
+    
+    public void setVisible(boolean bool, GerenciadorVisita v){
+        this.setVisible(bool);
+        this.v = v;
     }
 
     /**
@@ -38,16 +49,16 @@ public class JFVisitas extends javax.swing.JFrame {
         jpParente = new javax.swing.JPanel();
         jpHistorico = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jtHistorico = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jpVisitantes = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        jtVisitantes = new javax.swing.JTable();
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
+        jButton11 = new javax.swing.JButton();
         jpAssociados = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
@@ -127,7 +138,7 @@ public class JFVisitas extends javax.swing.JFrame {
 
         jpParente.setLayout(new java.awt.CardLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jtHistorico.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -135,16 +146,16 @@ public class JFVisitas extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "Nome", "Data", "Valor"
+                "Data", "Nome", "Tipo entrada"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jtHistorico);
 
         jButton2.setText("Adicionar");
 
         jButton3.setText("Remover");
 
-        jButton4.setText("Editar");
+        jButton4.setText("Atualizar");
 
         javax.swing.GroupLayout jpHistoricoLayout = new javax.swing.GroupLayout(jpHistorico);
         jpHistorico.setLayout(jpHistoricoLayout);
@@ -154,11 +165,11 @@ public class JFVisitas extends javax.swing.JFrame {
             .addGroup(jpHistoricoLayout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addGap(58, 58, 58)
                 .addComponent(jButton3)
-                .addGap(52, 52, 52)
+                .addGap(49, 49, 49)
                 .addComponent(jButton4)
-                .addGap(34, 34, 34))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         jpHistoricoLayout.setVerticalGroup(
             jpHistoricoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,7 +185,7 @@ public class JFVisitas extends javax.swing.JFrame {
 
         jpParente.add(jpHistorico, "card4");
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        jtVisitantes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -182,30 +193,30 @@ public class JFVisitas extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "Nome", "CPF", "Nascimento"
+                "Nome", "RG", "Nascimento"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(jtVisitantes);
 
         jButton8.setText("Adicionar");
 
         jButton9.setText("Remover");
 
-        jButton10.setText("Editar");
+        jButton11.setText("Atualizar");
 
         javax.swing.GroupLayout jpVisitantesLayout = new javax.swing.GroupLayout(jpVisitantes);
         jpVisitantes.setLayout(jpVisitantesLayout);
         jpVisitantesLayout.setHorizontalGroup(
             jpVisitantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
             .addGroup(jpVisitantesLayout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addGap(48, 48, 48)
                 .addComponent(jButton8)
-                .addGap(45, 45, 45)
+                .addGap(40, 40, 40)
                 .addComponent(jButton9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton10)
-                .addGap(46, 46, 46))
+                .addGap(43, 43, 43)
+                .addComponent(jButton11)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jpVisitantesLayout.setVerticalGroup(
             jpVisitantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -215,7 +226,7 @@ public class JFVisitas extends javax.swing.JFrame {
                 .addGroup(jpVisitantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton8)
                     .addComponent(jButton9)
-                    .addComponent(jButton10))
+                    .addComponent(jButton11))
                 .addGap(0, 20, Short.MAX_VALUE))
         );
 
@@ -284,6 +295,13 @@ public class JFVisitas extends javax.swing.JFrame {
         jpParente.add(jpHistorico);
         jpParente.repaint();
         jpParente.revalidate();
+        
+        DefaultTableModel val = (DefaultTableModel) jtHistorico.getModel();
+        val.setRowCount(0);
+        
+        for(Visita v : this.v.getVisitas()){
+            val.addRow(new String[]{v.getDataString(), v.getVisitante().getPrimeiroNome() + " " + v.getVisitante().getSobrenome(), v.getTipo().toString()});
+        }
     }//GEN-LAST:event_jbHistoricoActionPerformed
 
     private void jbVisitantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbVisitantesActionPerformed
@@ -291,6 +309,13 @@ public class JFVisitas extends javax.swing.JFrame {
         jpParente.add(jpVisitantes);
         jpParente.repaint();
         jpParente.revalidate();
+        
+        DefaultTableModel val = (DefaultTableModel) jtVisitantes.getModel();
+        val.setRowCount(0);
+        
+        for(Visitante v : this.v.getVisitantes()){
+            val.addRow(new String[]{v.getPrimeiroNome()+" "+v.getSobrenome(), v.getRg(), v.getDataNascimentoString()});
+        }
     }//GEN-LAST:event_jbVisitantesActionPerformed
 
     private void jbAssociadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAssociadosActionPerformed
@@ -337,7 +362,7 @@ public class JFVisitas extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -349,8 +374,6 @@ public class JFVisitas extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JButton jbAssociados;
     private javax.swing.JButton jbHistorico;
@@ -361,5 +384,7 @@ public class JFVisitas extends javax.swing.JFrame {
     private javax.swing.JPanel jpPainelBotoes;
     private javax.swing.JPanel jpParente;
     private javax.swing.JPanel jpVisitantes;
+    private javax.swing.JTable jtHistorico;
+    private javax.swing.JTable jtVisitantes;
     // End of variables declaration//GEN-END:variables
 }
