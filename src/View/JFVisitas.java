@@ -68,6 +68,7 @@ public class JFVisitas extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Visitas e Visitantes");
 
         jpPainelBotoes.setBackground(new java.awt.Color(255, 255, 255));
 
