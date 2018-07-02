@@ -1,20 +1,25 @@
 package Controller;
 
-import Model.Visita;
-import Model.Visitante;
+import Model.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class GerenciadorVisita {
     
     private ArrayList<Visita> visitas;
+    private ArrayList<Visitante> visitantes;
+    private ArrayList<VisitanteAssociado> associados;
     
     public GerenciadorVisita(){
-        this.visitas = new ArrayList<Visita>();
+        this.visitas = new ArrayList<>();
+        this.visitantes = new ArrayList<>();
+        this.associados = new ArrayList<>();
     }
     
     public static GerenciadorVisita initialize(){
         GerenciadorVisita g = new GerenciadorVisita();
+        
+        Visita v1 = new Visita();
         return g;
     }
 
@@ -26,10 +31,36 @@ public class GerenciadorVisita {
     public void setVisitas(ArrayList<Visita> visitas) {
         this.visitas = visitas;
     }
+
+    public ArrayList<Visitante> getVisitantes() {
+        return visitantes;
+    }
+
+    public void setVisitantes(ArrayList<Visitante> visitantes) {
+        this.visitantes = visitantes;
+    }
+
+    public ArrayList<VisitanteAssociado> getAssociados() {
+        return associados;
+    }
+
+    public void setAssociados(ArrayList<VisitanteAssociado> associados) {
+        this.associados = associados;
+    }
+      
+    // adiciona uma Visita ao sistema
+    public void adicionarVisita(Visita visita){
+        this.visitas.add(visita);
+    }
     
-    // adiciona uma visita ao sistema
-    public void adicionar(Visita v){
-        this.visitas.add(v);
+    // adiciona um Visitante ao sistema
+    public void adicionarVisitante(Visitante visitante){
+        this.visitantes.add(visitante);
+    }
+    
+    // adiciona um visitante associado ao Sistema
+    public void adicionarAssociado(VisitanteAssociado visitante){
+        this.associados.add(visitante);
     }
     
     public ArrayList<Visitante> buscaPeriodo(LocalDate inicio, LocalDate fim){
