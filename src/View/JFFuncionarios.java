@@ -36,7 +36,7 @@ public class JFFuncionarios extends javax.swing.JFrame {
         val.setRowCount(0);
         
         for(Funcionario f : this.funcionarios.getListaFuncionarios()){
-            val.addRow(new String[]{f.getPrimeiroNome() + " " + f.getSobrenome(), f.getCpf(), f.getTurnoString(), "R$"+String.format("%.2f", f.getSalario())});
+            val.addRow(new String[]{f.getPrimeiroNome() + " " + f.getSobrenome(), f.getCpf(), f.getTurnoString(), "R$"+String.format("%.2f", f.getSalario()), ((f.getLoja() == null) ? "" : String.valueOf(f.getLoja().getId()))});
         }
     }
     
@@ -61,6 +61,7 @@ public class JFFuncionarios extends javax.swing.JFrame {
         btnSearch = new javax.swing.JButton();
         btnClearSearch = new javax.swing.JButton();
         btnInformacoes = new javax.swing.JButton();
+        btnAtribuir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -69,7 +70,7 @@ public class JFFuncionarios extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nome", "CPF", "Turno", "Salário"
+                "Nome", "CPF", "Turno", "Salário", "Loja"
             }
         ));
         jScrollPane2.setViewportView(jTable1);
@@ -139,6 +140,13 @@ public class JFFuncionarios extends javax.swing.JFrame {
             }
         });
 
+        btnAtribuir.setText("Atribuir Loja");
+        btnAtribuir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtribuirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -157,14 +165,15 @@ public class JFFuncionarios extends javax.swing.JFrame {
                         .addComponent(btnSearch)
                         .addGap(18, 18, 18)
                         .addComponent(btnClearSearch)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnAdicionar, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
+                    .addComponent(btnAdicionar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnRemover, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnAtualizar, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
-                    .addComponent(btnFechar, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
-                    .addComponent(btnInformacoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnAtualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnFechar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnInformacoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAtribuir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(34, 34, 34))
         );
         layout.setVerticalGroup(
@@ -184,7 +193,9 @@ public class JFFuncionarios extends javax.swing.JFrame {
                         .addComponent(btnInformacoes)
                         .addGap(18, 18, 18)
                         .addComponent(btnAtualizar)
-                        .addGap(0, 143, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAtribuir)
+                        .addGap(0, 97, Short.MAX_VALUE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -248,7 +259,7 @@ public class JFFuncionarios extends javax.swing.JFrame {
         val.setRowCount(0);
         
         for(Funcionario f : resultado){
-            val.addRow(new String[]{f.getPrimeiroNome() + " " + f.getSobrenome(), f.getCpf(), f.getTurnoString(), String.valueOf(f.getSalario())});
+            val.addRow(new String[]{f.getPrimeiroNome() + " " + f.getSobrenome(), f.getCpf(), f.getTurnoString(), String.valueOf(f.getSalario()), ((f.getLoja() == null) ? "" : String.valueOf(f.getLoja().getId()))});
         }
     }//GEN-LAST:event_btnSearchActionPerformed
 
@@ -261,6 +272,14 @@ public class JFFuncionarios extends javax.swing.JFrame {
     private void jTFPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFPesquisaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFPesquisaActionPerformed
+
+    private void btnAtribuirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtribuirActionPerformed
+        // TODO add your handling code here:
+        String cpfSelecionado = jTable1.getValueAt(jTable1.getSelectedRow(), 1).toString();
+        Funcionario f = this.funcionarios.getListaFuncionarios().get(this.funcionarios.buscarCpf(cpfSelecionado));
+        
+        new JFAtribuirLoja().setVisible(true, f);
+    }//GEN-LAST:event_btnAtribuirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -299,6 +318,7 @@ public class JFFuncionarios extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdicionar;
+    private javax.swing.JButton btnAtribuir;
     private javax.swing.JButton btnAtualizar;
     private javax.swing.JButton btnClearSearch;
     private javax.swing.JButton btnEditar;

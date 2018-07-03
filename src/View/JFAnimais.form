@@ -45,11 +45,11 @@
               </Group>
               <EmptySpace pref="38" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jbAdicionar" alignment="0" pref="113" max="32767" attributes="0"/>
+                  <Component id="jbAdicionar" alignment="0" max="32767" attributes="0"/>
                   <Component id="jbEditar" alignment="0" max="32767" attributes="0"/>
                   <Component id="jbRemover" alignment="0" max="32767" attributes="0"/>
-                  <Component id="jbAtualizar" alignment="0" pref="113" max="32767" attributes="0"/>
-                  <Component id="jbFechar" alignment="0" pref="113" max="32767" attributes="0"/>
+                  <Component id="jbAtualizar" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jbFechar" alignment="0" max="32767" attributes="0"/>
                   <Component id="jbInfo" alignment="0" max="32767" attributes="0"/>
                   <Component id="jbAtribuirJaula" max="32767" attributes="0"/>
               </Group>

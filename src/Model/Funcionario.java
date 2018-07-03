@@ -16,7 +16,8 @@ public class Funcionario extends Pessoa{
     private int turno;
     private double salario;
     private String setor;
-
+    private Loja loja;
+    
     // Construtor
     public Funcionario (String primeiroNome, String sobrenome, String rg, String cpf, LocalDate nascimento, int turno, String numCarteiraTrabalho, double salario, LocalDate dataContratacao, String setor){
         super(primeiroNome, sobrenome, rg, nascimento);
@@ -91,6 +92,14 @@ public class Funcionario extends Pessoa{
     
     public String getDataContratacaoString(){
         return String.format("%02d", this.dataContratacao.getDayOfMonth()) + "/" + String.format("%02d", this.dataContratacao.getMonthValue()) + "/" + this.dataContratacao.getYear();
+    }
+    
+    public Loja getLoja() {
+        return loja;
+    }
+
+    public void setLoja(Loja loja) {
+        this.loja = loja;
     }
     
     // Verifica se o objeto contem alguma string nos seus atributos

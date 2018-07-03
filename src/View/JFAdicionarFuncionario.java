@@ -62,7 +62,6 @@ public class JFAdicionarFuncionario extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(602, 550));
-        setPreferredSize(new java.awt.Dimension(602, 550));
 
         jLabel1.setText("Primeiro nome");
 
@@ -253,10 +252,10 @@ public class JFAdicionarFuncionario extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(7, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(618, 495));
+        setSize(new java.awt.Dimension(618, 514));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
