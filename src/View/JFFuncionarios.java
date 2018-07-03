@@ -210,7 +210,6 @@ public class JFFuncionarios extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAtualizarActionPerformed
 
     private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
-        // TODO add your handling code here:
         String cpfSelecionado = jTable1.getValueAt(jTable1.getSelectedRow(), 1).toString();
         boolean a = this.funcionarios.remover(cpfSelecionado);
         

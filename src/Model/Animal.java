@@ -9,32 +9,18 @@ public class Animal implements Contem, Comparable<Animal>{
     private final int id;
     private Especie especie;
     private Jaula jaula;
-    private final String sexo;
-    private final String[] alimentacao;
+    private String sexo;
     private LocalDate dataEntrada;
     private LocalDate nascimento;
     private double custoMensal;
         
-    public Animal(String especie, String origem, String nomePopular, String curiosidade, String sexo, String[] alimentacaoDiaria, LocalDate nascimento, LocalDate dataEntrada, double custo, Tipo tipo){
-        this.id = GerenciadorId.getAnimalId();
-        this.sexo = sexo;
-        this.alimentacao = alimentacaoDiaria;
-        this.nascimento = nascimento;
-        this.dataEntrada = dataEntrada;
-        this.custoMensal = custo;
-        this.especie = new Especie(especie, origem, nomePopular, curiosidade, tipo);
-    }
-
-    // Construtor sem alimentacao diaria
-    public Animal(String especie, String origem, String nomePopular, String curiosidade, String sexo, LocalDate nascimento, LocalDate dataEntrada, double custo, Tipo tipo) {
-
+    public Animal(String especie, String origem, String nomePopular, String curiosidade, String sexo, LocalDate nascimento, LocalDate dataEntrada, double custo, Tipo tipo){
         this.id = GerenciadorId.getAnimalId();
         this.sexo = sexo;
         this.nascimento = nascimento;
         this.dataEntrada = dataEntrada;
         this.custoMensal = custo;
         this.especie = new Especie(especie, origem, nomePopular, curiosidade, tipo);
-        this.alimentacao = null;
     }
     
     public Animal(Especie especie, String sexo, LocalDate nascimento, LocalDate dataEntrada, double custo){
@@ -44,7 +30,6 @@ public class Animal implements Contem, Comparable<Animal>{
         this.nascimento = nascimento;
         this.dataEntrada = dataEntrada;
         this.custoMensal = custo;
-        this.alimentacao = null;
     }
 
     // getters e setters
@@ -81,14 +66,6 @@ public class Animal implements Contem, Comparable<Animal>{
             return 0;
         return LocalDate.now().minusYears(nascimento.getYear()).minusDays(nascimento.getDayOfYear()).getYear();
     }
-
-    public String[] getAlimentacao() {
-        return alimentacao;
-    }
-
-    public void setAlimentacao(String[] alimentacao) {
-        System.arraycopy(alimentacao, 0, alimentacao, 0, 7);
-    }
     
     public double getCustoMensal(){
         return custoMensal;
@@ -124,6 +101,10 @@ public class Animal implements Contem, Comparable<Animal>{
     
     public String getNascimentoString() {
         return this.nascimento.getDayOfMonth() + "/" + this.nascimento.getMonthValue() + "/" + this.nascimento.getYear();
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
     }
     
     // Verifica se o objeto contem alguma string nos seus atributos

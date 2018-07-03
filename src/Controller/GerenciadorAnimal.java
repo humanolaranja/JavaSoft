@@ -9,7 +9,6 @@ public class GerenciadorAnimal implements Busca{
     
     // Lista de animais do gerenciador
     private ArrayList<Animal> listaAnimais = new ArrayList<>();
-    private ArrayList<Especie> listaEspecies = new ArrayList<>();
 
     // getter e setter
     public ArrayList<Animal> getListaAnimais() {
@@ -18,14 +17,6 @@ public class GerenciadorAnimal implements Busca{
 
     public void setListaAnimais(ArrayList<Animal> listaAnimais) {
         this.listaAnimais = listaAnimais;
-    }
-
-    public ArrayList<Especie> getListaEspecies() {
-        return listaEspecies;
-    }
-
-    public void setListaEspecies(ArrayList<Especie> listaEspecies) {
-        this.listaEspecies = listaEspecies;
     }
     
     // inicializa animais no sistema
@@ -45,12 +36,6 @@ public class GerenciadorAnimal implements Busca{
         Animal cavalo = new Animal(cavaloEsp, "Masculino", LocalDate.of(1995, Month.AUGUST, 4), LocalDate.of(2002, Month.APRIL, 26), 600);
             
         GerenciadorAnimal g = new GerenciadorAnimal();
-        g.adicionarEspecie(macacoEsp);
-        g.adicionarEspecie(tartarugaEsp);
-        g.adicionarEspecie(leaoEsp);
-        g.adicionarEspecie(raposaEsp);
-        g.adicionarEspecie(porcoEsp);
-        g.adicionarEspecie(cavaloEsp);
         
         g.adicionarAnimal(macaco);
         g.adicionarAnimal(tartaruga);
@@ -67,18 +52,6 @@ public class GerenciadorAnimal implements Busca{
         //Checando se o animal não existe
         if(buscarId(a.getId()) == -1){
             listaAnimais.add(a);
-            return true;
-        }
-        else{
-            //Já existe esse animal
-            return false;
-        }
-    }
-    
-    public boolean adicionarEspecie(Especie e){
-        //Checando se a especie não existe
-        if(buscarEspecie(e.getEspecie()) == -1){
-            listaEspecies.add(e);
             return true;
         }
         else{
@@ -121,17 +94,6 @@ public class GerenciadorAnimal implements Busca{
         }
         
         //Não achou o animal
-        return -1;
-    }
-    
-    // faz a busca da especie
-    public int buscarEspecie(String especie){
-        for(int i=0; i<listaEspecies.size(); i++){
-            if(listaEspecies.get(i).getEspecie().compareToIgnoreCase(especie) == 0)
-                return i;
-        }
-        
-        //Não achou a especie
         return -1;
     }
     

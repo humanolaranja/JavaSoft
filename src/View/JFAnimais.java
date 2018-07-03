@@ -31,11 +31,11 @@ public class JFAnimais extends javax.swing.JFrame {
     }
     
     public void preencherTabela(){
-        DefaultTableModel val = (DefaultTableModel) jTable2.getModel();
+        DefaultTableModel val = (DefaultTableModel) jTable.getModel();
         val.setRowCount(0);
         
         for(Animal a : this.animais.getListaAnimais()){
-            val.addRow(new String[]{String.valueOf(a.getId()), a.getEspecieObj().getEspecie(), a.getSexo(), String.format("%.2f", a.getCustoMensal())});
+            val.addRow(new String[]{String.valueOf(a.getId()), a.getEspecieObj().getEspecie(), a.getSexo(), "R$" + String.format("%.2f", a.getCustoMensal())});
         }
     }
     
@@ -49,7 +49,7 @@ public class JFAnimais extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        jTable = new javax.swing.JTable();
         jbAdicionar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jbFechar = new javax.swing.JButton();
@@ -64,33 +64,36 @@ public class JFAnimais extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Animais");
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "Espécie", "Sexo", "Custo mensal"
+                "ID", "Espécie", "Sexo", "Custo mensal", "Jaula"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane3.setViewportView(jTable2);
-        if (jTable2.getColumnModel().getColumnCount() > 0) {
-            jTable2.getColumnModel().getColumn(0).setMinWidth(40);
-            jTable2.getColumnModel().getColumn(0).setPreferredWidth(40);
-            jTable2.getColumnModel().getColumn(0).setMaxWidth(40);
-            jTable2.getColumnModel().getColumn(2).setMinWidth(90);
-            jTable2.getColumnModel().getColumn(2).setPreferredWidth(90);
-            jTable2.getColumnModel().getColumn(2).setMaxWidth(90);
-            jTable2.getColumnModel().getColumn(3).setMinWidth(95);
-            jTable2.getColumnModel().getColumn(3).setPreferredWidth(95);
-            jTable2.getColumnModel().getColumn(3).setMaxWidth(95);
+        jScrollPane3.setViewportView(jTable);
+        if (jTable.getColumnModel().getColumnCount() > 0) {
+            jTable.getColumnModel().getColumn(0).setMinWidth(40);
+            jTable.getColumnModel().getColumn(0).setPreferredWidth(40);
+            jTable.getColumnModel().getColumn(0).setMaxWidth(40);
+            jTable.getColumnModel().getColumn(2).setMinWidth(90);
+            jTable.getColumnModel().getColumn(2).setPreferredWidth(90);
+            jTable.getColumnModel().getColumn(2).setMaxWidth(90);
+            jTable.getColumnModel().getColumn(3).setMinWidth(95);
+            jTable.getColumnModel().getColumn(3).setPreferredWidth(95);
+            jTable.getColumnModel().getColumn(3).setMaxWidth(95);
+            jTable.getColumnModel().getColumn(4).setMinWidth(40);
+            jTable.getColumnModel().getColumn(4).setPreferredWidth(40);
+            jTable.getColumnModel().getColumn(4).setMaxWidth(40);
         }
 
         jbAdicionar.setText("Adicionar");
@@ -213,24 +216,34 @@ public class JFAnimais extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAdicionarActionPerformed
-        // TODO add your handling code here:
+        new JFAdicionarAnimal().setVisible(true);
     }//GEN-LAST:event_jbAdicionarActionPerformed
 
     private void jbFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbFecharActionPerformed
-        // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jbFecharActionPerformed
 
     private void jbEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEditarActionPerformed
-        // TODO add your handling code here:
+        int idSelecionado = Integer.parseInt(jTable.getValueAt(jTable.getSelectedRow(), 0).toString());
+        Animal a = this.animais.getListaAnimais().get(this.animais.buscarId(idSelecionado));
+        
+        new JFEditarAnimal().setVisible(true, a);
     }//GEN-LAST:event_jbEditarActionPerformed
 
     private void jbRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRemoverActionPerformed
         // TODO add your handling code here:
+        int idSelecionado = Integer.parseInt(jTable.getValueAt(jTable.getSelectedRow(), 0).toString());
+        this.animais.remover(idSelecionado);
+        
+        DefaultTableModel tableModel = (DefaultTableModel) jTable.getModel();
+        tableModel.setRowCount(0);
+        this.preencherTabela();
     }//GEN-LAST:event_jbRemoverActionPerformed
 
     private void jbAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAtualizarActionPerformed
-        // TODO add your handling code here:
+        DefaultTableModel tableModel = (DefaultTableModel) jTable.getModel();
+        tableModel.setRowCount(0);
+        this.preencherTabela();
     }//GEN-LAST:event_jbAtualizarActionPerformed
 
     private void jbLimparPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimparPesquisaActionPerformed
@@ -284,7 +297,7 @@ public class JFAnimais extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextField jTFPesquisa1;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTable;
     private javax.swing.JButton jbAdicionar;
     private javax.swing.JButton jbAtualizar;
     private javax.swing.JButton jbEditar;
