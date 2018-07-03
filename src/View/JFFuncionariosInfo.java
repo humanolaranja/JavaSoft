@@ -28,7 +28,7 @@ public class JFFuncionariosInfo extends javax.swing.JFrame {
         jLabel12.setText(f.getDataContratacaoString());
         jLabel13.setText(f.getCpf());
         jLabel14.setText(f.getRg());
-        jLabel15.setText(String.valueOf(f.getSalario()));
+        jLabel15.setText("R$"+String.format("%.2f", f.getSalario()));
         jLabel16.setText(f.getSetor());
         jLabel17.setText(f.getTurnoString());
         jLabel18.setText(f.getNumCarteiraTrabalho());

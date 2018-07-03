@@ -99,17 +99,17 @@ public class JFMapaZoologico extends javax.swing.JFrame {
                 }else if(x>=167 && x<=380 && y>=66 && y<=164){
                     new JFJaulaInfo().setVisible(true, jaulas.getListaJaulas().get(jaulas.buscarId(1)));
                 }else if(x>=255 && x<=336 && y>=327 && y<=352){
-                    new JFJaulaInfo().setVisible(true, jaulas.getListaJaulas().get(jaulas.buscarId(2)));
-                }else if(x>=444 && x<=522 && y>=94 && y<=144){
-                    new JFJaulaInfo().setVisible(true, jaulas.getListaJaulas().get(jaulas.buscarId(3)));
-                }else if(x>=438 && x<=472 && y>=310 && y<=347){
-                    new JFJaulaInfo().setVisible(true, jaulas.getListaJaulas().get(jaulas.buscarId(4)));
-                }else if(x>=491 && x<=573 && y>=402 && y<=523){
                     new JFJaulaInfo().setVisible(true, jaulas.getListaJaulas().get(jaulas.buscarId(5)));
-                }else if(x>=582 && x<=652 && y>=231 && y<=319){
+                }else if(x>=444 && x<=522 && y>=94 && y<=144){
+                    new JFJaulaInfo().setVisible(true, jaulas.getListaJaulas().get(jaulas.buscarId(2)));
+                }else if(x>=438 && x<=472 && y>=310 && y<=347){
                     new JFJaulaInfo().setVisible(true, jaulas.getListaJaulas().get(jaulas.buscarId(6)));
-                }else if(x>=607 && x<=682 && y>=111 && y<=200){
+                }else if(x>=491 && x<=573 && y>=402 && y<=523){
                     new JFJaulaInfo().setVisible(true, jaulas.getListaJaulas().get(jaulas.buscarId(7)));
+                }else if(x>=582 && x<=652 && y>=231 && y<=319){
+                    new JFJaulaInfo().setVisible(true, jaulas.getListaJaulas().get(jaulas.buscarId(4)));
+                }else if(x>=607 && x<=682 && y>=111 && y<=200){
+                    new JFJaulaInfo().setVisible(true, jaulas.getListaJaulas().get(jaulas.buscarId(3)));
                 }else if(x>=598 && x<=635 && y>=40 && y<=67){
                     new JFLojaInfo().setVisible(true, lojas.getListaLojas().get(lojas.buscarId(2)));
                 }

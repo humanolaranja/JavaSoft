@@ -13,12 +13,12 @@ public class GerenciadorJaula {
         GerenciadorJaula j = new GerenciadorJaula();
         
         Jaula j1 = new Jaula(2000, 5000, Tipo.TERRESTRE);
-        Jaula j2 = new Jaula(100, 8200, Tipo.ANFIBIO);
-        Jaula j3 = new Jaula(200, 10400, Tipo.ANFIBIO);
+        Jaula j2 = new Jaula(100, 2200, Tipo.ANFIBIO);
+        Jaula j3 = new Jaula(200, 3500, Tipo.ANFIBIO);
         Jaula j4 = new Jaula(180, 2100, Tipo.TERRESTRE);
-        Jaula j5 = new Jaula(100, 5000, Tipo.TERRESTRE);
-        Jaula j6 = new Jaula(80, 3500, Tipo.TERRESTRE);
-        Jaula j7 = new Jaula(1200, 7500, Tipo.TERRESTRE);
+        Jaula j5 = new Jaula(100, 3600, Tipo.TERRESTRE);
+        Jaula j6 = new Jaula(80, 2200, Tipo.TERRESTRE);
+        Jaula j7 = new Jaula(1200, 7100, Tipo.TERRESTRE);
         
         j.adicionar(j1);
         j.adicionar(j2);

@@ -96,11 +96,11 @@ public class Animal implements Contem, Comparable<Animal>{
     }
     
     public String getDataEntradaString() {
-        return this.dataEntrada.getDayOfMonth() + "/" + this.dataEntrada.getMonthValue() + "/" + this.dataEntrada.getYear();
+        return String.format("%02d", this.dataEntrada.getDayOfMonth()) + "/" + String.format("%02d", this.dataEntrada.getMonthValue()) + "/" + this.dataEntrada.getYear();
     }
     
     public String getNascimentoString() {
-        return this.nascimento.getDayOfMonth() + "/" + this.nascimento.getMonthValue() + "/" + this.nascimento.getYear();
+        return String.format("%02d", this.nascimento.getDayOfMonth()) + "/" + String.format("%02d", this.nascimento.getMonthValue()) + "/" + this.nascimento.getYear();
     }
 
     public void setSexo(String sexo) {

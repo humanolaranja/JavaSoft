@@ -6,6 +6,7 @@
 package View;
 
 import Controller.GerenciadorAnimal;
+import Controller.GerenciadorJaula;
 import Model.Animal;
 import javax.swing.table.DefaultTableModel;
 
@@ -16,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
 public class JFAnimais extends javax.swing.JFrame {
 
     public static GerenciadorAnimal animais;
+    public static GerenciadorJaula jaulas;
     
     /**
      * Creates new form JFAnimais
@@ -24,9 +26,10 @@ public class JFAnimais extends javax.swing.JFrame {
         initComponents();
     }
 
-    public void setVisible(boolean bool, GerenciadorAnimal f){
+    public void setVisible(boolean bool, GerenciadorAnimal a, GerenciadorJaula j){
         this.setVisible(bool);
-        this.animais = f;
+        this.animais = a;
+        this.jaulas = j;
         this.preencherTabela();
     }
     
@@ -60,6 +63,7 @@ public class JFAnimais extends javax.swing.JFrame {
         jbLimparPesquisa = new javax.swing.JButton();
         jbPesquisar = new javax.swing.JButton();
         jbInfo = new javax.swing.JButton();
+        jbAtribuirJaula = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Animais");
@@ -155,6 +159,13 @@ public class JFAnimais extends javax.swing.JFrame {
             }
         });
 
+        jbAtribuirJaula.setText("Atribuir jaula");
+        jbAtribuirJaula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbAtribuirJaulaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -173,14 +184,15 @@ public class JFAnimais extends javax.swing.JFrame {
                         .addComponent(jbPesquisar)
                         .addGap(18, 18, 18)
                         .addComponent(jbLimparPesquisa)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jbAdicionar, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
                     .addComponent(jbEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jbRemover, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jbAtualizar, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
                     .addComponent(jbFechar, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
-                    .addComponent(jbInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jbInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jbAtribuirJaula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(34, 34, 34))
         );
         layout.setVerticalGroup(
@@ -199,8 +211,10 @@ public class JFAnimais extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jbInfo)
                         .addGap(18, 18, 18)
+                        .addComponent(jbAtribuirJaula)
+                        .addGap(18, 18, 18)
                         .addComponent(jbAtualizar)
-                        .addGap(0, 143, Short.MAX_VALUE))
+                        .addGap(0, 123, Short.MAX_VALUE))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -255,8 +269,18 @@ public class JFAnimais extends javax.swing.JFrame {
     }//GEN-LAST:event_jbPesquisarActionPerformed
 
     private void jbInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInfoActionPerformed
-        // TODO add your handling code here:
+        int idSelecionado = Integer.parseInt(jTable.getValueAt(jTable.getSelectedRow(), 0).toString());
+        Animal a = this.animais.getListaAnimais().get(this.animais.buscarId(idSelecionado));
+        
+        new JFAnimalInfo().setVisible(true, a);
     }//GEN-LAST:event_jbInfoActionPerformed
+
+    private void jbAtribuirJaulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAtribuirJaulaActionPerformed
+        int idSelecionado = Integer.parseInt(jTable.getValueAt(jTable.getSelectedRow(), 0).toString());
+        Animal a = this.animais.getListaAnimais().get(this.animais.buscarId(idSelecionado));
+        
+        new JFAtribuirJaula().setVisible(true, a);
+    }//GEN-LAST:event_jbAtribuirJaulaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -299,6 +323,7 @@ public class JFAnimais extends javax.swing.JFrame {
     private javax.swing.JTextField jTFPesquisa1;
     private javax.swing.JTable jTable;
     private javax.swing.JButton jbAdicionar;
+    private javax.swing.JButton jbAtribuirJaula;
     private javax.swing.JButton jbAtualizar;
     private javax.swing.JButton jbEditar;
     private javax.swing.JButton jbFechar;

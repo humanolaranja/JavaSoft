@@ -184,7 +184,7 @@ public class JFPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnJaulasActionPerformed
 
     private void btnAnimaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnimaisActionPerformed
-        new JFAnimais().setVisible(true, ANIMAIS);
+        new JFAnimais().setVisible(true, ANIMAIS, JAULAS);
     }//GEN-LAST:event_btnAnimaisActionPerformed
 
     private void btnLojasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLojasActionPerformed
