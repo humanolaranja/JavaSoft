@@ -1,6 +1,8 @@
 package View;
 
+import Controller.GerenciadorFuncionario;
 import Controller.GerenciadorLoja;
+import Model.Funcionario;
 import Model.Loja;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
@@ -8,6 +10,7 @@ import javax.swing.table.DefaultTableModel;
 public class JFLojas extends javax.swing.JFrame {
 
     public static GerenciadorLoja lojas;
+    public ArrayList<Funcionario> funcionarios;
     
     /**
      * Creates new form JFFuncionarios
@@ -16,9 +19,10 @@ public class JFLojas extends javax.swing.JFrame {
         initComponents();
     }
     
-    public void setVisible(boolean bool, GerenciadorLoja j){
+    public void setVisible(boolean bool, GerenciadorLoja j, ArrayList<Funcionario> f){
         this.setVisible(bool);
         this.lojas = j;
+        this.funcionarios = f;
         this.preencherTabela();
     }
     
@@ -176,7 +180,7 @@ public class JFLojas extends javax.swing.JFrame {
         int idSelecionado = Integer.parseInt((String) jTable.getValueAt(jTable.getSelectedRow(), 0));
         System.out.println(idSelecionado);
         Loja j = this.lojas.getListaLojas().get(this.lojas.buscarId(idSelecionado));
-        new JFEditarLojas().setVisible(true, j);
+        new JFEditarLojas().setVisible(true, j, this.funcionarios);
         
     }//GEN-LAST:event_btnEditarActionPerformed
 
