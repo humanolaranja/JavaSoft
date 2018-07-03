@@ -44,7 +44,7 @@ public class Loja implements Comparable<Loja>{
     public void setValorAluguel(double valorAluguel) {
         this.valorAluguel = valorAluguel;
     }
-
+    
     public ArrayList<Funcionario> getFuncionarios() {
         return funcionarios;
     }
@@ -52,17 +52,33 @@ public class Loja implements Comparable<Loja>{
     public LocalTime getHorarioAbertura() {
         return horarioAbertura;
     }
+    
+    public LocalTime getHorarioAbertura(int horas, int minutos) {
+        return LocalTime.of(horas, minutos);
+    }
 
     public void setHorarioAbertura(LocalTime horarioAbertura) {
         this.horarioAbertura = horarioAbertura;
+    }
+    
+    public void setHorarioAbertura(int horas, int minutos) {
+        this.horarioAbertura = LocalTime.of(horas, minutos);
     }
 
     public LocalTime getHorarioFechamento() {
         return horarioFechamento;
     }
+    
+    public LocalTime getHorarioFechamento(int horas, int minutos) {
+        return LocalTime.of(horas, minutos);
+    }
 
     public void setHorarioFechamento(LocalTime horarioFechamento) {
         this.horarioFechamento = horarioFechamento;
+    }
+    
+    public void setHorarioFechamento(int horas, int minutos) {
+        this.horarioFechamento = LocalTime.of(horas, minutos);
     }
 
     // Adiciona um funcionário na loja
@@ -85,4 +101,6 @@ public class Loja implements Comparable<Loja>{
         else
             return 0;
     }
+
+    
 }

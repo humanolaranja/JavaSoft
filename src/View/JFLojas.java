@@ -27,7 +27,7 @@ public class JFLojas extends javax.swing.JFrame {
         val.setRowCount(0);
         
         for(Loja j : this.lojas.getListaLojas()){
-            val.addRow(new String[]{j.getNome(), String.valueOf(j.getId()), String.valueOf(j.getHorarioAbertura()), String.valueOf(j.getHorarioFechamento()), String.valueOf(j.getValorAluguel())});
+            val.addRow(new String[]{String.valueOf(j.getId()), j.getNome(), String.valueOf(j.getHorarioAbertura()), String.valueOf(j.getHorarioFechamento()), String.valueOf(j.getValorAluguel())});
         }
     }
     
@@ -172,11 +172,12 @@ public class JFLojas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAtualizarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        /*
-        String idSelecionado = jTable.getValueAt(jTable.getSelectedRow(), 1);
-        Loja j = this.lojas.getListaLojas().get(this.lojas.buscarId(idSelecionado)));
-        new JFEditarLojas().setVisible(true, f);
-        */
+        
+        int idSelecionado = Integer.parseInt((String) jTable.getValueAt(jTable.getSelectedRow(), 0));
+        System.out.println(idSelecionado);
+        Loja j = this.lojas.getListaLojas().get(this.lojas.buscarId(idSelecionado));
+        new JFEditarLojas().setVisible(true, j);
+        
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfoActionPerformed
@@ -195,7 +196,7 @@ public class JFLojas extends javax.swing.JFrame {
         val.setRowCount(0);
         
         for(Loja j : resultado){
-            val.addRow(new String[]{j.getNome(), String.valueOf(j.getId()), String.valueOf(j.getHorarioAbertura()), String.valueOf(j.getHorarioFechamento()), String.valueOf(j.getValorAluguel())});
+            val.addRow(new String[]{String.valueOf(j.getId()), j.getNome(), String.valueOf(j.getHorarioAbertura()), String.valueOf(j.getHorarioFechamento()), String.valueOf(j.getValorAluguel())});
         }
     }//GEN-LAST:event_btnSearchActionPerformed
 

@@ -41,7 +41,7 @@ public class GerenciadorLoja implements Busca{
             return false;
     }
     
-    //Remove jaula
+    //Remove loja
     public boolean remover(Loja l){
         if(buscarId(l.getId()) != -1){
             listaLojas.remove(l);

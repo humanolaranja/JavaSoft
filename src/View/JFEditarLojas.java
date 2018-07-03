@@ -1,32 +1,27 @@
 package View;
 
 import Model.Funcionario;
+import Model.Loja;
 import java.time.LocalDate;
+import java.time.LocalTime;
 
-public class JFEditarFuncionario extends javax.swing.JFrame {
+public class JFEditarLojas extends javax.swing.JFrame {
 
-    public Funcionario f;
+    public Loja j;
     
-    public JFEditarFuncionario() {
+    public JFEditarLojas() {
         initComponents();
     }
     
-    public void setVisible(boolean bool, Funcionario f){
+    public void setVisible(boolean bool, Loja j){
         this.setVisible(bool);
-        this.f = f;
-        this.jtNome.setText(f.getPrimeiroNome());
-        this.jTextField1.setText(f.getSobrenome());
-        this.jtCPF.setText(f.getCpf());
-        this.jtSalario.setText(String.valueOf(f.getSalario()));
-        this.jtAnoContratacao.setText(String.valueOf(f.getDataContratacao().getYear()));
-        this.jtAnoNascimento.setText(String.valueOf(f.getDataNascimento().getYear()));
-        this.jtCarteiraDeTrabalho.setText(f.getNumCarteiraTrabalho());
-        this.jtMesContratacao.setText(String.valueOf(f.getDataContratacao().getMonthValue()));
-        this.jtMesNascimento.setText(String.valueOf(f.getDataNascimento().getMonthValue()));
-        this.jtDiaContratacao.setText(String.valueOf(f.getDataContratacao().getDayOfMonth()));
-        this.jtDiaNascimento.setText(String.valueOf(f.getDataNascimento().getDayOfMonth()));
-        this.jComboBox1.setSelectedIndex(f.getTurno() - 1);
-        this.jtRG.setText(f.getRg());
+        this.j = j;
+        this.jtNome.setText(j.getNome());
+        this.jtHorarioAberturaHora.setText(Integer.toString(j.getHorarioAbertura().getHour()));
+        this.jtHorarioAberturaMin.setText(Integer.toString(j.getHorarioAbertura().getMinute()));
+        this.jtHorarioFechamentoHora.setText(Integer.toString(j.getHorarioFechamento().getHour()));
+        this.jtHorarioFechamentoMin.setText(Integer.toString(j.getHorarioFechamento().getMinute()));
+        this.jComboBoxFuncionarios.setSelectedIndex(0);
     }
 
     /**
@@ -40,33 +35,25 @@ public class JFEditarFuncionario extends javax.swing.JFrame {
 
         jButton2 = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jtDiaContratacao = new javax.swing.JTextField();
-        jtMesContratacao = new javax.swing.JTextField();
-        jtAnoContratacao = new javax.swing.JTextField();
         jtNome = new javax.swing.JTextField();
-        jtCarteiraDeTrabalho = new javax.swing.JTextField();
-        jtSalario = new javax.swing.JTextField();
-        jtDiaNascimento = new javax.swing.JTextField();
-        jtMesNascimento = new javax.swing.JTextField();
-        jtAnoNascimento = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jtCPF = new javax.swing.JTextField();
+        jtHorarioFechamentoHora = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jtRG = new javax.swing.JTextField();
+        jtHorarioAberturaHora = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTextValorAluguel = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableFuncionarios = new javax.swing.JTable();
+        jComboBoxFuncionarios = new javax.swing.JComboBox<>();
+        jButtonAdicionarFuncionario = new javax.swing.JButton();
+        jButtonRemoverFuncionario = new javax.swing.JButton();
+        jtHorarioFechamentoMin = new javax.swing.JTextField();
+        jtHorarioAberturaMin = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -79,56 +66,31 @@ public class JFEditarFuncionario extends javax.swing.JFrame {
 
         jLabel11.setFont(new java.awt.Font("Dialog", 0, 15)); // NOI18N
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("EDITAR FUNCIONARIO");
+        jLabel11.setText("EDITAR LOJAS");
 
-        jLabel12.setText("/");
-
-        jLabel13.setText("/");
-
-        jtDiaContratacao.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jtDiaContratacao.setText("Dia");
-
-        jtMesContratacao.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jtMesContratacao.setText("Mês");
-
-        jtAnoContratacao.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jtAnoContratacao.setText("Ano");
-
-        jtDiaNascimento.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jtDiaNascimento.setText("Dia");
-
-        jtMesNascimento.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jtMesNascimento.setText("Mês");
-
-        jtAnoNascimento.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jtAnoNascimento.setText("Ano");
-
-        jLabel9.setText("/");
-
-        jLabel10.setText("/");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Manhã", "Tarde", "Noite" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        jtNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                jtNomeActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("Primeiro nome");
+        jtHorarioFechamentoHora.setText("hh");
 
-        jLabel2.setText("CPF");
+        jLabel1.setText("Nome");
 
-        jLabel3.setText("Data de nascimento");
+        jLabel2.setText("Horário de Fechamento");
 
-        jLabel4.setText("RG");
+        jLabel3.setText("Funcionários");
 
-        jLabel5.setText("Turno");
+        jLabel4.setText("Horário de Abertura");
 
-        jLabel6.setText("Carteira de trabalho");
-
-        jLabel7.setText("Salário");
-
-        jLabel8.setText("Data de contratação");
+        jtHorarioAberturaHora.setText("hh");
+        jtHorarioAberturaHora.setToolTipText("");
+        jtHorarioAberturaHora.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtHorarioAberturaHoraActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Salvar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -137,71 +99,110 @@ public class JFEditarFuncionario extends javax.swing.JFrame {
             }
         });
 
-        jLabel14.setText("Sobrenome");
+        jLabel14.setText("Valor do Aluguel");
+
+        jTableFuncionarios.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nome", "CPF"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTableFuncionarios);
+
+        jComboBoxFuncionarios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jButtonAdicionarFuncionario.setText("Adicionar Funcionário");
+        jButtonAdicionarFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAdicionarFuncionarioActionPerformed(evt);
+            }
+        });
+
+        jButtonRemoverFuncionario.setText("Remover Funcionário");
+        jButtonRemoverFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRemoverFuncionarioActionPerformed(evt);
+            }
+        });
+
+        jtHorarioFechamentoMin.setText("mm");
+        jtHorarioFechamentoMin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtHorarioFechamentoMinActionPerformed(evt);
+            }
+        });
+
+        jtHorarioAberturaMin.setText("mm");
+        jtHorarioAberturaMin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtHorarioAberturaMinActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText(":");
+
+        jLabel6.setText(":");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(213, 213, 213)
-                .addComponent(jLabel11)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(9, 9, 9)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 174, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 192, Short.MAX_VALUE)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(103, 103, 103))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(jLabel14)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 169, Short.MAX_VALUE)
+                                .addComponent(jTextValorAluguel, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel1)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel6)
                                     .addComponent(jLabel4)
                                     .addComponent(jLabel3)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel5))
+                                    .addComponent(jLabel2))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jtCPF)
-                                        .addComponent(jtRG)
-                                        .addComponent(jtNome)
-                                        .addComponent(jtCarteiraDeTrabalho, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jtSalario, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, 0, 254, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jButtonAdicionarFuncionario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jComboBoxFuncionarios, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jtNome, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                    .addComponent(jButtonRemoverFuncionario, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jtDiaNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jtHorarioAberturaHora, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+                                            .addComponent(jtHorarioFechamentoHora))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel9)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel5)
+                                            .addComponent(jLabel6))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jtMesNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel10)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jtAnoNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jtDiaContratacao, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel12)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jtMesContratacao, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel13)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jtAnoContratacao, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jtHorarioAberturaMin, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+                                            .addComponent(jtHorarioFechamentoMin))
+                                        .addGap(0, 0, Short.MAX_VALUE)))))
                         .addGap(41, 41, 41))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel11)
+                .addGap(248, 248, 248))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -215,49 +216,34 @@ public class JFEditarFuncionario extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextValorAluguel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtRG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                    .addComponent(jtHorarioAberturaHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addComponent(jtHorarioAberturaMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jtDiaNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtMesNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtAnoNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jtCarteiraDeTrabalho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(jtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtHorarioFechamentoHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtHorarioFechamentoMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jtDiaContratacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jtMesContratacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jtAnoContratacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel12)
-                        .addComponent(jLabel13))
-                    .addComponent(jLabel8))
-                .addGap(32, 32, 32)
+                    .addComponent(jLabel3)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jComboBoxFuncionarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonAdicionarFuncionario)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonRemoverFuncionario)
+                .addGap(86, 86, 86)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jButton1))
-                .addGap(50, 50, 50))
+                .addGap(438, 438, 438))
         );
 
         setSize(new java.awt.Dimension(618, 558));
@@ -269,22 +255,38 @@ public class JFEditarFuncionario extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // Botao SALVAR        
-        f.setPrimeiroNome(jtNome.getText().trim());
-        f.setSobrenome(jTextField1.getText().trim());
-        f.setRg(jtRG.getText().trim());
-        f.setNumCarteiraTrabalho(jtCarteiraDeTrabalho.getText().trim());
-        f.setSalario(Double.parseDouble(jtSalario.getText().trim()));
-        f.setTurno(jComboBox1.getSelectedIndex() + 1);
-        f.setDataContratacao(LocalDate.of(Integer.parseInt(jtAnoContratacao.getText().trim()), Integer.parseInt(jtMesContratacao.getText().trim()), Integer.parseInt(jtDiaContratacao.getText().trim())));
-        f.setDataNascimento(LocalDate.of(Integer.parseInt(jtAnoNascimento.getText().trim()), Integer.parseInt(jtMesNascimento.getText().trim()), Integer.parseInt(jtDiaNascimento.getText().trim())));
+        j.setNome(jtNome.getText().trim());
+        j.setValorAluguel(Double.parseDouble(jTextValorAluguel.getText().trim()));
+        j.setHorarioAbertura(Integer.parseInt(jtHorarioAberturaHora.getText().trim()), Integer.parseInt(jtHorarioAberturaMin.getText().trim()));
+        j.setHorarioFechamento(Integer.parseInt(jtHorarioFechamentoHora.getText().trim()), Integer.parseInt(jtHorarioFechamentoMin.getText().trim()));
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtNomeActionPerformed
+
+    private void jButtonAdicionarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionarFuncionarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonAdicionarFuncionarioActionPerformed
+
+    private void jtHorarioAberturaHoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtHorarioAberturaHoraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtHorarioAberturaHoraActionPerformed
+
+    private void jButtonRemoverFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoverFuncionarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonRemoverFuncionarioActionPerformed
+
+    private void jtHorarioFechamentoMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtHorarioFechamentoMinActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtHorarioFechamentoMinActionPerformed
+
+    private void jtHorarioAberturaMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtHorarioAberturaMinActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtHorarioAberturaMinActionPerformed
 
     /**
      * @param args the command line arguments
@@ -303,20 +305,21 @@ public class JFEditarFuncionario extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JFEditarFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFEditarLojas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JFEditarFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFEditarLojas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JFEditarFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFEditarLojas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JFEditarFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFEditarLojas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFEditarFuncionario().setVisible(true);
+                new JFEditarLojas().setVisible(true);
             }
         });
     }
@@ -324,32 +327,25 @@ public class JFEditarFuncionario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton jButtonAdicionarFuncionario;
+    private javax.swing.JButton jButtonRemoverFuncionario;
+    private javax.swing.JComboBox<String> jComboBoxFuncionarios;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jtAnoContratacao;
-    private javax.swing.JTextField jtAnoNascimento;
-    private javax.swing.JTextField jtCPF;
-    private javax.swing.JTextField jtCarteiraDeTrabalho;
-    private javax.swing.JTextField jtDiaContratacao;
-    private javax.swing.JTextField jtDiaNascimento;
-    private javax.swing.JTextField jtMesContratacao;
-    private javax.swing.JTextField jtMesNascimento;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTableFuncionarios;
+    private javax.swing.JTextField jTextValorAluguel;
+    private javax.swing.JTextField jtHorarioAberturaHora;
+    private javax.swing.JTextField jtHorarioAberturaMin;
+    private javax.swing.JTextField jtHorarioFechamentoHora;
+    private javax.swing.JTextField jtHorarioFechamentoMin;
     private javax.swing.JTextField jtNome;
-    private javax.swing.JTextField jtRG;
-    private javax.swing.JTextField jtSalario;
     // End of variables declaration//GEN-END:variables
+
 }
