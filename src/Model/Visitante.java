@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Visitante extends Pessoa{
 	
     // Atributos
-    private ArrayList<Visita> historicoVisitas;
+    private ArrayList<LocalDate> historicoVisitas;
 
     // Construtor
     public Visitante (String primeiroNome, String sobrenome, String rg, LocalDate nascimento){
@@ -15,16 +15,16 @@ public class Visitante extends Pessoa{
     }
 
     // getter e setter
-    public ArrayList<Visita> getHistoricoVisitas() {
+    public ArrayList<LocalDate> getHistoricoVisitas() {
         return historicoVisitas;
     }
 
-    public void setHistoricoVisitas(ArrayList<Visita> historicoVisitas) {
+    public void setHistoricoVisitas(ArrayList<LocalDate> historicoVisitas) {
         this.historicoVisitas = historicoVisitas;
     }
         
     // Adiciona uma visita ao historico de visitas
-    public void adicionarVisita(Visita v){
-        this.historicoVisitas.add(v);
+    public void adicionarVisita(LocalDate d){
+        this.historicoVisitas.add(d);
     }
 }

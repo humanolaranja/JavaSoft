@@ -32,11 +32,9 @@ public class JFDigitarRg extends javax.swing.JFrame {
         jbContinuar = new javax.swing.JButton();
         jbCancelar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Digite o RG do visitante");
-
-        jtfRg.setText("jTextField1");
 
         jbContinuar.setText("Continuar");
         jbContinuar.addActionListener(new java.awt.event.ActionListener() {
@@ -60,7 +58,7 @@ public class JFDigitarRg extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jtfRg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jtfRg, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jbContinuar)
                 .addGap(18, 18, 18)
@@ -80,6 +78,7 @@ public class JFDigitarRg extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed

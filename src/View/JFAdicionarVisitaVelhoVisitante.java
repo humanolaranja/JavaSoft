@@ -5,14 +5,19 @@
  */
 package View;
 
+import Model.Entrada;
+import Model.Visita;
+import Model.Visitante;
+import java.time.LocalDate;
+
 /**
  *
  * @author Família
  */
 public class JFAdicionarVisitaVelhoVisitante extends javax.swing.JFrame {
 
-    public String rg;
     public boolean associado;
+    public Visitante visitante;
     
     /**
      * Creates new form JFAdicionarVisitaVelhoVisitante
@@ -23,8 +28,12 @@ public class JFAdicionarVisitaVelhoVisitante extends javax.swing.JFrame {
     
     public void setVisible(boolean bool, String rg, boolean associado){
         this.setVisible(bool);
-        this.rg = rg;
         this.associado = associado;
+        this.visitante = JFPrincipal.VISITAS.getVisitantes().get(JFPrincipal.VISITAS.buscarRgVisitante(rg));
+        this.jlPrimeiroNome.setText(visitante.getPrimeiroNome());
+        this.jlSobrenome.setText(visitante.getSobrenome());
+        this.jlRG.setText(visitante.getRg());
+        this.jlNascimento.setText(visitante.getDataNascimentoString());
     }
 
     /**
@@ -36,21 +45,211 @@ public class JFAdicionarVisitaVelhoVisitante extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jtfAnoVisita = new javax.swing.JTextField();
+        jbConfirmar = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jbCancelar = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jlRG = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
+        jtfDiaVisita = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jtfMesVisita = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jlPrimeiroNome = new javax.swing.JLabel();
+        jlSobrenome = new javax.swing.JLabel();
+        jlNascimento = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jtfAnoVisita.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jtfAnoVisita.setText("Ano");
+
+        jbConfirmar.setText("Confirmar");
+        jbConfirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbConfirmarActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Primeiro nome");
+
+        jLabel11.setText("/");
+
+        jbCancelar.setText("Cancelar");
+        jbCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCancelarActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("RG");
+
+        jLabel6.setText("Data visita");
+
+        jlRG.setText("jLabel8");
+
+        jLabel12.setText("/");
+
+        jLabel7.setText("Tipo entrada");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Comum", "Meia", "Especial" }));
+
+        jLabel5.setText("Data de nascimento");
+
+        jtfDiaVisita.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jtfDiaVisita.setText("Dia");
+
+        jLabel1.setText("ADICIONAR VISITA");
+
+        jtfMesVisita.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jtfMesVisita.setText("Mês");
+
+        jLabel2.setText("Sobrenome");
+
+        jlPrimeiroNome.setText("jLabel8");
+
+        jlSobrenome.setText("jLabel8");
+
+        jlNascimento.setText("jLabel8");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel4))
+                        .addGap(33, 33, 33)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jlRG)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jtfDiaVisita, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel11)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jtfMesVisita, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel12)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jtfAnoVisita, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jlPrimeiroNome)
+                            .addComponent(jlSobrenome)
+                            .addComponent(jlNascimento)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(151, 151, 151)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(79, 79, 79)
+                        .addComponent(jbConfirmar)
+                        .addGap(75, 75, 75)
+                        .addComponent(jbCancelar)))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jlPrimeiroNome)
+                        .addGap(18, 18, 18)
+                        .addComponent(jlSobrenome))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(jlNascimento))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(jtfDiaVisita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfMesVisita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfAnoVisita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel12)))
+                    .addComponent(jlRG))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jbConfirmar)
+                            .addComponent(jbCancelar))
+                        .addGap(31, 31, 31))))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jbConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmarActionPerformed
+        LocalDate dataVisita = LocalDate.of(Integer.parseInt(this.jtfAnoVisita.getText().trim()), Integer.parseInt(this.jtfMesVisita.getText().trim()), Integer.parseInt(this.jtfDiaVisita.getText().trim()));
+        Entrada tipo;
+
+        if(this.associado == false){
+            switch (this.jComboBox1.getSelectedIndex()) {
+                case 0:
+                tipo = Entrada.COMUM;
+                break;
+                case 1:
+                tipo = Entrada.MEIA;
+                break;
+                default:
+                tipo = Entrada.ESPECIAL;
+                break;
+            }
+        }else{
+            switch (this.jComboBox1.getSelectedIndex()) {
+                case 0:
+                tipo = Entrada.ASSOCIADOCOMUM;
+                break;
+                case 1:
+                tipo = Entrada.ASSOCIADOMEIA;
+                break;
+                default:
+                tipo = Entrada.ESPECIAL;
+                break;
+            }
+        }
+
+        Visita novaVisita = new Visita(this.visitante, dataVisita, tipo);
+        JFPrincipal.VISITAS.adicionarVisita(novaVisita);
+        this.visitante.adicionarVisita(dataVisita);
+
+        this.dispose();
+    }//GEN-LAST:event_jbConfirmarActionPerformed
+
+    private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jbCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -88,5 +287,24 @@ public class JFAdicionarVisitaVelhoVisitante extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JButton jbCancelar;
+    private javax.swing.JButton jbConfirmar;
+    private javax.swing.JLabel jlNascimento;
+    private javax.swing.JLabel jlPrimeiroNome;
+    private javax.swing.JLabel jlRG;
+    private javax.swing.JLabel jlSobrenome;
+    private javax.swing.JTextField jtfAnoVisita;
+    private javax.swing.JTextField jtfDiaVisita;
+    private javax.swing.JTextField jtfMesVisita;
     // End of variables declaration//GEN-END:variables
 }

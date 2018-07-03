@@ -121,7 +121,7 @@ public class GerenciadorVisita {
                 return i;
         }
         
-        //Não achou o funcionario
+        //Não achou
         return -1;
     }
     
