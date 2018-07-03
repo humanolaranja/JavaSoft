@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class GerenciadorFinanceiro {
@@ -23,30 +24,36 @@ public class GerenciadorFinanceiro {
         return custo;
     }
     
-    public static double custoAnimais()
+    public static double custoAnimais(ArrayList<Animal> animais)
     {
         double custo = 0;
         
-        
-        
+        for(Animal a : animais){
+            custo = custo + a.getCustoMensal();
+        }
         return custo;
     }
     
-    public static double ganhoLojas()
+    public static double ganhoLojas(ArrayList<Loja> lojas)
     {
         double ganho = 0;
         
-        
-        
+        for(Loja l : lojas){
+            ganho = ganho + l.getValorAluguel();
+        }
         return ganho;
     }
     
-    public static double ganhoVisitantes()
+    public static double ganhoVisitantes(ArrayList<Visita> visitas, LocalDate i, LocalDate f)
     {
+        LocalDate dia;
         double ganho = 0;
         
-        
-        
+        for(Visita v : visitas){
+            dia = v.getDia();
+            if(dia.isEqual(i) || dia.isEqual(f) || (dia.isAfter(i) && dia.isBefore(f)))
+                ganho = ganho + v.getTipo().getValor();
+        }
         return ganho;
     }
 }

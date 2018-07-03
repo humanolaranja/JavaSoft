@@ -8,10 +8,10 @@ import java.util.ArrayList;
 public class GerenciadorAnimal implements Busca{
     
     // Lista de animais do gerenciador
-    private ArrayList<Animal> listaAnimais = new ArrayList<>();
+    private static ArrayList<Animal> listaAnimais = new ArrayList<>();
 
     // getter e setter
-    public ArrayList<Animal> getListaAnimais() {
+    public static ArrayList<Animal> getListaAnimais() {
         return listaAnimais;
     }
 

@@ -6,10 +6,15 @@
 
 package View;
 
+import Controller.GerenciadorAnimal;
+import Controller.GerenciadorJaula;
 import Controller.GerenciadorFinanceiro;
 import Controller.GerenciadorFuncionario;
+import Controller.GerenciadorLoja;
+import Controller.GerenciadorVisita;
 import java.awt.Color;
 import javax.swing.table.DefaultTableModel;
+import java.time.*;
 
 /**
  *
@@ -17,6 +22,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class JFFinanceiro extends javax.swing.JFrame {
 
+    private LocalDate dataInicial;
+    private LocalDate dataFinal;
+    
     /** Creates new form JFFinanceiro */
     public JFFinanceiro() {
         initComponents();
@@ -177,14 +185,15 @@ public class JFFinanceiro extends javax.swing.JFrame {
                 {"Animais", null, null, null},
                 {"Funcionarios", null, null, null},
                 {"Lojas", null, null, null},
-                {"Visitantes", "", null, null}
+                {"Visitantes", "", null, null},
+                {"Total", null, null, null}
             },
             new String [] {
                 "Setor", "Ganho", "Despesas", "Lucro"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                true, false, true, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -197,44 +206,43 @@ public class JFFinanceiro extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(92, 92, 92)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(ScrollPanefinanceiro)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(PeriodoInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(15, 15, 15))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(DiaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(MesInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(AnoInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(PeriodoFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(15, 15, 15))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(DiaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(MesFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(AnoFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(99, 99, 99))
             .addGroup(layout.createSequentialGroup()
+                .addGap(92, 92, 92)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(250, 250, 250)
-                        .addComponent(LabelFinanceiro, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(131, 131, 131)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(LabelFinanceiro, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Atualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(229, 229, 229)
-                        .addComponent(Atualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(ScrollPanefinanceiro)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(PeriodoInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(15, 15, 15))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(DiaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(MesInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(AnoInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(PeriodoFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(15, 15, 15))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(DiaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(MesFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(AnoFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(99, 99, 99))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -258,7 +266,7 @@ public class JFFinanceiro extends javax.swing.JFrame {
                             .addComponent(DiaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(MesFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(AnoFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addGap(18, 20, Short.MAX_VALUE)
                 .addComponent(Atualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ScrollPanefinanceiro, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -272,18 +280,6 @@ public class JFFinanceiro extends javax.swing.JFrame {
     private void AnoInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnoInicialActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_AnoInicialActionPerformed
-
-    private void DiaInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DiaInicialActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_DiaInicialActionPerformed
-
-    private void DiaInicialFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_DiaInicialFocusGained
-        if(DiaInicial.getText().equals("Dia"))
-        {
-            DiaInicial.setText("");
-            DiaInicial.setForeground(Color.BLACK);
-        }
-    }//GEN-LAST:event_DiaInicialFocusGained
 
     private void MesInicialFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_MesInicialFocusGained
         if(MesInicial.getText().equals("Mês"))
@@ -300,18 +296,6 @@ public class JFFinanceiro extends javax.swing.JFrame {
             AnoInicial.setForeground(Color.BLACK);
         }
     }//GEN-LAST:event_AnoInicialFocusGained
-
-    private void DiaFinalFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_DiaFinalFocusGained
-        if(DiaFinal.getText().equals("Dia"))
-        {
-            DiaFinal.setText("");
-            DiaFinal.setForeground(Color.BLACK);
-        }
-    }//GEN-LAST:event_DiaFinalFocusGained
-
-    private void DiaFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DiaFinalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_DiaFinalActionPerformed
 
     private void MesFinalFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_MesFinalFocusGained
         if(MesFinal.getText().equals("Mês"))
@@ -334,17 +318,33 @@ public class JFFinanceiro extends javax.swing.JFrame {
     }//GEN-LAST:event_AnoFinalActionPerformed
 
     private void AtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtualizarActionPerformed
-        PreencherTabela();
+        Atualizar.setText("Atualizar");
+        if(datasErradas()){
+            Atualizar.setText("Data inválida! Atualizar!");
+            return;
+        }
+        
+        dataInicial = LocalDate.of(Integer.parseInt(AnoInicial.getText()), Month.of(Integer.parseInt(MesInicial.getText())), Integer.parseInt(DiaInicial.getText()));
+        dataFinal = LocalDate.of(Integer.parseInt(AnoFinal.getText()), Month.of(Integer.parseInt(MesFinal.getText())), Integer.parseInt(DiaFinal.getText()));
+        
+        if(dataInicial.isAfter(dataFinal))
+            Atualizar.setText("Data inválida! Atualizar!");
+        else
+            PreencherTabela();
     }//GEN-LAST:event_AtualizarActionPerformed
 
-    private void DiaInicialFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_DiaInicialFocusLost
-        if(DiaInicial.getText().isEmpty())
-        {
-            DiaInicial.setText("Dia");
-            DiaInicial.setForeground(Color.GRAY);
-        }
-    }//GEN-LAST:event_DiaInicialFocusLost
-
+    private boolean datasErradas(){
+        int dInicial = Integer.parseInt(DiaInicial.getText()), mInicial = Integer.parseInt(MesInicial.getText());
+        int dFinal = Integer.parseInt(DiaFinal.getText()), mFinal = Integer.parseInt(MesFinal.getText());
+        
+        if((dInicial < 1 || dInicial > 31) || (mInicial < 1 || mInicial > 12))
+            return true;
+        if((dFinal < 1 || dFinal > 31) || (mFinal < 1 || mFinal > 12))
+            return true;
+        
+        return false;
+    }
+    
     private void MesInicialFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_MesInicialFocusLost
         if(MesInicial.getText().isEmpty())
         {
@@ -360,14 +360,6 @@ public class JFFinanceiro extends javax.swing.JFrame {
             AnoInicial.setForeground(Color.GRAY);
         }
     }//GEN-LAST:event_AnoInicialFocusLost
-
-    private void DiaFinalFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_DiaFinalFocusLost
-        if(DiaFinal.getText().isEmpty())
-        {
-            DiaFinal.setText("Dia");
-            DiaFinal.setForeground(Color.GRAY);
-        }
-    }//GEN-LAST:event_DiaFinalFocusLost
 
     private void MesFinalFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_MesFinalFocusLost
         if(MesFinal.getText().isEmpty())
@@ -385,28 +377,103 @@ public class JFFinanceiro extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_AnoFinalFocusLost
 
-    public void PreencherTabela()
-    {
+    private void DiaFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DiaFinalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DiaFinalActionPerformed
+
+    private void DiaFinalFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_DiaFinalFocusLost
+        if(DiaFinal.getText().isEmpty())
+        {
+            DiaFinal.setText("Dia");
+            DiaFinal.setForeground(Color.GRAY);
+        }
+    }//GEN-LAST:event_DiaFinalFocusLost
+
+    private void DiaFinalFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_DiaFinalFocusGained
+        if(DiaFinal.getText().equals("Dia"))
+        {
+            DiaFinal.setText("");
+            DiaFinal.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_DiaFinalFocusGained
+
+    private void DiaInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DiaInicialActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DiaInicialActionPerformed
+
+    private void DiaInicialFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_DiaInicialFocusLost
+        if(DiaInicial.getText().isEmpty())
+        {
+            DiaInicial.setText("Dia");
+            DiaInicial.setForeground(Color.GRAY);
+        }
+    }//GEN-LAST:event_DiaInicialFocusLost
+
+    private void DiaInicialFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_DiaInicialFocusGained
+        if(DiaInicial.getText().equals("Dia"))
+        {
+            DiaInicial.setText("");
+            DiaInicial.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_DiaInicialFocusGained
+
+    //Calcula a quantidade de meses que a busca procura
+    public int quantidadeMeses(){
+        int quant=0;
+        LocalDate dataManipulada = dataFinal;
+        
+        while(!sameMonth(dataManipulada, dataInicial)){
+            quant++;
+            dataManipulada = dataManipulada.minusMonths(1);
+        }
+        return quant+1;
+    }
+    
+    private boolean sameMonth(LocalDate ld1, LocalDate ld2){
+        if(ld1.getYear() == ld2.getYear() && ld1.getMonth() == ld2.getMonth())
+            return true;
+        else
+            return false;
+    }
+    
+    public void PreencherTabela(){
+        int quantidadeMeses = quantidadeMeses();
+        
         DefaultTableModel val = (DefaultTableModel) jTable1.getModel();
         //Animais
+        double aCusto = GerenciadorFinanceiro.custoAnimais(GerenciadorAnimal.getListaAnimais()) + GerenciadorFinanceiro.custoJaulas(GerenciadorJaula.getListaJaulas());
+        aCusto*= quantidadeMeses;
         val.setValueAt("-", 0, 1);
-        val.setValueAt(GerenciadorFinanceiro.custoAnimais(), 0, 2);
-        val.setValueAt((-1) * GerenciadorFinanceiro.custoAnimais(), 0, 3);
+        val.setValueAt(aCusto, 0, 2);
+        val.setValueAt((aCusto != 0 ? (aCusto*(-1)) : aCusto), 0, 3);
         
         //Funcionarios
+        double fCusto = GerenciadorFinanceiro.custoFuncionarios(GerenciadorFuncionario.getListaFuncionarios());
+        fCusto*= quantidadeMeses;
         val.setValueAt("-", 1, 1);
-        val.setValueAt(GerenciadorFinanceiro.custoFuncionarios(GerenciadorFuncionario.initialize().getListaFuncionarios()), 1, 2);
-        val.setValueAt((-1) * GerenciadorFinanceiro.custoFuncionarios(GerenciadorFuncionario.initialize().getListaFuncionarios()), 1, 3);
+        val.setValueAt(fCusto, 1, 2);
+        val.setValueAt((fCusto != 0 ? (fCusto*(-1)) : fCusto), 1, 3);
         
         //Lojas
-        val.setValueAt(GerenciadorFinanceiro.ganhoLojas(), 2, 1);
+        double lGanho = GerenciadorFinanceiro.ganhoLojas(GerenciadorLoja.getListaLojas());
+        lGanho*= quantidadeMeses;
+        val.setValueAt(lGanho, 2, 1);
         val.setValueAt("-", 2, 2);
-        val.setValueAt(GerenciadorFinanceiro.ganhoLojas(), 2, 3);
+        val.setValueAt(lGanho, 2, 3);
 
         //Visitantes
-        val.setValueAt(GerenciadorFinanceiro.ganhoVisitantes(), 3, 1);
+        double vGanho = GerenciadorFinanceiro.ganhoVisitantes(GerenciadorVisita.getVisitas(), dataInicial, dataFinal);
+        val.setValueAt(vGanho, 3, 1);
         val.setValueAt("-", 3, 2);
-        val.setValueAt(GerenciadorFinanceiro.ganhoVisitantes(), 3, 3);
+        val.setValueAt(vGanho, 3, 3);
+        
+        //Total
+        double tGanho = lGanho + vGanho;
+        double tCusto = aCusto + fCusto;
+        double tTotal = tGanho - tCusto;
+        val.setValueAt(tGanho, 4, 1);
+        val.setValueAt(tCusto, 4, 2);
+        val.setValueAt(tTotal, 4, 3);
     }
     
     /**

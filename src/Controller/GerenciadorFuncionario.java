@@ -7,7 +7,7 @@ import java.time.Month;
 import java.util.ArrayList;
 
 public class GerenciadorFuncionario implements Busca{
-    private ArrayList<Funcionario> listaFuncionarios;
+    private static ArrayList<Funcionario> listaFuncionarios;
 
     public static GerenciadorFuncionario initialize(){
         Funcionario f1 = new Funcionario("João", "Maruca", "12.234.567-8", "321.321.321-55", LocalDate.of(1999, Month.MARCH, 17), 1, "123456789", 1500, LocalDate.of(2015, Month.MARCH, 12), "Alimentação");
@@ -33,7 +33,7 @@ public class GerenciadorFuncionario implements Busca{
         this.listaFuncionarios = new ArrayList<>();
     }
 
-    public ArrayList<Funcionario> getListaFuncionarios() {
+    public static ArrayList<Funcionario> getListaFuncionarios() {
         return listaFuncionarios;
     }
     

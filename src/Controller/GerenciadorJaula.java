@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class GerenciadorJaula {
     
     //Lista de jaulas
-    private final ArrayList<Jaula> listaJaulas = new ArrayList<>();
+    private static final ArrayList<Jaula> listaJaulas = new ArrayList<>();
     
     public static GerenciadorJaula initialize(GerenciadorAnimal animais){
         GerenciadorJaula j = new GerenciadorJaula();
@@ -50,7 +50,7 @@ public class GerenciadorJaula {
     }
     
     // getter
-    public ArrayList<Jaula> getListaJaulas() {
+    public static ArrayList<Jaula> getListaJaulas() {
         return listaJaulas;
     }
     

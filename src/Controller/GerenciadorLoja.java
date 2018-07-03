@@ -10,7 +10,7 @@ import java.time.LocalTime;
 public class GerenciadorLoja implements Busca{
     
     //Lista de jaulas
-    private final ArrayList<Loja> listaLojas = new ArrayList<>();
+    private static final ArrayList<Loja> listaLojas = new ArrayList<>();
 
     public static GerenciadorLoja initialize(){
         GerenciadorLoja g = new GerenciadorLoja();
@@ -27,7 +27,7 @@ public class GerenciadorLoja implements Busca{
     }
     
     // getter
-    public ArrayList<Loja> getListaLojas() {
+    public static ArrayList<Loja> getListaLojas() {
         return listaLojas;
     }
     

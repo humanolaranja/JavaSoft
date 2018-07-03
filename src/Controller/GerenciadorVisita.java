@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class GerenciadorVisita {
     
-    private ArrayList<Visita> visitas;
+    private static ArrayList<Visita> visitas;
     private ArrayList<Visitante> visitantes;
     private ArrayList<Associado> associados;
     
@@ -65,7 +65,7 @@ public class GerenciadorVisita {
     }
 
     // getter e setter
-    public ArrayList<Visita> getVisitas() {
+    public static ArrayList<Visita> getVisitas() {
         return visitas;
     }
 
