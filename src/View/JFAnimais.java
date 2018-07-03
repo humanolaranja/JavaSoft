@@ -8,6 +8,8 @@ package View;
 import Controller.GerenciadorAnimal;
 import Controller.GerenciadorJaula;
 import Model.Animal;
+import Model.Funcionario;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -38,7 +40,7 @@ public class JFAnimais extends javax.swing.JFrame {
         val.setRowCount(0);
         
         for(Animal a : this.animais.getListaAnimais()){
-            val.addRow(new String[]{String.valueOf(a.getId()), a.getEspecieObj().getEspecie(), a.getSexo(), "R$" + String.format("%.2f", a.getCustoMensal())});
+            val.addRow(new String[]{String.valueOf(a.getId()), a.getEspecieObj().getEspecie(), a.getSexo(), "R$" + String.format("%.2f", a.getCustoMensal()), ((a.getJaula() == null) ? "" : String.valueOf(a.getJaula().getId()))});
         }
     }
     
@@ -261,11 +263,20 @@ public class JFAnimais extends javax.swing.JFrame {
     }//GEN-LAST:event_jbAtualizarActionPerformed
 
     private void jbLimparPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimparPesquisaActionPerformed
-        // TODO add your handling code here:
+        jTFPesquisa1.setText("");
+        this.preencherTabela();
     }//GEN-LAST:event_jbLimparPesquisaActionPerformed
 
     private void jbPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPesquisarActionPerformed
-        // TODO add your handling code here:
+        String pesquisa = jTFPesquisa1.getText();
+        ArrayList<Animal> resultado = this.animais.pesquisar(pesquisa);
+                
+        DefaultTableModel val = (DefaultTableModel) jTable.getModel();
+        val.setRowCount(0);
+        
+        for(Animal a : resultado){
+            val.addRow(new String[]{String.valueOf(a.getId()), a.getEspecieObj().getEspecie(), a.getSexo(), "R$" + String.format("%.2f", a.getCustoMensal()), ((a.getJaula() == null) ? "" : String.valueOf(a.getJaula().getId()))});
+        }
     }//GEN-LAST:event_jbPesquisarActionPerformed
 
     private void jbInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInfoActionPerformed

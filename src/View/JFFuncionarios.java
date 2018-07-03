@@ -112,6 +112,12 @@ public class JFFuncionarios extends javax.swing.JFrame {
             }
         });
 
+        jTFPesquisa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTFPesquisaActionPerformed(evt);
+            }
+        });
+
         btnSearch.setText("Pesquisar");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -247,8 +253,13 @@ public class JFFuncionarios extends javax.swing.JFrame {
 
     private void btnClearSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearSearchActionPerformed
         // TODO add your handling code here:
+        jTFPesquisa.setText("");
         this.preencherTabela();
     }//GEN-LAST:event_btnClearSearchActionPerformed
+
+    private void jTFPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFPesquisaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTFPesquisaActionPerformed
 
     /**
      * @param args the command line arguments
