@@ -70,7 +70,7 @@ public class JFAdicionarVisitaVelhoVisitante extends javax.swing.JFrame {
         jtfAnoVisita.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jtfAnoVisita.setText("Ano");
 
-        jbConfirmar.setText("Confirmar");
+        jbConfirmar.setText("Adicionar");
         jbConfirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbConfirmarActionPerformed(evt);
@@ -243,6 +243,8 @@ public class JFAdicionarVisitaVelhoVisitante extends javax.swing.JFrame {
         Visita novaVisita = new Visita(this.visitante, dataVisita, tipo);
         JFPrincipal.VISITAS.adicionarVisita(novaVisita);
         this.visitante.adicionarVisita(dataVisita);
+        JFPrincipal.VISITAS.getVisitas().sort(null);
+        JFPrincipal.VISITAS.getVisitantes().sort(null);
 
         this.dispose();
     }//GEN-LAST:event_jbConfirmarActionPerformed

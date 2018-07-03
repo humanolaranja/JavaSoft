@@ -59,6 +59,7 @@ public class GerenciadorVisita {
         
         g.visitas.sort(null);
         g.visitantes.sort(null);
+        g.associados.sort(null);
         
         return g;
     }

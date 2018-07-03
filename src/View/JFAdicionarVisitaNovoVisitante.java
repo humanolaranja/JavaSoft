@@ -279,6 +279,8 @@ public class JFAdicionarVisitaNovoVisitante extends javax.swing.JFrame {
         Visita novaVisita = new Visita(visitanteNovo, dataVisita, tipo);
         JFPrincipal.VISITAS.adicionarVisita(novaVisita);
         JFPrincipal.VISITAS.adicionarVisitante(visitanteNovo);
+        JFPrincipal.VISITAS.getVisitas().sort(null);
+        JFPrincipal.VISITAS.getVisitantes().sort(null);
         
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed

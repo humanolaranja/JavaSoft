@@ -12,15 +12,32 @@ import java.time.LocalDate;
  *
  * @author Família
  */
-public class JFAdicionarAssociado extends javax.swing.JFrame {
+public class JFEditarAssociado extends javax.swing.JFrame {
 
+    Associado associado;
+    
     /**
-     * Creates new form JFAdicionarAssociado
+     * Creates new form JFEditarAssociado
      */
-    public JFAdicionarAssociado() {
+    public JFEditarAssociado() {
         initComponents();
     }
 
+    public void setVisible(boolean bool, Associado a){
+        this.setVisible(bool);
+        this.associado = a;
+        
+        this.jtfPrimeiroNome.setText(associado.getPrimeiroNome());
+        this.jtfSobrenome.setText(associado.getSobrenome());
+        this.jtfRG.setText(associado.getRg());
+        this.jtfAnoAssociacao.setText(String.valueOf(associado.getInicioAssociacao().getYear()));
+        this.jtfMesAssociacao.setText(String.valueOf(associado.getInicioAssociacao().getMonthValue()));
+        this.jtfDiaAssociacao.setText(String.valueOf(associado.getInicioAssociacao().getDayOfMonth()));
+        this.jtfDiaNascimento.setText(String.valueOf(associado.getDataNascimento().getDayOfMonth()));
+        this.jtfMesNascimento.setText(String.valueOf(associado.getDataNascimento().getMonthValue()));
+        this.jtfAnoNascimento.setText(String.valueOf(associado.getDataNascimento().getYear()));
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,58 +47,33 @@ public class JFAdicionarAssociado extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jtfDiaNascimento = new javax.swing.JTextField();
-        jtfMesNascimento = new javax.swing.JTextField();
-        jtfAnoNascimento = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jtfDiaAssociacao = new javax.swing.JTextField();
         jtfPrimeiroNome = new javax.swing.JTextField();
+        jtfMesAssociacao = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
+        jtfAnoAssociacao = new javax.swing.JTextField();
         jtfSobrenome = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
+        jbSalvar = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jbCancelar = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jtfRG = new javax.swing.JTextField();
+        jtfDiaNascimento = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
+        jtfMesNascimento = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jtfDiaAssociacao = new javax.swing.JTextField();
-        jtfMesAssociacao = new javax.swing.JTextField();
-        jtfAnoAssociacao = new javax.swing.JTextField();
-        jbAdicionarAssociado = new javax.swing.JButton();
-        jbCancelar = new javax.swing.JButton();
+        jtfAnoNascimento = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel3.setText("Sobrenome");
-
-        jLabel4.setText("RG");
-
-        jtfDiaNascimento.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jtfDiaNascimento.setText("Dia");
-
-        jtfMesNascimento.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jtfMesNascimento.setText("Mês");
-
-        jtfAnoNascimento.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jtfAnoNascimento.setText("Ano");
+        jLabel12.setText("/");
 
         jLabel9.setText("/");
-
-        jLabel5.setText("Data de nascimento");
-
-        jLabel10.setText("/");
-
-        jLabel1.setText("ADICIONAR ASSOCIADO");
-
-        jLabel2.setText("Primeiro nome");
-
-        jLabel11.setText("/");
-
-        jLabel6.setText("Data associação");
-
-        jLabel12.setText("/");
 
         jtfDiaAssociacao.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jtfDiaAssociacao.setText("Dia");
@@ -89,15 +81,23 @@ public class JFAdicionarAssociado extends javax.swing.JFrame {
         jtfMesAssociacao.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jtfMesAssociacao.setText("Mês");
 
+        jLabel5.setText("Data de nascimento");
+
         jtfAnoAssociacao.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jtfAnoAssociacao.setText("Ano");
 
-        jbAdicionarAssociado.setText("Adicionar");
-        jbAdicionarAssociado.addActionListener(new java.awt.event.ActionListener() {
+        jLabel10.setText("/");
+
+        jbSalvar.setText("Salvar");
+        jbSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbAdicionarAssociadoActionPerformed(evt);
+                jbSalvarActionPerformed(evt);
             }
         });
+
+        jLabel3.setText("Sobrenome");
+
+        jLabel1.setText("EDITAR ASSOCIADO");
 
         jbCancelar.setText("Cancelar");
         jbCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -106,19 +106,42 @@ public class JFAdicionarAssociado extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setText("RG");
+
+        jLabel2.setText("Primeiro nome");
+
+        jtfDiaNascimento.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jtfDiaNascimento.setText("Dia");
+
+        jLabel11.setText("/");
+
+        jtfMesNascimento.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jtfMesNascimento.setText("Mês");
+
+        jLabel6.setText("Data associação");
+
+        jtfAnoNascimento.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jtfAnoNascimento.setText("Ano");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jbSalvar)
+                        .addGap(16, 16, 16)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jtfSobrenome, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtfPrimeiroNome, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -148,13 +171,8 @@ public class JFAdicionarAssociado extends javax.swing.JFrame {
                         .addComponent(jtfAnoAssociacao, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(45, 45, 45))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(137, 137, 137)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(89, 89, 89)
-                        .addComponent(jbAdicionarAssociado)))
+                .addGap(146, 146, 146)
+                .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -192,7 +210,7 @@ public class JFAdicionarAssociado extends javax.swing.JFrame {
                     .addComponent(jLabel12))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbAdicionarAssociado)
+                    .addComponent(jbSalvar)
                     .addComponent(jbCancelar))
                 .addGap(23, 23, 23))
         );
@@ -201,22 +219,26 @@ public class JFAdicionarAssociado extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_jbCancelarActionPerformed
-
-    private void jbAdicionarAssociadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAdicionarAssociadoActionPerformed
+    private void jbSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalvarActionPerformed
         String primeiroNome = this.jtfPrimeiroNome.getText().trim();
         String sobrenome = this.jtfSobrenome.getText().trim();
         String rg = this.jtfRG.getText().trim();
         LocalDate nascimento = LocalDate.of(Integer.parseInt(this.jtfAnoNascimento.getText().trim()), Integer.parseInt(this.jtfMesNascimento.getText().trim()), Integer.parseInt(this.jtfDiaNascimento.getText().trim()));
         LocalDate associacao = LocalDate.of(Integer.parseInt(this.jtfAnoAssociacao.getText().trim()), Integer.parseInt(this.jtfMesAssociacao.getText().trim()), Integer.parseInt(this.jtfDiaAssociacao.getText().trim()));
+
+        this.associado.setPrimeiroNome(primeiroNome);
+        this.associado.setSobrenome(sobrenome);
+        this.associado.setRg(rg);
+        this.associado.setDataNascimento(nascimento);
+        this.associado.setInicioAssociacao(associacao);
         
-        Associado associado = new Associado(primeiroNome, sobrenome, rg, nascimento, associacao);
-        JFPrincipal.VISITAS.adicionarAssociado(associado);
         JFPrincipal.VISITAS.getAssociados().sort(null);
         this.dispose();
-    }//GEN-LAST:event_jbAdicionarAssociadoActionPerformed
+    }//GEN-LAST:event_jbSalvarActionPerformed
+
+    private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jbCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -235,20 +257,20 @@ public class JFAdicionarAssociado extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JFAdicionarAssociado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFEditarAssociado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JFAdicionarAssociado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFEditarAssociado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JFAdicionarAssociado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFEditarAssociado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JFAdicionarAssociado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFEditarAssociado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFAdicionarAssociado().setVisible(true);
+                new JFEditarAssociado().setVisible(true);
             }
         });
     }
@@ -264,8 +286,8 @@ public class JFAdicionarAssociado extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JButton jbAdicionarAssociado;
     private javax.swing.JButton jbCancelar;
+    private javax.swing.JButton jbSalvar;
     private javax.swing.JTextField jtfAnoAssociacao;
     private javax.swing.JTextField jtfAnoNascimento;
     private javax.swing.JTextField jtfDiaAssociacao;

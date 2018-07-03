@@ -56,14 +56,12 @@ public class JFVisitas extends javax.swing.JFrame {
         jpVisitantes = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jtVisitantes = new javax.swing.JTable();
-        jButton8 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
+        jbAtualizarVisitantes = new javax.swing.JButton();
         jpAssociados = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jtAssociados = new javax.swing.JTable();
         jbAdicionarAssociado = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        jbEditarAssociado = new javax.swing.JButton();
         jbAtualizarAssociados = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -204,12 +202,10 @@ public class JFVisitas extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jtVisitantes);
 
-        jButton8.setText("Adicionar");
-
-        jButton11.setText("Atualizar");
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
+        jbAtualizarVisitantes.setText("Atualizar");
+        jbAtualizarVisitantes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
+                jbAtualizarVisitantesActionPerformed(evt);
             }
         });
 
@@ -219,10 +215,8 @@ public class JFVisitas extends javax.swing.JFrame {
             jpVisitantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
             .addGroup(jpVisitantesLayout.createSequentialGroup()
-                .addGap(87, 87, 87)
-                .addComponent(jButton8)
-                .addGap(71, 71, 71)
-                .addComponent(jButton11)
+                .addGap(160, 160, 160)
+                .addComponent(jbAtualizarVisitantes)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jpVisitantesLayout.setVerticalGroup(
@@ -230,9 +224,7 @@ public class JFVisitas extends javax.swing.JFrame {
             .addGroup(jpVisitantesLayout.createSequentialGroup()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jpVisitantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton8)
-                    .addComponent(jButton11))
+                .addComponent(jbAtualizarVisitantes)
                 .addGap(0, 20, Short.MAX_VALUE))
         );
 
@@ -252,13 +244,16 @@ public class JFVisitas extends javax.swing.JFrame {
         jScrollPane3.setViewportView(jtAssociados);
 
         jbAdicionarAssociado.setText("Adicionar");
-
-        jButton6.setText("Remover");
-
-        jButton7.setText("Editar");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        jbAdicionarAssociado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                jbAdicionarAssociadoActionPerformed(evt);
+            }
+        });
+
+        jbEditarAssociado.setText("Editar");
+        jbEditarAssociado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbEditarAssociadoActionPerformed(evt);
             }
         });
 
@@ -275,13 +270,11 @@ public class JFVisitas extends javax.swing.JFrame {
             jpAssociadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
             .addGroup(jpAssociadosLayout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addGap(52, 52, 52)
                 .addComponent(jbAdicionarAssociado)
-                .addGap(18, 18, 18)
-                .addComponent(jButton6)
-                .addGap(18, 18, 18)
-                .addComponent(jButton7)
-                .addGap(18, 18, 18)
+                .addGap(47, 47, 47)
+                .addComponent(jbEditarAssociado)
+                .addGap(46, 46, 46)
                 .addComponent(jbAtualizarAssociados)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -292,8 +285,7 @@ public class JFVisitas extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jpAssociadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbAdicionarAssociado)
-                    .addComponent(jButton6)
-                    .addComponent(jButton7)
+                    .addComponent(jbEditarAssociado)
                     .addComponent(jbAtualizarAssociados))
                 .addGap(0, 20, Short.MAX_VALUE))
         );
@@ -366,18 +358,20 @@ public class JFVisitas extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jbAtualizarTabelaActionPerformed
 
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+    private void jbAtualizarVisitantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAtualizarVisitantesActionPerformed
         DefaultTableModel val = (DefaultTableModel) jtVisitantes.getModel();
         val.setRowCount(0);
         
         for(Visitante v : this.v.getVisitantes()){
             val.addRow(new String[]{v.getPrimeiroNome()+" "+v.getSobrenome(), v.getRg(), v.getDataNascimentoString()});
         }
-    }//GEN-LAST:event_jButton11ActionPerformed
+    }//GEN-LAST:event_jbAtualizarVisitantesActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+    private void jbEditarAssociadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEditarAssociadoActionPerformed
+        String rgSelecionado = jtAssociados.getValueAt(jtAssociados.getSelectedRow(), 1).toString();
+        Associado a = this.v.getAssociados().get(this.v.buscarRgAssociado(rgSelecionado));
+        new JFEditarAssociado().setVisible(true, a);        
+    }//GEN-LAST:event_jbEditarAssociadoActionPerformed
 
     private void jbAtualizarAssociadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAtualizarAssociadosActionPerformed
         DefaultTableModel val = (DefaultTableModel) jtAssociados.getModel();
@@ -387,6 +381,10 @@ public class JFVisitas extends javax.swing.JFrame {
             val.addRow(new String[]{a.getPrimeiroNome()+" "+a.getSobrenome(), a.getRg(), a.getInicioAssociadoString()});
         }
     }//GEN-LAST:event_jbAtualizarAssociadosActionPerformed
+
+    private void jbAdicionarAssociadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAdicionarAssociadoActionPerformed
+        new JFAdicionarAssociado().setVisible(true);
+    }//GEN-LAST:event_jbAdicionarAssociadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -425,10 +423,6 @@ public class JFVisitas extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -437,6 +431,8 @@ public class JFVisitas extends javax.swing.JFrame {
     private javax.swing.JButton jbAssociados;
     private javax.swing.JButton jbAtualizarAssociados;
     private javax.swing.JButton jbAtualizarTabela;
+    private javax.swing.JButton jbAtualizarVisitantes;
+    private javax.swing.JButton jbEditarAssociado;
     private javax.swing.JButton jbHistorico;
     private javax.swing.JButton jbVisitantes;
     private javax.swing.JLabel jlVisitas;
