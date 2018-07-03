@@ -41,7 +41,8 @@ public class Jaula {
     }
 
     public void addAnimal(Animal novo){
-        
+        if(!this.animais.contains(novo))
+            this.animais.add(novo);
     }
 
     public void removeAnimal(Animal alvo){

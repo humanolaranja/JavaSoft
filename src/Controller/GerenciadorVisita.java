@@ -103,6 +103,28 @@ public class GerenciadorVisita {
         this.associados.add(visitante);
     }
     
+    // Busca no ArrayList de Visitantes por um RG
+    public int buscarRgVisitante(String rg){
+        for(int i=0; i<this.visitantes.size(); i++){
+            if(this.visitantes.get(i).getRg().compareToIgnoreCase(rg) == 0)
+                return i;
+        }
+        
+        //Não achou o funcionario
+        return -1;
+    }
+    
+    // Busca no ArrayList de Associados por um RG
+    public int buscarRgAssociado(String rg){
+        for(int i=0; i<this.associados.size(); i++){
+            if(this.associados.get(i).getRg().compareToIgnoreCase(rg) == 0)
+                return i;
+        }
+        
+        //Não achou o funcionario
+        return -1;
+    }
+    
     public ArrayList<Visitante> buscaPeriodo(LocalDate inicio, LocalDate fim){
         ArrayList<Visitante> resultadoBusca = new ArrayList<Visitante>();
         

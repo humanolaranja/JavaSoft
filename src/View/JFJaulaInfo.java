@@ -44,6 +44,7 @@ public class JFJaulaInfo extends javax.swing.JFrame {
         txtId = new javax.swing.JLabel();
         txtCusto = new javax.swing.JLabel();
         txtTamanho = new javax.swing.JLabel();
+        jbFechar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Descrição da Jaula");
@@ -55,10 +56,22 @@ public class JFJaulaInfo extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Espécie", "Sexo", "Nascimento"
+                "ID", "Espécie", "Sexo"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable);
+        if (jTable.getColumnModel().getColumnCount() > 0) {
+            jTable.getColumnModel().getColumn(0).setPreferredWidth(20);
+            jTable.getColumnModel().getColumn(2).setPreferredWidth(50);
+        }
 
         txtTitulo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtTitulo.setText("JAULA");
@@ -75,26 +88,38 @@ public class JFJaulaInfo extends javax.swing.JFrame {
 
         txtTamanho.setText("0");
 
+        jbFechar.setText("Fechar");
+        jbFechar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbFecharActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtId))
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtId))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtCusto))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtTamanho))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtCusto))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtTamanho)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                        .addGap(50, 50, 50)
+                        .addComponent(jbFechar)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -105,7 +130,7 @@ public class JFJaulaInfo extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(txtTitulo)
@@ -123,8 +148,10 @@ public class JFJaulaInfo extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(txtTamanho))))
-                .addContainerGap(18, Short.MAX_VALUE))
+                            .addComponent(txtTamanho))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jbFechar)))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -141,6 +168,10 @@ public class JFJaulaInfo extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(648, 290));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jbFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbFecharActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jbFecharActionPerformed
 
     /**
      * @param args the command line arguments
@@ -182,7 +213,7 @@ public class JFJaulaInfo extends javax.swing.JFrame {
         val.setRowCount(0);
         
         for(Animal a : this.jaula.getAnimais()){
-            val.addRow(new String[]{a.getEspecie().getEspecie(), a.getSexo(), a.getNascimento().toString()});
+            val.addRow(new String[]{String.valueOf(a.getId()), a.getEspecie().getEspecie(), a.getSexo()});
         }
     }
 
@@ -193,6 +224,7 @@ public class JFJaulaInfo extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable;
+    private javax.swing.JButton jbFechar;
     private javax.swing.JLabel txtCusto;
     private javax.swing.JLabel txtId;
     private javax.swing.JLabel txtTamanho;
