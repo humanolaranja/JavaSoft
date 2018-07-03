@@ -36,7 +36,7 @@ public class JFAnimalInfo extends javax.swing.JFrame {
         if(a.getJaula() == null)
             this.jlJaula.setText("Sem jaula");
         else
-            this.jlJaula.setText(String.valueOf(a.getId()));
+            this.jlJaula.setText(String.valueOf(a.getJaula().getId()));
     }
     
     /**
