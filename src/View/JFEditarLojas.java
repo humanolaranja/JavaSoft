@@ -9,30 +9,44 @@ import java.util.ArrayList;
 import static java.util.Collections.list;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.table.DefaultTableModel;
 
 public class JFEditarLojas extends javax.swing.JFrame {
 
-    public Loja j;
+    public Loja l;
     public  ArrayList<Funcionario> funcionarios;
     
     public JFEditarLojas() {
         initComponents();
     }
     
-    public void setVisible(boolean bool, Loja j, ArrayList<Funcionario> f){
+    public void setVisible(boolean bool, Loja l, ArrayList<Funcionario> f){
         this.setVisible(bool);
-        this.j = j;
-        this.jtNome.setText(j.getNome());
-        this.jtHorarioAberturaHora.setText(Integer.toString(j.getHorarioAbertura().getHour()));
-        this.jtHorarioAberturaMin.setText(Integer.toString(j.getHorarioAbertura().getMinute()));
-        this.jtHorarioFechamentoHora.setText(Integer.toString(j.getHorarioFechamento().getHour()));
-        this.jtHorarioFechamentoMin.setText(Integer.toString(j.getHorarioFechamento().getMinute()));
+        this.l = l;
+        this.jtNome.setText(l.getNome());
+        this.jtHorarioAberturaHora.setText(Integer.toString(l.getHorarioAbertura().getHour()));
+        this.jtHorarioAberturaMin.setText(Integer.toString(l.getHorarioAbertura().getMinute()));
+        this.jtHorarioFechamentoHora.setText(Integer.toString(l.getHorarioFechamento().getHour()));
+        this.jtHorarioFechamentoMin.setText(Integer.toString(l.getHorarioFechamento().getMinute()));
         this.funcionarios = f;
-        System.out.println(f.get(0).getPrimeiroNome());
         for(Funcionario fun : f){
-            this.jComboBoxFuncionarios.addItem(fun.getCpf() + " - " + fun.getPrimeiroNome() +  " " + fun.getSobrenome());
+            this.jComboBoxFuncionarios.addItem(fun.getPrimeiroNome() +  " " + fun.getSobrenome() + " - " + fun.getCpf());
         }
         this.jComboBoxFuncionarios.setSelectedIndex(0);
+        this.preencherTabela();
+    }
+    
+    public void preencherTabela(){
+        
+        if(this.l.getFuncionarios() != null){
+            DefaultTableModel val = (DefaultTableModel) this.jTableFuncionarios.getModel();
+            val.setRowCount(0);
+
+            for(Funcionario f : this.l.getFuncionarios()){
+                val.addRow(new String[]{f.getPrimeiroNome() + " " + f.getSobrenome(), f.getCpf(), f.getTurnoString(), "R$"+String.format("%.2f", f.getSalario())});
+            }
+        }
+        
     }
 
     /**'
@@ -117,11 +131,11 @@ public class JFEditarLojas extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nome", "CPF"
+                "Nome", "CPF", "Turno", "Salário"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -178,14 +192,14 @@ public class JFEditarLojas extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(9, 9, 9)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 192, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 156, Short.MAX_VALUE)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(103, 103, 103))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(jLabel14)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 169, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 133, Short.MAX_VALUE)
                                 .addComponent(jTextValorAluguel, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -261,7 +275,7 @@ public class JFEditarLojas extends javax.swing.JFrame {
                 .addGap(438, 438, 438))
         );
 
-        setSize(new java.awt.Dimension(618, 558));
+        setSize(new java.awt.Dimension(582, 482));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -272,10 +286,10 @@ public class JFEditarLojas extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // Botao SALVAR        
-        j.setNome(jtNome.getText().trim());
-        j.setValorAluguel(Double.parseDouble(jTextValorAluguel.getText().trim()));
-        j.setHorarioAbertura(Integer.parseInt(jtHorarioAberturaHora.getText().trim()), Integer.parseInt(jtHorarioAberturaMin.getText().trim()));
-        j.setHorarioFechamento(Integer.parseInt(jtHorarioFechamentoHora.getText().trim()), Integer.parseInt(jtHorarioFechamentoMin.getText().trim()));
+        l.setNome(jtNome.getText().trim());
+        l.setValorAluguel(Double.parseDouble(jTextValorAluguel.getText().trim()));
+        l.setHorarioAbertura(Integer.parseInt(jtHorarioAberturaHora.getText().trim()), Integer.parseInt(jtHorarioAberturaMin.getText().trim()));
+        l.setHorarioFechamento(Integer.parseInt(jtHorarioFechamentoHora.getText().trim()), Integer.parseInt(jtHorarioFechamentoMin.getText().trim()));
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -284,9 +298,15 @@ public class JFEditarLojas extends javax.swing.JFrame {
     }//GEN-LAST:event_jtNomeActionPerformed
 
     private void jButtonAdicionarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionarFuncionarioActionPerformed
-        this.j.adicionarFuncionario(funcionarios.get(this.jComboBoxFuncionarios.getSelectedIndex()));
+        Funcionario f = funcionarios.get(this.jComboBoxFuncionarios.getSelectedIndex());
+        this.l.adicionarFuncionario(f);
+        f.setLoja(l);
+        DefaultTableModel val = (DefaultTableModel) this.jTableFuncionarios.getModel();
+        val.setRowCount(0);
+        for(Funcionario fun : this.l.getFuncionarios()){
+            val.addRow(new String[]{fun.getPrimeiroNome() + " " + fun.getSobrenome(), fun.getCpf(), fun.getTurnoString(), "R$"+String.format("%.2f", fun.getSalario())});
+        }
         // TODO add your handling code here:
-        //adicionar funcionarios na tabela
     }//GEN-LAST:event_jButtonAdicionarFuncionarioActionPerformed
 
     private void jtHorarioAberturaHoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtHorarioAberturaHoraActionPerformed
@@ -295,6 +315,11 @@ public class JFEditarLojas extends javax.swing.JFrame {
 
     private void jButtonRemoverFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoverFuncionarioActionPerformed
         // TODO add your handling code here:
+        String cpfSelecionado = this.jTableFuncionarios.getValueAt(this.jTableFuncionarios.getSelectedRow(), 1).toString();
+        this.funcionarios.get(this.jTableFuncionarios.getSelectedRow()).setLoja(null);
+        l.removerFuncionario(this.jTableFuncionarios.getSelectedRow());
+        DefaultTableModel tableModel = (DefaultTableModel) this.jTableFuncionarios.getModel();
+        this.preencherTabela();
     }//GEN-LAST:event_jButtonRemoverFuncionarioActionPerformed
 
     private void jtHorarioFechamentoMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtHorarioFechamentoMinActionPerformed
@@ -369,8 +394,5 @@ public class JFEditarLojas extends javax.swing.JFrame {
     private javax.swing.JTextField jtNome;
     // End of variables declaration//GEN-END:variables
 
-    private ComboBoxModel<String> ComboBoxModel(Object[] toArray) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
 }

@@ -37,7 +37,7 @@ public class JFLojaInfo extends javax.swing.JFrame {
     }
     
     public void preencherTabela(){
-        DefaultTableModel val = (DefaultTableModel) jTable1.getModel();
+        DefaultTableModel val = (DefaultTableModel) this.jTable1.getModel();
         val.setRowCount(0);
         
         for(Funcionario f : this.loja.getFuncionarios()){

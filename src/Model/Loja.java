@@ -1,6 +1,7 @@
 package Model;
 
 import Controller.GerenciadorId;
+import View.JFPrincipal;
 import java.util.ArrayList;
 import java.time.LocalTime;
 
@@ -83,12 +84,35 @@ public class Loja implements Comparable<Loja>{
 
     // Adiciona um funcionário na loja
     public void adicionarFuncionario(Funcionario f) {
+        for(Funcionario fun : getFuncionarios()){
+            if(fun == f){
+                return;
+            }
+        }
         getFuncionarios().add(f);
     }
 
     // Remove o funcionário da posicao i
-    public void removerFuncionario(int i) {
+    public int removerFuncionario(int i) {
+        if(getFuncionarios().get(i) == null){
+            return -1;
+        }
         getFuncionarios().remove(i);
+        return 1;
+    }
+    
+    // Remove o funcionário com cpf
+    public boolean removerFuncionario(String cpf) {
+        //Checando se o funcionario existe
+        int index = JFPrincipal.FUNCIONARIOS.buscarCpf(cpf);
+        if(index != -1){
+            Funcionario f = this.funcionarios.get(index);
+            this.funcionarios.remove(f);
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     // Ordena as lojas por ordem crescente de ID

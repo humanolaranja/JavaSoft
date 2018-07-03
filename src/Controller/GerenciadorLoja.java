@@ -31,7 +31,7 @@ public class GerenciadorLoja implements Busca{
         return listaLojas;
     }
     
-    //Adiciona jaula
+    //Adiciona loja
     public boolean adicionar(Loja l){
         if(buscarId(l.getId()) == -1){
             listaLojas.add(l);
