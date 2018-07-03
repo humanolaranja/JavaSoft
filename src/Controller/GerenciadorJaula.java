@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.Animal;
 import Model.Jaula;
 import Model.Tipo;
 import java.util.ArrayList;
@@ -9,7 +10,7 @@ public class GerenciadorJaula {
     //Lista de jaulas
     private final ArrayList<Jaula> listaJaulas = new ArrayList<>();
     
-    public static GerenciadorJaula initialize(){
+    public static GerenciadorJaula initialize(GerenciadorAnimal animais){
         GerenciadorJaula j = new GerenciadorJaula();
         
         Jaula j1 = new Jaula(2000, 5000, Tipo.TERRESTRE);
@@ -19,6 +20,23 @@ public class GerenciadorJaula {
         Jaula j5 = new Jaula(100, 3600, Tipo.TERRESTRE);
         Jaula j6 = new Jaula(80, 2200, Tipo.TERRESTRE);
         Jaula j7 = new Jaula(1200, 7100, Tipo.TERRESTRE);
+        
+        for(int i=0 ; i<animais.getListaAnimais().size() ; i++){
+            if(i<animais.getListaAnimais().size())
+                j1.addAnimal(animais.getListaAnimais().get(i++));
+            if(i<animais.getListaAnimais().size())
+                j2.addAnimal(animais.getListaAnimais().get(i++));
+            if(i<animais.getListaAnimais().size())
+                j3.addAnimal(animais.getListaAnimais().get(i++));
+            if(i<animais.getListaAnimais().size())
+                j4.addAnimal(animais.getListaAnimais().get(i++));
+            if(i<animais.getListaAnimais().size())
+                j5.addAnimal(animais.getListaAnimais().get(i++));
+            if(i<animais.getListaAnimais().size())
+                j6.addAnimal(animais.getListaAnimais().get(i++));
+            if(i<animais.getListaAnimais().size())
+                j7.addAnimal(animais.getListaAnimais().get(i));
+        }
         
         j.adicionar(j1);
         j.adicionar(j2);

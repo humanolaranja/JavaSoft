@@ -8,7 +8,7 @@ public class JFPrincipal extends javax.swing.JFrame {
     public static final GerenciadorFuncionario FUNCIONARIOS = GerenciadorFuncionario.initialize();
     public static final GerenciadorLoja LOJAS = GerenciadorLoja.initialize();
     public static final GerenciadorVisita VISITAS = GerenciadorVisita.initialize();
-    public static final GerenciadorJaula JAULAS = GerenciadorJaula.initialize();
+    public static final GerenciadorJaula JAULAS = GerenciadorJaula.initialize(ANIMAIS);
     
     /**
      * Creates new form JFPrincipal
