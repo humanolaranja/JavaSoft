@@ -4,8 +4,8 @@ import Controller.GerenciadorId;
 import java.util.ArrayList;
 
 public class Jaula {
-    private final double tamanho;
-    private final Tipo tipo;
+    private double tamanho;
+    private Tipo tipo;
     private double custoMensal;
     private final int id;
     private final ArrayList<Animal> animais;
@@ -24,10 +24,18 @@ public class Jaula {
         return tipo;
     }
     
+    public void setTamanho(double t){
+        this.tamanho = t;
+    }
+    
     public double getTamanho() {
         return tamanho;
     }
 
+    public void setTipo(Tipo tipo) {
+        this.tipo = tipo;
+    }
+    
     public int getId(){
         return id;
     }

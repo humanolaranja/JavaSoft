@@ -204,7 +204,6 @@ public class JFFuncionarios extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAdicionarActionPerformed
 
     private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
-        // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_btnFecharActionPerformed
 
@@ -225,7 +224,9 @@ public class JFFuncionarios extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRemoverActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        // BOTAO EDITAR
+        if(jTable1.getSelectedRow() < 0)
+            return;
+        
         String cpfSelecionado = jTable1.getValueAt(jTable1.getSelectedRow(), 1).toString();
         Funcionario f = this.funcionarios.getListaFuncionarios().get(this.funcionarios.buscarCpf(cpfSelecionado));
         new JFEditarFuncionario().setVisible(true, f);
