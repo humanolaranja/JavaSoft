@@ -171,7 +171,7 @@ public class JFPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMapaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMapaActionPerformed
-        new JFMapaZoologico().setVisible(true, JAULAS);
+        new JFMapaZoologico().setVisible(true, JAULAS, LOJAS);
     }//GEN-LAST:event_btnMapaActionPerformed
 
     private void btnFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFuncionariosActionPerformed

@@ -31,7 +31,7 @@ public class JFLojas extends javax.swing.JFrame {
         val.setRowCount(0);
         
         for(Loja j : this.lojas.getListaLojas()){
-            val.addRow(new String[]{String.valueOf(j.getId()), j.getNome(), String.valueOf(j.getHorarioAbertura()), String.valueOf(j.getHorarioFechamento()), String.valueOf(j.getValorAluguel())});
+            val.addRow(new String[]{String.valueOf(j.getId()), j.getNome(), String.valueOf(j.getHorarioAbertura()), String.valueOf(j.getHorarioFechamento()), "R$" + String.format("%.2f", j.getValorAluguel())});
         }
     }
     
@@ -62,10 +62,22 @@ public class JFLojas extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nome", "CPF", "Turno", "Salário"
+                "ID", "Nome", "Abertura", "Fechamento", "Aluguel"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane2.setViewportView(jTable);
+        if (jTable.getColumnModel().getColumnCount() > 0) {
+            jTable.getColumnModel().getColumn(0).setPreferredWidth(5);
+            jTable.getColumnModel().getColumn(1).setPreferredWidth(120);
+        }
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("LOJAS");
@@ -185,11 +197,9 @@ public class JFLojas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfoActionPerformed
-        /*
-        String cpfSelecionado = jTable.getValueAt(jTable.getSelectedRow(), 1).toString();
-        Funcionario f = this.funcionarios.getListaFuncionarios().get(this.funcionarios.buscarCpf(cpfSelecionado));
-        new JFFuncionariosInfo().setVisible(true, f);
-        */
+        String idSelecionado = jTable.getValueAt(jTable.getSelectedRow(), 0).toString();
+        Loja loja = this.lojas.getListaLojas().get(this.lojas.buscarId(Integer.parseInt(idSelecionado)));
+        new JFLojaInfo().setVisible(true, loja);
     }//GEN-LAST:event_btnInfoActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed

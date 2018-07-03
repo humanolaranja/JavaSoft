@@ -90,7 +90,7 @@ public class Funcionario extends Pessoa{
     }
     
     public String getDataContratacaoString(){
-        return this.dataContratacao.getDayOfMonth() + "/" + this.dataContratacao.getMonthValue() + "/" + this.dataContratacao.getYear(); 
+        return String.format("%02d", this.dataContratacao.getDayOfMonth()) + "/" + String.format("%02d", this.dataContratacao.getMonthValue()) + "/" + this.dataContratacao.getYear();
     }
     
     // Verifica se o objeto contem alguma string nos seus atributos

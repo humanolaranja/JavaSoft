@@ -24,8 +24,8 @@ public class JFFuncionariosInfo extends javax.swing.JFrame {
         this.setVisible(bool);
         
         jLabel10.setText(f.getPrimeiroNome() + " " + f.getSobrenome());
-        jLabel11.setText(f.getDataNascimento().getDayOfMonth()+ "/" + f.getDataNascimento().getMonthValue() + "/" + f.getDataNascimento().getYear());
-        jLabel12.setText(f.getDataContratacao().getDayOfMonth()+ "/" + f.getDataContratacao().getMonthValue() + "/" + f.getDataContratacao().getYear());
+        jLabel11.setText(f.getDataNascimentoString());
+        jLabel12.setText(f.getDataContratacaoString());
         jLabel13.setText(f.getCpf());
         jLabel14.setText(f.getRg());
         jLabel15.setText(String.valueOf(f.getSalario()));

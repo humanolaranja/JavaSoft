@@ -1,6 +1,7 @@
 package View;
 
 import Controller.GerenciadorJaula;
+import Controller.GerenciadorLoja;
 //import Controller.MockDatabase;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -8,6 +9,7 @@ import java.awt.event.MouseListener;
 public class JFMapaZoologico extends javax.swing.JFrame {
 
     GerenciadorJaula jaulas;
+    GerenciadorLoja lojas;
     
     public JFMapaZoologico() {
         initComponents();
@@ -75,8 +77,9 @@ public class JFMapaZoologico extends javax.swing.JFrame {
         });
     }
     
-    public void setVisible(boolean bool, GerenciadorJaula j){
+    public void setVisible(boolean bool, GerenciadorJaula j, GerenciadorLoja l){
         this.jaulas = j;
+        this.lojas = l;
         this.setVisible(true);
     }
     
@@ -88,11 +91,11 @@ public class JFMapaZoologico extends javax.swing.JFrame {
                 int y = me.getY();
                 
                 if(x>=115 && x<=149 && y>=94 && y<=124){
-                    //new JFListaLojas().setVisible(true, MockDatabase.lojas);
+                    new JFLojaInfo().setVisible(true, lojas.getListaLojas().get(lojas.buscarId(1)));
                 }else if(x>=149 && x<=183 && y>=27 && y<=54){
-                    //new JFListaLojas().setVisible(true, MockDatabase.lojas);
+                    new JFLojaInfo().setVisible(true, lojas.getListaLojas().get(lojas.buscarId(4)));
                 }else if(x>=238 && x<=269 && y>=20 && y<=45){
-                    //new JFListaLojas().setVisible(true, MockDatabase.lojas);
+                    new JFLojaInfo().setVisible(true, lojas.getListaLojas().get(lojas.buscarId(3)));
                 }else if(x>=167 && x<=380 && y>=66 && y<=164){
                     new JFJaulaInfo().setVisible(true, jaulas.getListaJaulas().get(jaulas.buscarId(1)));
                 }else if(x>=255 && x<=336 && y>=327 && y<=352){
@@ -108,7 +111,7 @@ public class JFMapaZoologico extends javax.swing.JFrame {
                 }else if(x>=607 && x<=682 && y>=111 && y<=200){
                     new JFJaulaInfo().setVisible(true, jaulas.getListaJaulas().get(jaulas.buscarId(7)));
                 }else if(x>=598 && x<=635 && y>=40 && y<=67){
-                    //new JFListaLojas().setVisible(true, MockDatabase.lojas);
+                    new JFLojaInfo().setVisible(true, lojas.getListaLojas().get(lojas.buscarId(2)));
                 }
             }
 

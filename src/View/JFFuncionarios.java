@@ -36,7 +36,7 @@ public class JFFuncionarios extends javax.swing.JFrame {
         val.setRowCount(0);
         
         for(Funcionario f : this.funcionarios.getListaFuncionarios()){
-            val.addRow(new String[]{f.getPrimeiroNome() + " " + f.getSobrenome(), f.getCpf(), f.getTurnoString(), String.format("%.2f", f.getSalario())});
+            val.addRow(new String[]{f.getPrimeiroNome() + " " + f.getSobrenome(), f.getCpf(), f.getTurnoString(), "R$"+String.format("%.2f", f.getSalario())});
         }
     }
     
